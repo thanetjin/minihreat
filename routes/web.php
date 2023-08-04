@@ -4,6 +4,10 @@ use App\Http\Controllers\AboutController;
 use App\Http\Controllers\HelloController;
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\SongController;
+use App\Http\Controllers\UserController;
+
+use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Redirect;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -26,6 +30,7 @@ Route::get('/hello', function () {
 })->name("hello");
 
 Route::get('/hello/{name}', function ($name) {
+    User::get();
     return "Hello {$name}";
 })->name("hello.name");
 
@@ -34,7 +39,11 @@ Route::get('/about', [AboutController::class, 'index'])
 
 Route::get('/songs', [SongController::class, 'index'])
     ->name('songs.index');
-
+    
+Route::resource('/user', UserController::class)
+    ->missing(function (Request $request){
+        return Redirect::route('user.index');
+    });
 // Route::get('/dashboard', function () {
 //     return view('dashboard');
 // })->middleware(['auth', 'verified'])->name('dashboard');

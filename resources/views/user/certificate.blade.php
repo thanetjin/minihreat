@@ -47,7 +47,7 @@
         </div>
         <div class="col-span-2">
             <span class="flex rounded-md justify-center mb-10" role="group">
-                <a href="{{ route('user.show', ['user' => 'Profile']) }}" type="button" class="px-4 py-2 text-xl font-semibold text-gray-900 bg-transparent border border-gray-900 rounded-l-lg hover:bg-gray-900 hover:text-white focus:z-10 focus:ring-2 focus:ring-gray-500 focus:bg-gray-900 focus:text-white">
+                <a href="{{ route('user.show', ['user' => 'Profile']) }}" class="px-4 py-2 text-xl font-semibold text-gray-900 bg-transparent border border-gray-900 rounded-l-lg hover:bg-gray-900 hover:text-white focus:z-10 focus:ring-2 focus:ring-gray-500 focus:bg-gray-900 focus:text-white">
                     กิจกรรมที่เข้าร่วม
                 </a>
                 <a href="{{ route('user.certificate', ['Profile' => 'Profile']) }}" class="px-4 py-2 text-xl font-semibold text-gray-900 bg-transparent border border-gray-900 rounded-r-md hover:bg-gray-900 hover:text-white focus:z-10 focus:ring-2 focus:ring-gray-500 focus:bg-gray-900 focus:text-white">

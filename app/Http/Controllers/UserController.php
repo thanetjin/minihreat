@@ -46,9 +46,11 @@ class UserController extends Controller
     /**
      * Show the form for editing the specified resource.
      */
-    public function edit(string $id)
+    public function edit(string $username)
     {
-        //
+        return view('user.edit',[
+            'user' => $username
+        ]);
     }
 
     /**
@@ -65,5 +67,11 @@ class UserController extends Controller
     public function destroy(string $id)
     {
         //
+    }
+
+    public function showCertificate(string $username){
+        return view('user.certificate',[
+            'user' => $username
+        ]);
     }
 }

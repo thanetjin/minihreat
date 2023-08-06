@@ -44,6 +44,10 @@ Route::resource('/user', UserController::class)
     ->missing(function (Request $request){
         return Redirect::route('user.index');
     });
+
+Route::get('/user/{Profile}/certificate', [
+    UserController::class, 'showCertificate'
+])->name('user.certificate');
 // Route::get('/dashboard', function () {
 //     return view('dashboard');
 // })->middleware(['auth', 'verified'])->name('dashboard');

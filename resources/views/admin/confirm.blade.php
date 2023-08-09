@@ -8,22 +8,20 @@
 <div class="grid grid-cols-3 gap-4 h-[80vh]">
     
     <div class="block p-6 bg-white border border-gray-200 rounded-lg shadow">
-        <img src="https://cdn.discordapp.com/attachments/862912096899432488/1110440358522929162/IMG_20230112_092432_514-removebg-preview.png" alt="" class="h-screen"> 
+        <img src="https://content.magnumphotos.com/wp-content/uploads/2019/05/cortex/par196080-teaser-story-big.jpg" alt="" class="h-screen"> 
     </div>
 
     <div class="col-span-2 block p-6 bg-white border border-gray-200 rounded-lg shadow h-full">
         <div class="text-gray-500">หัวข้อ</div>
-        <div class="border border-gray-300 rounded-lg bg-gray-200 shadow w-1/4 ">ชื่อหัวข้อ</div>
+        <div class="rounded-lg w-1/4">ชื่อหัวข้อ</div>
         <div class="text-gray-500">เนื้อหา</div>
-        <div class="border border-gray-300 rounded-lg bg-gray-200 shadow h-1/4">รายละเอียดเนื้อหา</div>
+        <div class="rounded-lg w-1/4">รายละเอียดเนื้อหา</div>
         <div class="text-gray-500 mt-5">ชื่อ หรือ ผู้รับผิดชอบ โปรเจค</div>
-        <div class="border border-gray-300 rounded-lg bg-gray-200 shadow w-1/4">ชื่อ</div>
+        <div class="rounded-lg w-1/4">ชื่อ</div>
         <div class="text-gray-500 mt-5">จำนวนคนในโปรเจค</div>
-        <div class="border border-gray-300 rounded-lg bg-gray-200 shadow w-1/4">เลขจำนวน</div>
+        <div class="rounded-lg w-1/4">เลขจำนวน</div>
         <div class="text-gray-500 mt-5">งบประมาณ</div>
-        <div class="border border-gray-300 rounded-lg bg-gray-200 shadow w-1/4">เลขจำนวนงบประมาณ</div>
-        <div class="text-gray-500 mt-5">ความคิดเห็นเพิ่มเติม</div>
-        <div class="border border-gray-300 rounded-lg bg-gray-200 shadow h-1/4">ความเห็น</div>
+        <div class="rounded-lg w-1/4">เลขจำนวนงบประมาณ</div>
 
 
         <div class="flex justify-end">

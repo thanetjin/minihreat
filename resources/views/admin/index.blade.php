@@ -12,7 +12,7 @@
 
 <div class="grid grid-cols-3 gap-4">
     <div class="block p-6 bg-white border border-gray-200 rounded-lg shadow">
-            <img class="rounded-full w-[97px] h-[95px] mx-auto"src="https://cdn.discordapp.com/attachments/862912096899432488/1110440358522929162/IMG_20230112_092432_514-removebg-preview.png" alt="">
+            <img class="rounded-full w-[97px] h-[95px] mx-auto"src="https://cdn.discordapp.com/emojis/918728690211389470.webp?size=96&quality=lossless" alt="">
             <div class="flex justify-center">
                 <p class="text-center text-2xl">boss</p>
                 <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 18 18" fill="none" class="mt-2 ml-1">

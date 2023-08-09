@@ -23,7 +23,11 @@
             <!-- Dropdown menu -->
             <div class="z-50 hidden my-4 text-base list-none bg-white divide-y divide-gray-100 rounded-lg shadow w-fit" id="user-dropdown">
                 <div class="px-4 py-3">
+<<<<<<< Updated upstream
                     <span class="block text-sm text-gray-900">Profile</span>
+=======
+                    {{-- <span class="block text-sm text-gray-900">{{ $name }}</span> --}}
+>>>>>>> Stashed changes
                 </div>
                 <ul class="py-2" aria-labelledby="user-menu-button">
                     <li>

@@ -6,6 +6,7 @@ use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\AdminController;
 use App\Http\Controllers\SongController;
 use App\Http\Controllers\UserController;
+use App\Http\Controllers\KanBanController;
 
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Redirect;
@@ -36,6 +37,11 @@ Route::get('/hello/{name}', function ($name) {
 
 Route::get('/about', [AboutController::class, 'index'])
     ->name('about.index');
+// Route::get('/kanbans', function () {
+//         return view('kanban');
+//     });
+Route::resource('/kanbans',KanBanController::class);
+
 
 Route::get('/songs', [SongController::class, 'index'])
     ->name('songs.index');
@@ -44,6 +50,7 @@ Route::resource('/user', UserController::class)
     ->missing(function (Request $request){
         return Redirect::route('user.index');
     });
+
 
 Route::get('/user/{Profile}/certificate', [
     UserController::class, 'showCertificate'

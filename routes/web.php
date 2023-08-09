@@ -30,7 +30,6 @@ Route::get('/hello', function () {
 })->name("hello");
 
 Route::get('/hello/{name}', function ($name) {
-    User::get();
     return "Hello {$name}";
 })->name("hello.name");
 

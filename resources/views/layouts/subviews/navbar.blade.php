@@ -23,11 +23,11 @@
             <!-- Dropdown menu -->
             <div class="z-50 hidden my-4 text-base list-none bg-white divide-y divide-gray-100 rounded-lg shadow w-fit" id="user-dropdown">
                 <div class="px-4 py-3">
-                    <span class="block text-sm text-gray-900">name</span>
+                    <span class="block text-sm text-gray-900">{{ $name }}</span>
                 </div>
                 <ul class="py-2" aria-labelledby="user-menu-button">
                     <li>
-                        <a href="{{ route('user.show', ['user' => 'Profile']) }}" 
+                        <a href="{{ route('user.show', ['user' => $name]) }}" 
                             class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100">Profile
                         </a>
                     </li>

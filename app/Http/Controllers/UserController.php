@@ -12,8 +12,10 @@ class UserController extends Controller
      */
     public function index()
     {
+        $user = User::get();
         return view('user.index',[
-            'user' => User::get()
+            'user' => $user,
+            'name' => User::first()->name
         ]);
     }
 
@@ -23,7 +25,8 @@ class UserController extends Controller
     public function create()
     {
         return view('user.create',[
-            'users' => User::get()
+            'users' => User::get(),
+            'name' => User::find(1)->name
         ]);
     }
 
@@ -41,7 +44,9 @@ class UserController extends Controller
     public function show(string $username)
     {
         return view('user.show',[
-            'user' => $username
+            'user' => $username,
+            'name' => User::find(1)->name,
+            'detail' => User::find(1)
         ]);
     }
 
@@ -51,7 +56,8 @@ class UserController extends Controller
     public function edit(string $username)
     {
         return view('user.edit',[
-            'user' => $username
+            'user' => $username,
+            'name' => User::find(1)->name
         ]);
     }
 
@@ -73,7 +79,8 @@ class UserController extends Controller
 
     public function showCertificate(string $username){
         return view('user.certificate',[
-            'user' => $username
+            'user' => $username,
+            'name' => User::find(1)->name
         ]);
     }
 }

@@ -8,6 +8,7 @@ use App\Http\Controllers\UserController;
 
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Redirect;
+use App\Http\Controllers\AdminController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -47,6 +48,15 @@ Route::resource('/user', UserController::class)
 Route::get('/user/{Profile}/certificate', [
     UserController::class, 'showCertificate'
 ])->name('user.certificate');
+Route::get('/admin', [AdminController::class, 'index'])
+->name('admin.index');
+
+Route::get('/admin/comfirm', [AdminController::class, 'confirm'])
+->name('admin.confirm');
+
+Route::get('/admin/reject', [AdminController::class, 'reject'])
+->name('admin.reject');
+
 // Route::get('/dashboard', function () {
 //     return view('dashboard');
 // })->middleware(['auth', 'verified'])->name('dashboard');

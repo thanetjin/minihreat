@@ -1,5 +1,6 @@
 <?php
 
+use App\Models\Event;
 use App\Http\Controllers\AboutController;
 use App\Http\Controllers\HelloController;
 use App\Http\Controllers\ProfileController;
@@ -24,7 +25,8 @@ use Illuminate\Support\Facades\Route;
 */
 
 Route::get('/', function () {
-    return view('welcome');
+    $event = Event::find(1);
+    return view('welcome', compact('user'));
 });
 
 Route::get('/hello', function () {

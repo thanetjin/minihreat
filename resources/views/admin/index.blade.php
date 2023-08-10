@@ -14,7 +14,7 @@
     <div class="block p-6 bg-white border border-gray-200 rounded-lg shadow">
             <img class="rounded-full w-[97px] h-[95px] mx-auto"src="https://cdn.discordapp.com/emojis/918728690211389470.webp?size=96&quality=lossless" alt="">
             <div class="flex justify-center">
-                <p class="text-center text-2xl">boss</p>
+                <p class="text-center text-2xl">{{ Auth::user()->name}}</p>
                 <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 18 18" fill="none" class="mt-2 ml-1">
                     <path d="M12.4525 6.81852L12.448 6.82482L6.02434 13.2491L7.94954 15.1736L14.3786 8.74481L12.4525 6.81852Z" fill="#1F2A37"/>
                     <path d="M2.82559 10.05L4.75078 11.9763L11.1753 5.55203L11.1816 5.54753L9.2546 3.62034L2.82559 10.05Z" fill="#1F2A37"/>

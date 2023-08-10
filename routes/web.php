@@ -57,6 +57,9 @@ Route::get('/admin/comfirm', [AdminController::class, 'confirm'])
 Route::get('/admin/reject', [AdminController::class, 'reject'])
 ->name('admin.reject');
 
+Route::post('/admin', [AdminController::class, 'store']) 
+    ->name('admin.store');
+
 Route::get('/dashboard', function () {
     return view('dashboard');
 })->middleware(['auth', 'verified'])->name('dashboard');

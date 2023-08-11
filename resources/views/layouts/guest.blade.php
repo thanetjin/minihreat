@@ -14,9 +14,15 @@
         <!-- Scripts -->
         @vite(['resources/css/app.css', 'resources/js/app.js'])
     </head>
-    <body class="font-sans text-gray-900 antialiased " style="background-image: URL('images/background-user.jpg') ;">
+    <body class="font-sans text-gray-900 antialiased ">
 
         <div class="grid grid-cols-2 gap-4">
+            
+            <div>
+
+                <img src="{{ URL('images/login-image.png')}}" alt="" class="min-h-screen" >
+            </div>
+ 
         
             <div class="min-h-screen flex flex-col sm:justify-center items-center pt-6 sm:pt-0">
                 <div>
@@ -27,7 +33,7 @@
                     <img src="{{ URL('images/miniheart.jpg') }}"  alt="Logo" width="110" height="600" class="sm:rounded-lg">
                 </div>
     
-                <div class="w-full sm:max-w-md mt-6 px-6 py-4 bg-white shadow-md overflow-hidden sm:rounded-lg">
+                <div class="w-full sm:max-w-md mt-6 px-6 py-4 bg-white shadow-2xl overflow-hidden sm:rounded-lg">
                     {{ $slot }}
                 </div>
             </div>

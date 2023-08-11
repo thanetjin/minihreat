@@ -25,7 +25,6 @@ use Illuminate\Support\Facades\Route;
 */
 
 Route::get('/', function () {
-    $event = Event::find(1);
     return view('welcome', compact('user'));
 });
 

@@ -53,11 +53,20 @@ Route::resource('/user', UserController::class)
     ->missing(function (Request $request){
         return Redirect::route('user.index');
     });
-
-
+    
 Route::get('/user/{Profile}/certificate', [
     UserController::class, 'showCertificate'
 ])->name('user.certificate');
+Route::get('/user/{Profile}/showCreateEvent', [
+    UserController::class, 'showCreateEvent'
+])->name('user.showCreateEvent');
+Route::get('/user/show/event_detail', [
+    UserController::class, 'show_detail_event'
+])->name('user.show_detail_event');
+
+// Route::get('/detail-event', function () {
+//     return view('user.detail_event');
+// })->name("detail-event");
 
 Route::get('/admin', [AdminController::class, 'index'])
 ->name('admin.index');

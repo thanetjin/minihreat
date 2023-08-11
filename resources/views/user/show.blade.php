@@ -56,6 +56,9 @@
                 <a href="{{ route('user.certificate', ['Profile' => $name]) }}" class="px-4 py-2 text-xl font-semibold text-gray-900 bg-transparent border border-gray-900 rounded-r-md hover:bg-gray-900 hover:text-white focus:z-10 focus:ring-2 focus:ring-gray-500 focus:bg-gray-900 focus:text-white">
                     ได้รับเกียรติบัตร
                 </a>
+                <a href="{{ route('user.showCreateEvent', ['Profile' => $name]) }}" class="px-4 py-2 text-xl font-semibold text-gray-900 bg-transparent border border-gray-900 rounded-r-md hover:bg-gray-900 hover:text-white focus:z-10 focus:ring-2 focus:ring-gray-500 focus:bg-gray-900 focus:text-white">
+                    กิจกรรมที่สร้าง
+                </a>
             </span>
             <div class="grid grid-cols-1 gap-y-2 overflow-y-scroll h-[88vh]">
                 @for ($i = 0;$i < 20;$i++)

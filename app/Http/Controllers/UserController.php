@@ -19,6 +19,7 @@ class UserController extends Controller
         ]);
     }
 
+
     /**
      * Show the form for creating a new resource.
      */
@@ -83,4 +84,17 @@ class UserController extends Controller
             'name' => User::find(1)->name
         ]);
     }
+    public function showCreateEvent(string $username){
+        return view('user.showCreateEvent',[
+            'user' => $username,
+            'name' => User::find(1)->name
+        ]);
+    }
+    public function show_detail_event()
+    {
+        
+        return view('user.detail_event');
+        
+    }
+
 }

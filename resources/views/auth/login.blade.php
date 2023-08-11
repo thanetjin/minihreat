@@ -3,6 +3,8 @@
     <x-auth-session-status class="mb-4" :status="session('status')" />
 
     <form method="POST" action="{{ route('login') }}">
+
+    <h1 class="text-center text-black-400 font-bold uppercase" style="font-size: 35px">Login</h1>
         @csrf
 
         <!-- Email Address -->
@@ -34,8 +36,9 @@
 
         <div class="flex items-center justify-end mt-4">
             @if (Route::has('password.request'))
-                <a class="underline text-sm text-gray-600 hover:text-gray-900 rounded-md focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500" href="{{ route('password.request') }}">
-                    {{ __('Forgot your password?') }}
+                <a class="text-sm text-gray-600">ยังไม่เป็นสมาชิก?</a>
+                <a class="underline text-sm text-blue-600 hover:text-gray-900 rounded-md focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500" href="{{ route('register') }}">
+                    {{ __('สมัครสมาชิกที่นี่') }}
                 </a>
             @endif
 

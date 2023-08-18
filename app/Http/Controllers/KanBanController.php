@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Task;
+use App\Models\User;
 use Illuminate\Http\Request;
 
 
@@ -13,7 +14,8 @@ class KanBanController extends Controller
         return view('kanbans.index',[
             'tasks_Todo' => Task::where('type','todo')->get(),
             'tasks_Inprocess' => Task::where('type','inProgress')->get(),
-            'tasks_Done' => Task::where('type','done')->get()
+            'tasks_Done' => Task::where('type','done')->get(),
+            'user' => User::first()
         ]);
     }
 

@@ -12,10 +12,9 @@ class UserController extends Controller
      */
     public function index()
     {
-        $user = User::get();
+        $user = User::first();
         return view('user.index',[
             'user' => $user,
-            'name' => User::first()->name
         ]);
     }
 
@@ -25,8 +24,7 @@ class UserController extends Controller
     public function create()
     {
         return view('user.create',[
-            'users' => User::get(),
-            'name' => User::find(1)->name
+            'users' => User::first(),
         ]);
     }
 
@@ -41,23 +39,21 @@ class UserController extends Controller
     /**
      * Display the specified resource.
      */
-    public function show(string $username)
+    public function show()
     {
         return view('user.show',[
-            'user' => $username,
-            'name' => User::find(1)->name,
-            'detail' => User::find(1)
+            'user' => User::first(),
+            'detail' => User::first()
         ]);
     }
 
     /**
      * Show the form for editing the specified resource.
      */
-    public function edit(string $username)
+    public function edit()
     {
         return view('user.edit',[
-            'user' => $username,
-            'name' => User::find(1)->name
+            'user' => User::first()
         ]);
     }
 
@@ -77,10 +73,9 @@ class UserController extends Controller
         //
     }
 
-    public function showCertificate(string $username){
+    public function showCertificate(){
         return view('user.certificate',[
-            'user' => $username,
-            'name' => User::find(1)->name
+            'user' => User::first()
         ]);
     }
 }

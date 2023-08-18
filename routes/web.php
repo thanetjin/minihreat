@@ -25,7 +25,7 @@ use Illuminate\Support\Facades\Route;
 */
 
 Route::get('/', function () {
-    return view('welcome', compact('user'));
+    return view('welcome');
 });
 
 Route::get('/hello', function () {

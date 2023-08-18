@@ -2,13 +2,14 @@
     <div class="flex flex-wrap items-center justify-between max-w-screen-xl px-4 mx-auto">
         <div class="flex items-center">
             <img src="{{ URL('images/miniheart.jpg') }}" class="h-6 mr-3 sm:h-9" alt="Logo">
-            <span class="self-center text-gray-700 text-3xl font-semibold whitespace-nowrap">Miniheart</span>
+            <a href="/user" class="self-center text-gray-700 text-3xl font-semibold whitespace-nowrap a">Miniheart</a>
         </div>
         <div class="flex items-center lg:order-2">
             <div class="hidden mt-2 mr-4 sm:inline-block">
                 <span></span>
             </div>
 
+            
             <a href="{{ route('user.create') }}" class="flex py-1 px-5 mr-3 mb-2 mt-2 text-sm font-semibold text-black focus:outline-none bg-white rounded-lg border border-gray-900 hover:bg-gray-100 hover:text-blue-700 focus:z-10 focus:ring-4 focus:ring-gray-200">
                 สร้าง event
                 <svg class="w-3 h-3 ml-3 mt-1 text-gray-800" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none">

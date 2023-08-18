@@ -18,9 +18,10 @@ return new class extends Migration
             $table->string('event_name');
             $table->foreignIdFor(User::class); //เพื่อหา event_owner check จาก id
             $table->string('event_content');
-            $table->string('event_status');
-            $table->boolean('event_is_allow');
-            $table->string('event_rejection_reason');
+            $table->boolean('event_status')->default(false);
+            $table->boolean('event_is_allow')->default(true); // false แสดงให้แอดมินว่าเปลี่ยน true ไหม 
+            $table->string('event_rejection_reason')->default(null);
+            $table->integer('event_money');
             $table->softDeletes();
             $table->timestamps();
         });

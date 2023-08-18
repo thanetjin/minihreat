@@ -26,7 +26,8 @@ use Illuminate\Support\Facades\Route;
 */
 
 Route::get('/', function () {
-    $event = Event::find(2);
+    $event = Event::find(3);
+
     return view('welcome', compact('event'));
 });
 
@@ -57,9 +58,11 @@ Route::resource('/user', UserController::class)
 Route::get('/user/{Profile}/certificate', [
     UserController::class, 'showCertificate'
 ])->name('user.certificate');
+
 Route::get('/user/{Profile}/showCreateEvent', [
     UserController::class, 'showCreateEvent'
 ])->name('user.showCreateEvent');
+
 Route::get('/user/show/event_detail', [
     UserController::class, 'show_detail_event'
 ])->name('user.show_detail_event');

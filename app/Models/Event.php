@@ -13,7 +13,7 @@ class Event extends Model
     use HasFactory;
     public function tasks(): HasMany
     {
-        return $this->hasMany(Event::class);
+        return $this->hasMany(Task::class);
     }
     public function users(): BelongsToMany
     {

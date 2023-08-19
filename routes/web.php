@@ -72,6 +72,10 @@ Route::get('/user/show/event_detail/{event}', [
     UserController::class, 'show_detail_event'
 ])->name('user.show_detail_event');
 
+Route::get('/user/show/event_detail/{event}/enter', [
+    UserController::class, 'enterEvent'
+])->name('user.enterEvent');
+
 Route::get('/user/show/event_detail/{event}/kanbans/', [
     KanBanController::class, 'index'
 ])->name('kanbans.index');

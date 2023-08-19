@@ -7,12 +7,14 @@
         class="bg-center h-[30%] w-full"/> -->
         
     </div>
-
-    
-        
-    
-        <form action="{{ route('kanbans.store') }}" method="POST">
+    <h2>{{ $event->id }}</h2>
+    <h1>gg</h1>
+    {{-- <form action="{{ route('artists.songs.store', ['artist' => $artist]) }}" method="POST"> --}}
+    {{-- <form action="{{ route('artists.songs.store', ['artist' => $artist]) }}" method="POST"> --}}
+    {{-- <form action="{{ route('kanbans.update', ['kanban' => $task]) }}" method="POST">--}}                                
+    <form action="{{ route('kanbans.store', ['event' => $event]) }}" method="POST">                            
     @csrf
+    
     <div class="flex justify-center ">
         
         

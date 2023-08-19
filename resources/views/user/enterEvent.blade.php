@@ -26,51 +26,18 @@
                     
                     <div class="flex justify-end">
                         
-                        
-                        @if ($user->role === "staff")
-                        <a href="{{ route('kanbans.index', ['event' => $event]) }}" class="flex py-1 px-5 mr-3 mb-2 mt-2 text-sm font-semibold text-black focus:outline-none bg-white rounded-lg border border-gray-900 hover:bg-gray-100 hover:text-blue-700 focus:z-10 focus:ring-4 focus:ring-gray-200">     
-                            ไป kanban
-                            <svg class="w-3 h-3 ml-3 mt-1 text-gray-800" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 14 10">
-                                <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M1 5h12m0 0L9 1m4 4L9 9"/>
-                            </svg>
-                        </a>
-                        @endif
+
                         
                     </div>
-                    {{-- @foreach ($event->users as $person)
-                                            
-                        @if ($user->id != $person->id)
-                    <h1>User : {{ $user->id }}</h1>
-                    <h1>Event : {{ $event->id }}</h1> 
-                    <h1>Person : {{ $person->id }}</h1>
-                    
-                    @endif
-                    @endforeach --}}
-
+                    <h1>{{ $user->id }}</h1>
+                    <h1>{{ $event->id }}</h1>
                     <a href="{{ route('user.enterEvent', ['event' => $event]) }}" class="flex py-1 px-5 mr-3 mb-2 mt-2 text-sm font-semibold text-black focus:outline-none bg-white rounded-lg border border-gray-900 hover:bg-gray-100 hover:text-blue-700 focus:z-10 focus:ring-4 focus:ring-gray-200 bg-yellow-300 hover:bg-yellow-500 focus:ring-4 focus:ring-yellow-300 font-semibold">
-                        เข้าร่วม
+                        ยืนยันการเข้าร่วม
                         
                         <svg class="w-3 h-3 ml-3 mt-1 text-gray-800" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 14 10">
                             <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M1 5h12m0 0L9 1m4 4L9 9"/>
                         </svg>
                     </a>
-
-                
-                    
-                    
-                    
-                    
-
-                    
-                    
-                    
-                    
-                    
-                    
-                    
-
-                    
-                        
                 </div>
             </div>
 

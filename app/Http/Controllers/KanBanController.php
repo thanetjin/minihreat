@@ -13,30 +13,22 @@ class KanBanController extends Controller
     public function index(Event $event)
     {
         return view('kanbans.index',[
-            'tasks_Todo' => Task::where('type','todo')->get(),
-            'tasks_Inprocess' => Task::where('type','inProgress')->get(),
-            'tasks_Done' => Task::where('type','done')->get(),
+            // 'tasks_Todo' => Task::where('type','todo')->get(),
+            // 'tasks_Inprocess' => Task::where('type','inProgress')->get(),
+            // 'tasks_Done' => Task::where('type','done')->get(),
             'user' => User::find(2),
             'event' => $event
         ]);
     }
-    // public function show(Artist $artist)
-    // {
-    //     return view('artists.show', [
-    //         'artist' => $artist
-    //     ]);
-    // }
-
-public function store(Request $request)
+public function store(Request $request,Event $event)
     {
         
         
-        $task = new Task;
+        $task = new Task();
         $task->name = $request->name;
         $task->type = $request->type;
-        
-        $task->save();
-        return redirect()->route('kanbans.index');
+        $event->tasks()->save($task);
+        return redirect()->route('kanbans.index', ['event' => $event]);
         error_log('Some message here.');
         
     }
@@ -51,7 +43,6 @@ public function store(Request $request)
         else if($request->get('done')) {
             $kanban->type = $request->get('done'); 
         }
-        // $kanban->name = $request->get('name'); 
         $kanban->save();
         return redirect()->back();
     }

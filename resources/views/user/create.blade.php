@@ -8,7 +8,9 @@
                 class="absolute h-screen w-full rounded-[50px] -left-14 ">
         </div>
         <div class="col-span-2 p-4">
-            <form action="{{ route('user.storeEvent', ['user' => $user]) }}" method="POST">
+            <form action="{{ route('user.storeEvent', ['user' => $user]) }}" method="POST" enctype="multipart/form-data">
+                
+
                 @csrf
                 <div class="mt-5">
                     <label for="topic" class="block mb-2 text-sm font-medium text-gray-900">หัวข้อ</label>
@@ -30,8 +32,8 @@
                         class="block p-2.5 w-full text-sm text-gray-900 bg-gray-50 rounded-lg border border-gray-300 focus:ring-blue-500 focus:border-blue-500"
                     required>
                 </div>
-                
-
+<label class="block mb-2 text-sm font-medium text-gray-900 dark:text-white" for="file_input">Upload file</label>
+<input class="block w-full text-sm text-gray-900 border border-gray-300 rounded-lg cursor-pointer bg-gray-50 dark:text-gray-400 focus:outline-none dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400" id="image_path" name="image_path" type="file">
                 <span class="flex justify-center mt-5">
                     <button type="submit" class="flex border border-black mx-auto px-12 py-2 rounded-lg text-sm hover:bg-black hover:text-white" id="box-button">
                         สร้าง

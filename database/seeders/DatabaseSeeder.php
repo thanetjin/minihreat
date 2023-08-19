@@ -31,6 +31,16 @@ class DatabaseSeeder extends Seeder
         $user->age = 25;
         $user->address = fake()->paragraph();
         $user->save();
+
+        $user = new User();
+        $user->name = "staff";
+        $user->email = "staff@gmail.com";
+        $user->email_verified_at = now();
+        $user->password = Hash::make('password');
+        $user->role = "staff";
+        $user->age = 25;
+        $user->address = fake()->paragraph();
+        $user->save();
         User::factory()->count(5)->create();
 
         $event = new Event();
@@ -87,6 +97,7 @@ class DatabaseSeeder extends Seeder
         $event = Event::find(1);
         $event->users()->attach(3);
         $event->users()->attach(2);
+        
         
         $event = Event::find(2);
         $event->users()->attach(3);

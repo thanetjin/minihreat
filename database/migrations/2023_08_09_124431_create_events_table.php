@@ -21,7 +21,7 @@ return new class extends Migration
             $table->boolean('event_status')->default(false);
             $table->boolean('event_is_allow')->default(true); // false แสดงให้แอดมินว่าเปลี่ยน true ไหม 
             $table->string('event_rejection_reason')->nullable();
-            $table->integer('event_money');
+            $table->integer('event_money');        
             $table->softDeletes();
             $table->timestamps();
         });

@@ -1,5 +1,6 @@
 <?php
 
+use App\Models\User;
 use App\Models\Event;
 use App\Http\Controllers\AboutController;
 use App\Http\Controllers\HelloController;
@@ -25,7 +26,9 @@ use Illuminate\Support\Facades\Route;
 */
 
 Route::get('/', function () {
-    return view('welcome');
+    $event = Event::first();
+
+    return view('welcome', compact('event'));
 });
 
 Route::get('/hello', function () {
@@ -51,20 +54,35 @@ Route::resource('/user', UserController::class)
     ->missing(function (Request $request){
         return Redirect::route('user.index');
     });
-
-
+    
 Route::get('/user/{Profile}/certificate', [
     UserController::class, 'showCertificate'
 ])->name('user.certificate');
 
+Route::get('/user/{Profile}/showCreateEvent', [
+    UserController::class, 'showCreateEvent'
+])->name('user.showCreateEvent');
+
+Route::get('/user/show/event_detail', [
+    UserController::class, 'show_detail_event'
+])->name('user.show_detail_event');
+
+// Route::get('/detail-event', function () {
+//     return view('user.detail_event');
+// })->name("detail-event");
+
 Route::get('/admin', [AdminController::class, 'index'])
 ->name('admin.index');
 
-Route::get('/admin/comfirm', [AdminController::class, 'confirm'])
+Route::get('/admin/comfirm/{event}', [AdminController::class, 'confirm'])
 ->name('admin.confirm');
 
-Route::get('/admin/reject', [AdminController::class, 'reject'])
+Route::get('/admin/reject/{event}', [AdminController::class, 'reject'])
 ->name('admin.reject');
+
+Route::post('/admin/reason/{event}', [AdminController::class, 'reason'])
+->name('admin.reason');
+
 // Route::get('/dashboard', function () {
 //     return view('dashboard');
 // })->middleware(['auth', 'verified'])->name('dashboard');

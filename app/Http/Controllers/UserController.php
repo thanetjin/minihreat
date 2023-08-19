@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Event;
 use Illuminate\Http\Request;
 use App\Models\User;
 
@@ -15,8 +16,11 @@ class UserController extends Controller
         $user = User::first();
         return view('user.index',[
             'user' => $user,
+            'name' => User::first()->name,
+            'events' => Event::get()
         ]);
     }
+
 
     /**
      * Show the form for creating a new resource.
@@ -73,9 +77,24 @@ class UserController extends Controller
         //
     }
 
-    public function showCertificate(){
+    public function showCertificate(string $username){
         return view('user.certificate',[
-            'user' => User::first()
+            'user' => $username,
+            'name' => User::find(1)->name,
+            'detail' => User::find(1)
         ]);
     }
+    public function showCreateEvent(string $username){
+        return view('user.showCreateEvent',[
+            'user' => $username,
+            'name' => User::find(1)->name
+        ]);
+    }
+    public function show_detail_event()
+    {
+        
+        return view('user.detail_event');
+        
+    }
+
 }

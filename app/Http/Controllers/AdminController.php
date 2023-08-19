@@ -43,4 +43,10 @@ class AdminController extends Controller
         
         return redirect()->route('admin.index');
     }
+
+    public function accept(Event $event){
+        $event->event_is_allow = 'ACCEPT';
+        $event->save();
+        return redirect()->route('admin.index');
+    }
 }

@@ -21,7 +21,7 @@ return new class extends Migration
             $table->string('event_certificate')->nullable();
             $table->boolean('event_status')->default(false);
             // $table->boolean('event_is_allow')->default(false); // false แสดงให้แอดมินว่าเปลี่ยน true ไหม
-            $table->enum('event_is_allow', ['APPECT','REJECT','SENDING'])->default('SENDING'); 
+            $table->enum('event_is_allow', ['ACCEPT','REJECT','SENDING'])->default('SENDING'); 
             $table->string('event_rejection_reason')->default(null);
             $table->integer('event_money');
             $table->softDeletes();

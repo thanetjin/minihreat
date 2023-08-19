@@ -83,6 +83,9 @@ Route::get('/admin/reject/{event}', [AdminController::class, 'reject'])
 Route::post('/admin/reason/{event}', [AdminController::class, 'reason'])
 ->name('admin.reason');
 
+Route::post('/admin/accept/{event}',[AdminController::class, 'accept'])
+->name('admin.accept');
+
 // Route::get('/dashboard', function () {
 //     return view('dashboard');
 // })->middleware(['auth', 'verified'])->name('dashboard');

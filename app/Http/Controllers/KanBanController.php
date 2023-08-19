@@ -17,9 +17,15 @@ class KanBanController extends Controller
             'tasks_Inprocess' => Task::where('type','inProgress')->get(),
             'tasks_Done' => Task::where('type','done')->get(),
             'user' => User::find(2),
-            'event' => Event::find($event->id)
+            'event' => $event
         ]);
     }
+    // public function show(Artist $artist)
+    // {
+    //     return view('artists.show', [
+    //         'artist' => $artist
+    //     ]);
+    // }
 
 public function store(Request $request)
     {

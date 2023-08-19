@@ -2,6 +2,7 @@
 
 use App\Models\User;
 use App\Models\Event;
+use App\Models\Task;
 use App\Http\Controllers\AboutController;
 use App\Http\Controllers\HelloController;
 use App\Http\Controllers\ProfileController;
@@ -54,6 +55,10 @@ Route::resource('/user', UserController::class)
     ->missing(function (Request $request){
         return Redirect::route('user.index');
     });
+
+// Route::get('/user/{id}', function (string $id) {
+//     return 'User '.$id;
+// });
     
 Route::get('/user/{Profile}/certificate', [
     UserController::class, 'showCertificate'
@@ -63,9 +68,17 @@ Route::get('/user/{Profile}/showCreateEvent', [
     UserController::class, 'showCreateEvent'
 ])->name('user.showCreateEvent');
 
-Route::get('/user/show/event_detail', [
+Route::get('/user/show/event_detail/{event}', [
     UserController::class, 'show_detail_event'
 ])->name('user.show_detail_event');
+
+Route::get('/user/show/event_detail/{event}/kanbans/', [
+    KanBanController::class, 'index'
+])->name('kanbans.index');
+
+Route::post('/user/store/{user}',[
+    UserController::class, 'storeEvent'
+])->name('user.storeEvent');
 
 // Route::get('/detail-event', function () {
 //     return view('user.detail_event');
@@ -78,7 +91,7 @@ Route::get('/admin/comfirm', [AdminController::class, 'confirm'])
 ->name('admin.confirm');
 
 Route::get('/admin/reject', [AdminController::class, 'reject'])
-->name('admin.reject');
+->name('admin.reject'); 
 // Route::get('/dashboard', function () {
 //     return view('dashboard');
 // })->middleware(['auth', 'verified'])->name('dashboard');

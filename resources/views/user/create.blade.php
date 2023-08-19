@@ -8,7 +8,7 @@
                 class="absolute h-screen w-full rounded-[50px] -left-14 ">
         </div>
         <div class="col-span-2 p-4">
-            <form action="{{ route('user.store') }}" method="POST">
+            <form action="{{ route('user.storeEvent', ['user' => $user]) }}" method="POST">
                 @csrf
                 <div class="mt-5">
                     <label for="topic" class="block mb-2 text-sm font-medium text-gray-900">หัวข้อ</label>

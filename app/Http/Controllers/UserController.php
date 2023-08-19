@@ -13,10 +13,10 @@ class UserController extends Controller
      */
     public function index()
     {
-        $user = User::get();
+        $user = User::find(2);
         return view('user.index',[
             'user' => $user,
-            'name' => User::first()->name,
+            'name' => User::find($user->id)->name,
             'events' => Event::get()
         ]);
     }
@@ -27,9 +27,10 @@ class UserController extends Controller
      */
     public function create()
     {
+        $user = User::find(2);
         return view('user.create',[
-            'users' => User::get(),
-            'name' => User::find(1)->name
+            'user' => $user,
+            'name' => User::find($user->id)->name
         ]);
     }
 
@@ -38,18 +39,36 @@ class UserController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        // $task = new Task;
+        // $task->name = $request->name;
+        // $task->type = $request->type;
+        
+        // $task->save();
+        // return redirect()->route('kanbans.index');
+        // error_log('Some message here.');
+        
+        $event = new Event();
+        $event->event_name = $request->event_name;
+        $event->event_content = $request->event_content;
+        $event->event_money = $request->event_money;
+        $event->user_id = User::first()->id;
+        
+        
+        
+        $event->save();
+        return redirect()->route('user.create');
+        
     }
 
     /**
      * Display the specified resource.
      */
-    public function show(string $username)
+    public function show(User $user)
     {
         return view('user.show',[
-            'user' => $username,
-            'name' => User::find(1)->name,
-            'detail' => User::find(1)
+            'user' => $user,
+            'name' => User::find($user->id)->name,
+            'detail' => User::find($user->id)
         ]);
     }
 
@@ -93,11 +112,25 @@ class UserController extends Controller
             'name' => User::find(1)->name
         ]);
     }
-    public function show_detail_event()
+    public function show_detail_event(Event $event)
     {
+        return view('user.detail_event',[
+            'user' => User::find(2),
+            'event' => Event::find($event->id)
+        ]);
         
-        return view('user.detail_event');
+    }
+
+    public function storeEvent(Request $request, User $user){
         
+        $event = new Event();
+        $event->event_name = $request->event_name;
+        $event->event_content = $request->event_content;
+        $event->event_money = $request->event_money;
+        $event->user_id = $user->id;
+        
+        $event->save();
+        return redirect()->route('user.create');
     }
 
 }

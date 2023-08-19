@@ -28,8 +28,8 @@
                 </div>
                 <ul class="py-2" aria-labelledby="user-menu-button">
                     <li>
-                        <a href="{{ route('user.show', ['user' => 'Profile']) }}" 
-                            class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100">Profile
+                        <a href="{{ route('user.show', ['user' => $user ]) }}" 
+                            class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100">{{$user->name}}
                         </a>
                     </li>
                     <li>

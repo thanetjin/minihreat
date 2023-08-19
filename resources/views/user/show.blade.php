@@ -11,7 +11,7 @@
             <div class="h-screen p-4 shadow rounded-lg bg-white">
                 <img src="" alt="user profile" class="rounded-full w-[97px] h-[95px] bg-gray-800 mx-auto my-10">
                 <div class="flex justify-center mb-5">
-                    <p class="font-semibold text-2xl text-center">{{$user}}</p>
+                    <p class="font-semibold text-2xl text-center">{{$user->name}}</p>
                     <a href="{{ route('user.edit',['user' => $name ]); }}">
                         <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" class="ml-3 mt-1 cursor-pointer" viewBox="0 0 18 18" fill="none">
                             <path d="M12.4525 6.81852L12.448 6.82482L6.02434 13.2491L7.94954 15.1736L14.3786 8.74481L12.4525 6.81852Z" fill="#1F2A37"/>

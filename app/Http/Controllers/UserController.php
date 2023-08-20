@@ -115,11 +115,16 @@ class UserController extends Controller
             // 'detail' => User::find(2)
         ]);
     }
-    public function showCreateEvent(User $user){
+    public function showCreateEvent(Event $event){
+        $user = User::find(5);
         return view('user.showCreateEvent',[
-            'user' => User::find(2)
+            'user' => $user,
+            // 'name' => User::find($user->id)->name,
+            'events' => Event::get()
         ]);
     }
+
+    
     public function show_detail_event(Event $event)
     {
         // 'tasks_Done' => Task::where('type','done')->get()
@@ -127,6 +132,8 @@ class UserController extends Controller
             
             'user' => User::find(3),
             'event' => Event::find($event->id)
+
+            
             
         ]);   
     }

@@ -4,7 +4,7 @@
 <!-- <h1 class="text-5xl text-center">
     User : {{ $user }}
 </h1> -->
-
+    
     <div class="grid grid-cols-3 gap-4">
         <div class="col-span-1">
             
@@ -50,6 +50,9 @@
                 </div>
             </div>
         </div>
+
+        
+
         <div class="col-span-2">
             <span class="flex rounded-md justify-center mb-10" role="group">
                 <a href="{{ route('user.show', ['user' => $user]) }}" class="px-4 py-2 text-xl font-semibold text-gray-900 bg-transparent border border-gray-900 rounded-l-lg hover:bg-gray-900 hover:text-white focus:z-10 focus:ring-2 focus:ring-gray-500 focus:bg-gray-900 focus:text-white">
@@ -62,30 +65,47 @@
                     กิจกรรมที่สร้าง
                 </a>
             </span>
-            <div class="container mx-auto  justify-center flex items-center">
-        
-       
-    {{ $user->name }}
-    <div class="flex flex-col items-center  bg-white border border-gray-200 rounded-lg shadow md:flex-row md:max-w-xl">
-        <div class="flex flex-col justify-between p-4 ">
-            <h5 class="mb-2 text-xl font-bold tracking-tight text-gray-900">หัวเรื่อง : Lorem ipsum dolor sit, amet consectetur adipisicing elit. Molestias, corporis neque autem doloremque placeat pariatur ipsa temporibus aliquid perferendis quos!</h5>
-            <p class="mb-3 font-normal text-sm text-gray-700">Lorem ipsum dolor sit amet consectetur adipisicing elit. Debitis saepe expedita illo nobis sed assumenda vero magni necessitatibus, asperiores sint atque earum fugit molestiae consequatur eligendi tenetur? Soluta minima non aspernatur quaerat, est, quasi voluptas odio, ullam adipisci placeat pariatur praesentium vitae! Nisi provident sit incidunt, voluptatum explicabo delectus repellat quo architecto obcaecati repellendus, minima porro modi facere, dolores unde. Minus nobis dolorum, cupiditate quibusdam in earum! Quibusdam enim magnam accusantium quaerat harum aperiam debitis soluta autem, labore esse aut reiciendis laboriosam ipsam alias fugit voluptatum ex tenetur incidunt neque nulla nesciunt adipisci sunt similique? Est inventore quia minima at!</p>
-            <div class="flex justify-end">
-                
-                <button type="button" class="flex focus:outline-none text-black bg-yellow-300 hover:bg-yellow-500 focus:ring-4 focus:ring-yellow-300 font-semibold rounded-lg text-sm px-5 py-1 mr-2 mb-2 dark:focus:ring-yellow-900">
-                    เข้าร่วม
-                    <svg class="w-3 h-3 ml-3 mt-1 text-gray-800" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 14 10">
-                        <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M1 5h12m0 0L9 1m4 4L9 9"/>
-                    </svg>
-                </button>
+
+            {{-- <h2 class="text-red-500">{{ $user->id }}</h2>
+            @foreach ($events as $event)
+            {{ $event->event_name}}
+            {{ $event->user_id }}
+            @endforeach --}}
+            
+            @foreach ($events as $event)
+            @if ($user->id == $event->user_id)
+            <div class="flex flex-col mt-4 items-center bg-white border border-gray-200 rounded-lg shadow md:flex-row">
+                <img class = "h-auto max-w-lg rounded-lg" src="{{ URL('images/card-header.png') }}">
+            
+                    <div class="flex flex-col justify-between p-4 leading-normal truncate w-full">
+                        <h5 class="mb-2 text-xl font-bold tracking-tight text-gray-900 ">{{ $event->event_name }}</h5>
+                        <h1 class="mb-3 font-normal text-sm text-gray-700 ">{{ $event->event_content }}</h1>
+                        <div class="flex justify-end items-center text-center space-x-3">
+                            
+
+                            @if($event->event_is_allow == 'SENDING')
+                            <p class="text-yellow-400">กำลังรอการอนุมัติ</p>
+                            @endif
+                            @if($event->event_is_allow == 'ACCEPT')
+                            <p class="text-green-400">กำลังดำเนินการ</p>
+                            @endif
+                            @if($event->event_is_allow == 'REJECT')
+                            <p class="text-red-400">ถูกปฏิเสธโดยเจ้าหน้าที่</p>
+                            @endif
+                            <a href="{{ route('user.show_detail_event', ['event' => $event]) }}" class="flex py-1 px-5 mb-2 mt-2  text-sm font-semibold text-black focus:outline-none bg-white rounded-lg border border-gray-900 hover:bg-gray-100 hover:text-blue-700 focus:ring-4 focus:ring-gray-200">
+                                รายละเอียด
+                                <svg class="w-3 h-3 ml-3 mt-1 text-gray-800" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 14 10">
+                                    <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M1 5h12m0 0L9 1m4 4L9 9"/>
+                                </svg>
+                            </a>
+                        </div>
+                    </div>
             </div>
-        </div>
-    </div>
-
-
-</div>
+            @endif
+        @endforeach
 
         </div>
+        
     </div>
 
     <style scoped>

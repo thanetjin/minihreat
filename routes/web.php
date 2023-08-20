@@ -50,7 +50,7 @@ Route::resource('/kanbans',KanBanController::class);
 
 Route::get('/songs', [SongController::class, 'index'])
     ->name('songs.index');
-    
+
 Route::resource('/user', UserController::class)
     ->missing(function (Request $request){
         return Redirect::route('user.index');

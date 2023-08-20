@@ -8,12 +8,9 @@
         <p class="text-3xl place-self-center font-semibold text-white tracking-widest md:text-5xl">กิจกรรมรวมจากผู้สร้างสรรค์ {{$user->count()}}</p>
     </div>
     
-
+    
     <div class="container mx-auto grid grid-cols-2 gap-10">
         @foreach ($events as $event)
-        
-        
-            
             <div class="flex flex-col  items-center bg-white border border-gray-200 rounded-lg shadow md:flex-row">
                 <img class = "h-auto max-w-lg rounded-lg" src="{{ URL('images/card-header.png') }}">
             
@@ -22,7 +19,7 @@
                         <h1 class="mb-3 font-normal text-sm text-gray-700 ">{{ $event->event_content }}</h1>
                         <div class="flex justify-end items-center text-center space-x-3">
                             
-                            
+
                             @if($event->event_is_allow == 'SENDING')
                             <p class="text-yellow-400">กำลังรอการอนุมัติ</p>
                             @endif
@@ -38,10 +35,6 @@
                                     <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M1 5h12m0 0L9 1m4 4L9 9"/>
                                 </svg>
                             </a>
-
-
-                            
-                            
                         </div>
                     </div>
             </div>

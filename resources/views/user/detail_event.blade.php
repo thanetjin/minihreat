@@ -19,7 +19,9 @@
                 <div class="flex flex-col justify-between p-4 w-full">
                     <h5 class="mb-2 text-xl font-bold tracking-tight text-gray-900">หัวเรื่อง : {{ $event->event_name }}</h5>
                     <p class="mb-3 font-normal text-sm text-gray-700">{{ $event->event_content }}</p>
-                    
+                    @if ($event->event_is_allow == 'REJECT')
+                        <h1 class="text-red-400">เหตุผลในการโดนปฏิเสธ: {{ $event->event_rejection_reason }}</h1>
+                    @endif
                     <div class="flex justify-end">
                         
 

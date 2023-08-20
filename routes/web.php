@@ -80,6 +80,10 @@ Route::get('/user/show/event_detail/{event}/kanbans/', [
     KanBanController::class, 'index'
 ])->name('kanbans.index');
 
+Route::post('/user/show/event_detail/{event}/kanbans/', [
+    KanBanController::class, 'store'
+])->name('kanbans.store');
+
 Route::post('/user/store/{user}',[
     UserController::class, 'storeEvent'
 ])->name('user.storeEvent');

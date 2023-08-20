@@ -27,8 +27,18 @@ public function store(Request $request,Event $event)
         $task = new Task();
         $task->name = $request->name;
         $task->type = $request->type;
-        $event->tasks()->save($task);
-        return redirect()->route('kanbans.index', ['event' => $event]);
+
+        // $task->event_id = 1;
+        // $task->save();
+
+        $task->event_id = $event->id;
+        $task->save();
+
+        // $task->event_id = $event
+        //$artist->songs()->save($song);
+
+        // $event->tasks()->save($task);
+        // return redirect()->route('kanbans.index', ['event' => $event]);
         error_log('Some message here.');
         
     }

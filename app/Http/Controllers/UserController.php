@@ -17,10 +17,10 @@ class UserController extends Controller
         // 'tasks_Inprocess' => Task::where('type','inProgress')->get(),
         // 'tasks_Done' => Task::where('type','done')->get()
 
-        $user = User::find(5);
+        $user = User::find(2);
         return view('user.index',[
             'user' => $user,
-            'name' => User::find($user->id)->name,
+            // 'name' => User::find($user->id)->name,
             'events' => Event::get()
         ]);
     }
@@ -31,7 +31,7 @@ class UserController extends Controller
      */
     public function create()
     {
-        $user = User::find(5);
+        $user = User::find(2);
         return view('user.create',[
             'user' => $user,
             'name' => User::find($user->id)->name
@@ -74,19 +74,19 @@ class UserController extends Controller
     {
         return view('user.show',[
             'user' => $user,
-            'name' => User::find($user->id)->name,
-            'detail' => User::find($user->id)
+            // 'name' => User::find($user->id)->name,
+            // 'detail' => User::find($user->id)
         ]);
     }
 
     /**
      * Show the form for editing the specified resource.
      */
-    public function edit(string $username)
+    public function edit(User $user)
     {
         return view('user.edit',[
-            'user' => $username,
-            'name' => User::find(5)->name
+            'user' => $user,
+            // 'name' => User::find(2)->name
         ]);
     }
 
@@ -106,18 +106,18 @@ class UserController extends Controller
         //
     }
 
-    public function showCertificate(string $username){
+    public function showCertificate(User $user){
         return view('user.certificate',[
             
-            'user' => $username,
-            'name' => User::find(5)->name,
-            'detail' => User::find(5)
+            'user' => User::find(2),
+            // 'user' => $username,
+            // 'name' => User::find(2)->name,
+            // 'detail' => User::find(2)
         ]);
     }
-    public function showCreateEvent(string $username){
+    public function showCreateEvent(User $user){
         return view('user.showCreateEvent',[
-            'user' => $username,
-            'name' => User::find(5)->name
+            'user' => User::find(2)
         ]);
     }
     public function show_detail_event(Event $event)
@@ -125,7 +125,7 @@ class UserController extends Controller
         // 'tasks_Done' => Task::where('type','done')->get()
         return view('user.detail_event',[
             
-            'user' => User::find(5),
+            'user' => User::find(2),
             'event' => Event::find($event->id)
             
         ]);   
@@ -137,17 +137,24 @@ class UserController extends Controller
         //     'event' => Event::find($event->id)
         // ]);
         // $event = Event::find(1);
-        $event->users()->attach(5);
+        $event->users()->attach(2);
         return redirect()->route('user.index');
     }
 
     public function storeEvent(Request $request, User $user){
         
+        
+
         $event = new Event();
         $event->event_name = $request->event_name;
         $event->event_content = $request->event_content;
         $event->event_money = $request->event_money;
         $event->user_id = $user->id;
+        if ($request->hasFile('event_image')) {
+            // บันทึกไฟล์รูปภาพลงใน folder ชื่อ 'artist_images' ที่ storage/app/public
+            $path = $request->file('event_image')->store('event_image', 'public');
+            $event->event_image = $path;
+        }
         $event->save();
         return redirect()->route('user.create');
     }

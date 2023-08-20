@@ -60,11 +60,11 @@ Route::resource('/user', UserController::class)
 //     return 'User '.$id;
 // });
     
-Route::get('/user/{Profile}/certificate', [
+Route::get('/user/{user}/certificate', [
     UserController::class, 'showCertificate'
 ])->name('user.certificate');
 
-Route::get('/user/{Profile}/showCreateEvent', [
+Route::get('/user/{user}/showCreateEvent', [
     UserController::class, 'showCreateEvent'
 ])->name('user.showCreateEvent');
 

@@ -14,8 +14,8 @@
         
             
             <div class="flex flex-col  items-center bg-white border border-gray-200 rounded-lg shadow md:flex-row md:max-w-xl">
-                <img src="{{ asset('storage/' . $event->image_path) }}">
-            
+                {{-- <img src="{{ asset('storage/' . $event->event_image) }}"> --}}
+                <img class = "h-auto max-w-lg rounded-lg" src="{{ URL('images/card-header.png') }}">
                     <div class="flex flex-col justify-between p-4 leading-normal truncate ">
                     <h5 class="mb-2 text-xl font-bold tracking-tight text-gray-900 ">{{ $event->event_name }}</h5>
                     <h1 class="mb-3 font-normal text-sm text-gray-700 ">{{ $event->event_content }}</h1>

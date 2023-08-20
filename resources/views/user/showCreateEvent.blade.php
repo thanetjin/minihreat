@@ -11,9 +11,8 @@
             <div class="h-screen p-4 shadow rounded-lg bg-white">
                 <img src="" alt="user profile" class="rounded-full w-[97px] h-[95px] bg-gray-800 mx-auto my-10">
                 <div class="flex justify-center mb-5">
-                    <p class="font-semibold text-2xl text-center">{{$user}}</p>
-
-                    <a href="{{ route('user.edit', ['user' => 'Profile']); }}">
+                    <p class="font-semibold text-2xl text-center">{{$user->name}}</p>
+                    <a href="{{ route('user.edit',['user' => $user ]); }}">
                         <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" class="ml-3 mt-1 cursor-pointer" viewBox="0 0 18 18" fill="none">
                             <path d="M12.4525 6.81852L12.448 6.82482L6.02434 13.2491L7.94954 15.1736L14.3786 8.74481L12.4525 6.81852Z" fill="#1F2A37"/>
                             <path d="M2.82559 10.05L4.75078 11.9763L11.1753 5.55203L11.1816 5.54753L9.2546 3.62034L2.82559 10.05Z" fill="#1F2A37"/>
@@ -24,7 +23,13 @@
                 </div>
                 <div class="py-10 px-4 border border-black font-semibold rounded-3xl">
                     <p class="">ประวัติส่วนตัว</p>
-                    <p class="h-[30vh]"></p>
+                    <div class="h-[30vh]">
+                        อายุของคุณ : {{$user->age}}
+                        <br><br>
+                        ที่อยู่ของคุณ : {{$user->address}}
+                        <br><br>
+                        สถานะของคุณ : {{$user->role}}
+                    </div>
                     <div class="flex justify-center mb-4">
                         <div class="text-center mr-5">
                             <p>จำนวนกิจกรรมที่เข้าร่วม</p>
@@ -47,13 +52,13 @@
         </div>
         <div class="col-span-2">
             <span class="flex rounded-md justify-center mb-10" role="group">
-                <a href="{{ route('user.show', ['user' => $name]) }}" class="px-4 py-2 text-xl font-semibold text-gray-900 bg-transparent border border-gray-900 rounded-l-lg hover:bg-gray-900 hover:text-white focus:z-10 focus:ring-2 focus:ring-gray-500 focus:bg-gray-900 focus:text-white">
+                <a href="{{ route('user.show', ['user' => $user]) }}" class="px-4 py-2 text-xl font-semibold text-gray-900 bg-transparent border border-gray-900 rounded-l-lg hover:bg-gray-900 hover:text-white focus:z-10 focus:ring-2 focus:ring-gray-500 focus:bg-gray-900 focus:text-white">
                     กิจกรรมที่เข้าร่วม
                 </a>
-                <a href="{{ route('user.certificate', ['Profile' => $name]) }}" class="px-4 py-2 text-xl font-semibold text-gray-900 bg-transparent border border-gray-900 rounded-r-md hover:bg-gray-900 hover:text-white focus:z-10 focus:ring-2 focus:ring-gray-500 focus:bg-gray-900 focus:text-white">
+                <a href="{{ route('user.certificate', ['user' => $user]) }}" class="px-4 py-2 text-xl font-semibold text-gray-900 bg-transparent border border-gray-900 rounded-r-md hover:bg-gray-900 hover:text-white focus:z-10 focus:ring-2 focus:ring-gray-500 focus:bg-gray-900 focus:text-white">
                     ได้รับเกียรติบัตร
                 </a>
-                <a href="{{ route('user.showCreateEvent', ['Profile' => $name]) }}" class="px-4 py-2 text-xl font-semibold text-gray-900 bg-transparent border border-gray-900 rounded-r-md hover:bg-gray-900 hover:text-white focus:z-10 focus:ring-2 focus:ring-gray-500 focus:bg-gray-900 focus:text-white">
+                <a href="{{ route('user.showCreateEvent', ['user' => $user]) }}" class="px-4 py-2 text-xl font-semibold text-gray-900 bg-transparent border border-gray-900 rounded-r-md hover:bg-gray-900 hover:text-white focus:z-10 focus:ring-2 focus:ring-gray-500 focus:bg-gray-900 focus:text-white">
                     กิจกรรมที่สร้าง
                 </a>
             </span>

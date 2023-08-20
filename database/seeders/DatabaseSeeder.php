@@ -33,11 +33,11 @@ class DatabaseSeeder extends Seeder
         $user->save();
 
         $user = new User();
-        $user->name = "staff";
-        $user->email = "staff@gmail.com";
+        $user->name = "user";
+        $user->email = "user@gmail.com";
         $user->email_verified_at = now();
         $user->password = Hash::make('password');
-        $user->role = "staff";
+        $user->role = "user";
         $user->age = 25;
         $user->address = fake()->paragraph();
         $user->save();
@@ -48,7 +48,6 @@ class DatabaseSeeder extends Seeder
         $event->user_id = 2;
         $event->event_content = 'อะไรก็ได้เอามาเถอะ';
         $event->event_status = true;
-        $event->event_is_allow = false;
         $event->event_rejection_reason = '';
         $event->event_money = 1000;
         $event->save();
@@ -58,7 +57,6 @@ class DatabaseSeeder extends Seeder
         $event->user_id = 3;
         $event->event_content = 'อิอิ';
         $event->event_status = true;
-        $event->event_is_allow = false;
         $event->event_rejection_reason = '-';
         $event->event_money = 1000;
         $event->save();
@@ -68,7 +66,6 @@ class DatabaseSeeder extends Seeder
         $event->user_id = 4;
         $event->event_content = 'นิทรรศการการศิลปะ เพื่อ การสร้างสรรค์';
         $event->event_status = true;
-        $event->event_is_allow = false;
         $event->event_money = 1000;
         $event->event_rejection_reason = '-';
         $event->save();
@@ -78,7 +75,6 @@ class DatabaseSeeder extends Seeder
         $event->user_id = 5;
         $event->event_content = 'มาลองคิด คณิตศาสตร์ แสนสนุกกัน สนใจมาเข้าร่วมกันไหม';
         $event->event_status = true;
-        $event->event_is_allow = false;
         $event->event_money = 1000;
         $event->event_rejection_reason = '-';
         $event->save();
@@ -88,7 +84,6 @@ class DatabaseSeeder extends Seeder
         $event->user_id = 3;
         $event->event_content = 'อังกฤษฟังพูดอ่านเขียน เรียน ก็ง่ายสนใจมาเข้าร่วมกันไหม';
         $event->event_status = false;
-        $event->event_is_allow = false;
         $event->event_money = 1000;
         $event->event_rejection_reason = '-';
         $event->save();

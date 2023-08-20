@@ -27,7 +27,7 @@ use Illuminate\Support\Facades\Route;
 */
 
 Route::get('/', function () {
-    $event = Event::find(3);
+    $event = Event::first();
 
     return view('welcome', compact('event'));
 });
@@ -91,11 +91,18 @@ Route::post('/user/store/{user}',[
 Route::get('/admin', [AdminController::class, 'index'])
 ->name('admin.index');
 
-Route::get('/admin/comfirm', [AdminController::class, 'confirm'])
+Route::get('/admin/comfirm/{event}', [AdminController::class, 'confirm'])
 ->name('admin.confirm');
 
-Route::get('/admin/reject', [AdminController::class, 'reject'])
-->name('admin.reject'); 
+Route::get('/admin/reject/{event}', [AdminController::class, 'reject'])
+->name('admin.reject');
+
+Route::post('/admin/reason/{event}', [AdminController::class, 'reason'])
+->name('admin.reason');
+
+Route::post('/admin/accept/{event}',[AdminController::class, 'accept'])
+->name('admin.accept');
+
 // Route::get('/dashboard', function () {
 //     return view('dashboard');
 // })->middleware(['auth', 'verified'])->name('dashboard');

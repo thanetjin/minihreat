@@ -65,7 +65,7 @@
             </span>
             <div class="grid grid-cols-1 gap-y-2 overflow-y-scroll h-[88vh]">
                 @for ($i = 0;$i < 20;$i++)
-                <div class="mx-auto flex flex-col items-center bg-white border border-gray-200 rounded-lg shadow md:flex-row md:max-w-xl">
+                <div class="h-fit mx-auto flex flex-col items-center bg-white border border-gray-200 rounded-lg shadow md:flex-row md:max-w-xl">
                     <img class=" w-full rounded-t-lg h-auto md:w-48 md:rounded-none md:rounded-l-lg" src="{{ URL('images/background-user.jpg') }}" alt="images for event">
                     <div class="flex flex-col justify-between p-4 leading-normal overflow-hidden text-ellipsis whitespace-nowrap">
                         <h5 class="mb-2 text-xl font-bold tracking-tight text-gray-900">หัวเรื่อง</h5>

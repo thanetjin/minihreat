@@ -17,7 +17,7 @@ class UserController extends Controller
         // 'tasks_Inprocess' => Task::where('type','inProgress')->get(),
         // 'tasks_Done' => Task::where('type','done')->get()
 
-        $user = User::find(2);
+        $user = User::find(5);
         return view('user.index',[
             'user' => $user,
             // 'name' => User::find($user->id)->name,
@@ -51,19 +51,19 @@ class UserController extends Controller
         // return redirect()->route('kanbans.index');
         // error_log('Some message here.');
         
-        $event = new Event();
-        $event->event_name = $request->event_name;
-        $event->event_content = $request->event_content;
-        $event->event_money = $request->event_money;
-        if ($request->hasFile('image_path')) {
-            // บันทึกไฟล์รูปภาพลงใน folder ชื่อ 'artist_images' ที่ storage/app/public
-            $path = $request->file('image_path')->store('event_images', 'public');
-            $event->image_path = $path;
-        }
+        // $event = new Event();
+        // $event->event_name = $request->event_name;
+        // $event->event_content = $request->event_content;
+        // $event->event_money = $request->event_money;
+        // if ($request->hasFile('image_path')) {
+        //     // บันทึกไฟล์รูปภาพลงใน folder ชื่อ 'artist_images' ที่ storage/app/public
+        //     $path = $request->file('image_path')->store('event_images', 'public');
+        //     $event->image_path = $path;
+        // }
         // $event->user_id = User::first()->id;
-        $event->user_id = User::find(5)->id;
-        $event->save();
-        return redirect()->route('user.create');
+        // $event->user_id = User::find(5)->id;
+        // $event->save();
+        return redirect()->route('user.index');
         
     }
 
@@ -156,6 +156,6 @@ class UserController extends Controller
             $event->event_image = $path;
         }
         $event->save();
-        return redirect()->route('user.create');
+        return redirect()->route('user.index');
     }
 }

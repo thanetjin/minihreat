@@ -125,7 +125,7 @@ class UserController extends Controller
         // 'tasks_Done' => Task::where('type','done')->get()
         return view('user.detail_event',[
             
-            'user' => User::find(5),
+            'user' => User::find(3),
             'event' => Event::find($event->id)
             
         ]);   
@@ -137,7 +137,7 @@ class UserController extends Controller
         //     'event' => Event::find($event->id)
         // ]);
         // $event = Event::find(1);
-        $event->users()->attach(5);
+        $event->users()->attach(User::find(3)->id);
         return redirect()->route('user.index');
     }
 

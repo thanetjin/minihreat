@@ -53,7 +53,21 @@
                     กิจกรรมที่สร้าง
                 </a>
             </span>
-            @if($events->count() > 0)
+            @php
+                $isHave = false;
+            @endphp
+
+                @foreach ($events as $event)
+                
+                    @if($user->id === $event->user_id)
+                            @php
+                                $isHave = true;
+                            @endphp
+                        @break
+                    @endif
+                    
+                @endforeach
+                @if ($isHave)
                     <div class="overflow-y-scroll h-[88vh]">
             @foreach ($events as $event)
             @if ($user->id == $event->user_id)
@@ -94,6 +108,7 @@
         </div>
 
         @else
+        
             <div class="flex h-[70vh] border rounded-lg">
                 <div class="flex self-center text-gray-500 mx-auto">
                 <svg class="w-6 h-6 mr-5 text-gray-800 dark:text-white" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 20 20">

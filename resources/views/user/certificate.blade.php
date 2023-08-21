@@ -51,7 +51,23 @@
                 
             </span>
                         
-            @if($events->count() != 0)
+            @php
+                $isHave = false;
+            @endphp
+
+                @foreach ($events as $event)
+                @foreach ($event->users as $member)
+                    @if($user->id === $member->id)
+                            @php
+                                $isHave = true;
+                            @endphp
+                        @break
+                    @endif
+                    @endforeach
+                @endforeach
+                @if ($isHave)
+                    
+                
             <div class="overflow-y-scroll h-[88vh]">
                 @foreach($events as $event)
                     @foreach($event->users as $member)

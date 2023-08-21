@@ -12,6 +12,7 @@
         <p class="text-3xl place-self-center font-semibold text-white tracking-widest md:text-5xl">กิจกรรมของ {{$event->event_name}} </p>
     </div>
 
+
     <div class="mx-auto justify-center flex items-center">
         
             
@@ -21,13 +22,16 @@
                     <p class="mb-3 font-normal text-sm text-gray-700">{{ $event->event_content }}</p>
                     @if ($event->event_is_allow == 'REJECT')
                         <h1 class="text-red-400">เหตุผลในการโดนปฏิเสธ: {{ $event->event_rejection_reason }}</h1>
-                    @endif
+                    @else
+                    
                     <div class="flex justify-end">
                         
 
                         @if ($user->id === $event->user_id)
                             <a href="{{ route('kanbans.index', ['event' => $event]) }}" class="flex py-1 px-5 mr-3 mb-2 mt-2 text-sm font-semibold text-black focus:outline-none bg-white rounded-lg border border-gray-900 hover:bg-gray-100 hover:text-blue-700 focus:z-10 focus:ring-4 focus:ring-gray-200">     
-                                ไป kanban
+                                    
+    
+                                ไป kanban 
                                 <svg class="w-3 h-3 ml-3 mt-1 text-gray-800" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 14 10">
                                     <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M1 5h12m0 0L9 1m4 4L9 9"/>
                                 </svg>
@@ -46,6 +50,7 @@
                             @endforeach
 
                             @if($check === false)
+                            
                             <a href="{{ route('user.enterEvent', ['event' => $event]) }}" class="flex py-1 px-5 mr-3 mb-2 mt-2 text-sm font-semibold text-black focus:outline-none bg-white rounded-lg border border-gray-900 hover:bg-gray-100 focus:ring-4 focus:ring-gray-200 bg-yellow-300 hover:bg-yellow-500 focus:ring-4 focus:ring-yellow-300 font-semibold">
                                 เข้าร่วม
                                 <svg class="w-3 h-3 ml-3 mt-1 text-gray-800" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 14 10">
@@ -56,7 +61,9 @@
 
                         @endif
                     </div>
+                    @endif
                 </div>
+                
             </div>
 
         

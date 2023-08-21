@@ -12,7 +12,8 @@
     {{-- <form action="{{ route('kanbans.update', ['kanban' => $task]) }}" method="POST">--}}                                
     <form action="{{ route('kanbans.store', ['event' => $event]) }}" method="POST">                            
     @csrf
-    <h1>{{ $event->id }}</h1>
+    {{-- <h1>{{ $event }}</h1>
+    <h1>{{ $event->id }}</h1> --}}
     <div class="flex justify-center ">
         
         
@@ -42,9 +43,12 @@
         </div>
     </fieldset>
       <button type="submit"  class="text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm w-full sm:w-auto px-5 py-2.5 text-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800">Submit</button>      
+      
     </div>
 </div>
-  </form>
+</form>
+
+
 </div>
   
     
@@ -118,6 +122,13 @@
                     @endforeach
                 </div>
             </div>    
-        </div>  
+        </div> 
+ 
     </div>
+    <form action="{{ route('kanbans.changeStatus', ['event' => $event]) }}" method="POST">                            
+        @csrf
+        <div class="flex justify-center items-center text-center m-4">
+      <button type="submit"  class="text-white bg-green-500 hover:bg-green-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm w-full sm:w-auto px-5 py-2.5 text-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800">Finish</button>      
+    </div>
+    </form>
 @endsection

@@ -17,7 +17,8 @@ class KanBanController extends Controller
             // 'tasks_Todo' => Task::where('type','todo')->get(),
             // 'tasks_Inprocess' => Task::where('type','inProgress')->get(),
             // 'tasks_Done' => Task::where('type','done')->get(),
-            'user' => Auth::user(),
+            'user' => User::find(2),
+            // 'user' => Auth::user(),
             'event' => $event
         ]);
     }
@@ -25,6 +26,7 @@ public function store(Request $request,Event $event)
     {
         
         
+        // $event = Auth::event();
         $task = new Task();
         $task->name = $request->name;
         $task->type = $request->type;
@@ -40,6 +42,7 @@ public function store(Request $request,Event $event)
 
         // $event->tasks()->save($task);
         // return redirect()->route('kanbans.index', ['event' => $event]);
+        return redirect()->back();
         error_log('Some message here.');
         
     }
@@ -61,5 +64,11 @@ public function store(Request $request,Event $event)
     {
         $kanban->delete();
         return redirect()->back();
+    }
+    public function changeStatus(Event $event)
+    {
+        $event->event_status = true;
+        $event->save();
+        return redirect()->route('user.index');
     }
 }

@@ -48,36 +48,42 @@ class DatabaseSeeder extends Seeder
         $event->event_name = 'งานรับน้อง';
         $event->user_id = 2;
         $event->event_content = 'อะไรก็ได้เอามาเถอะ';
-        $event->event_status = true;
+        $event->event_status = false;
         $event->event_rejection_reason = '';
         $event->event_money = 1000;
+        $event->event_image = "event_image/cert_1.jpeg";
         $event->save();
         
         $event = new Event();
         $event->event_name = 'กิจกรรมเพื่อส่งเสริมสุขภาพ';
         $event->user_id = 3;
         $event->event_content = 'อิอิ';
-        $event->event_status = true;
+        $event->event_status = false;
         $event->event_rejection_reason = '-';
         $event->event_money = 1000;
+        $event->event_image = "event_image/cert_2.jpeg";
+
         $event->save();
+
 
         $event = new Event();
         $event->event_name = 'การเปิดนิทรรศการศิลปะ';
         $event->user_id = 4;
         $event->event_content = 'นิทรรศการการศิลปะ เพื่อ การสร้างสรรค์';
-        $event->event_status = true;
+        $event->event_status = false;
         $event->event_money = 1000;
         $event->event_rejection_reason = '-';
+        $event->event_image = "event_image/cert_3.jpeg";
         $event->save();
 
         $event = new Event();
         $event->event_name = 'อาสาสมัครในชุมชน';
         $event->user_id = 5;
         $event->event_content = 'มาลองคิด คณิตศาสตร์ แสนสนุกกัน สนใจมาเข้าร่วมกันไหม';
-        $event->event_status = true;
+        $event->event_status = false;
         $event->event_money = 1000;
         $event->event_rejection_reason = '-';
+        $event->event_image = "event_image/cert_4.jpeg";
         $event->save();
 
         $event = new Event();
@@ -87,6 +93,7 @@ class DatabaseSeeder extends Seeder
         $event->event_status = false;
         $event->event_money = 1000;
         $event->event_rejection_reason = '-';
+        $event->event_image = "event_image/cert_5.jpeg";
         $event->save();
 
         // มีใครบ้าง

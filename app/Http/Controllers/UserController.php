@@ -19,7 +19,7 @@ class UserController extends Controller
         // 'tasks_Todo' => Task::where('type','todo')->get(),
         // 'tasks_Inprocess' => Task::where('type','inProgress')->get(),
         // 'tasks_Done' => Task::where('type','done')->get()
-
+        
         $user = Auth::user();
         return view('user.index',[
             'user' => $user,
@@ -34,6 +34,8 @@ class UserController extends Controller
      */
     public function create()
     {
+
+
         $user = Auth::user();
         return view('user.create',[
             'user' => $user,
@@ -78,6 +80,7 @@ class UserController extends Controller
         return view('user.show',[
             'user' => $user,
             'events' => Event::get()
+            
             // 'name' => User::find($user->id)->name,
             // 'detail' => User::find($user->id)
         ]);
@@ -115,7 +118,7 @@ class UserController extends Controller
         return view('user.certificate',[
             
             'user' => $user,
-            'events' => Event::get()->where('event_status',true)
+            'events' => Event::where('event_status',true)->get()
             // 'user' => $username,
             // 'name' => User::find(2)->name,
             // 'detail' => User::find(2)
@@ -136,6 +139,9 @@ class UserController extends Controller
         // 'tasks_Done' => Task::where('type','done')->get()
         return view('user.detail_event',[
             
+
+            
+
             'user' => Auth::user(),
             'event' => Event::find($event->id)
 
@@ -150,6 +156,8 @@ class UserController extends Controller
         //     'event' => Event::find($event->id)
         // ]);
         // $event = Event::find(1);
+        
+
         $event->users()->attach(Auth::user()->id);
         return redirect()->route('user.index');
     }
@@ -165,7 +173,6 @@ class UserController extends Controller
             $path = $request->file('event_image')->store('event_image', 'public');
             $event->event_image = $path;
         }
-        $event->event_status = true;
         $event->save();
         return redirect()->route('user.index');
     }

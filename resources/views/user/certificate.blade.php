@@ -50,10 +50,12 @@
                 </a>
                 
             </span>
-            @if($events->count() === 0)
+                        
+            @if($events->count() != 0)
             <div class="overflow-y-scroll h-[88vh]">
                 @foreach($events as $event)
                     @foreach($event->users as $member)
+                    
                         @if($member->id === $user->id)
                         <div class="h-fit mb-5 mx-auto max-w-2xl shadow p-4 bg-white rounded-md">
                             <img src="{{ asset('storage/' . $event->event_image) }}" alt="certificate" class="">

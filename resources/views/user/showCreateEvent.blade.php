@@ -66,21 +66,26 @@
                         <div class="flex justify-end items-center text-center space-x-3">
                             
 
-                            @if($event->event_is_allow == 'SENDING')
+                            @if($event->event_is_allow == 'SENDING' && $event->event_status == false)
                             <p class="text-yellow-400">กำลังรอการอนุมัติ</p>
                             @endif
-                            @if($event->event_is_allow == 'ACCEPT')
+                            @if($event->event_is_allow == 'ACCEPT' && $event->event_status == false)
                             <p class="text-green-400">กำลังดำเนินการ</p>
                             @endif
-                            @if($event->event_is_allow == 'REJECT')
+                            @if($event->event_is_allow == 'REJECT' && $event->event_status == false)
                             <p class="text-red-400">ถูกปฏิเสธโดยเจ้าหน้าที่</p>
                             @endif
+                            @if($event->event_status)
+                            <p class="text-red-400">กิจกรรมจบแล้ว</p>
+                            @endif
+                            @if (($event->event_is_allow == "ACCEPT" && $event->event_status == false) || ($event->event_is_allow == 'REJECT' ))
                             <a href="{{ route('user.show_detail_event', ['event' => $event]) }}" class="flex py-1 px-5 mb-2 mt-2  text-sm font-semibold text-black focus:outline-none bg-white rounded-lg border border-gray-900 hover:bg-gray-100 hover:text-blue-700 focus:ring-4 focus:ring-gray-200">
                                 รายละเอียด
                                 <svg class="w-3 h-3 ml-3 mt-1 text-gray-800" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 14 10">
                                     <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M1 5h12m0 0L9 1m4 4L9 9"/>
                                 </svg>
                             </a>
+                            @endif
                         </div>
                     </div>
             </div>

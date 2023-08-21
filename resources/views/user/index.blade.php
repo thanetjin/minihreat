@@ -2,10 +2,11 @@
 
 @section('content')
 
-    <div class="relative grid mb-10 bg-cover bg-center" id="background">
+    <div class="relative grid mb-10">
         <!-- <img src="{{ URL('images/background-user.jpg') }}" 
         class="bg-center h-[30%] w-full"/> -->
-        <p class="text-3xl place-self-center font-semibold text-white tracking-widest md:text-5xl">กิจกรรมรวมจากผู้สร้างสรรค์ {{$user->count()}}</p>
+        <img src="{{ URL('images/giphy.gif')}}" class="h-[30vh] w-full rounded-lg">
+        <p class="absolute text-3xl place-self-center font-semibold text-black tracking-widest md:text-5xl">กิจกรรมรวมจากผู้สร้างสรรค์</p>
     </div>
     
 
@@ -33,11 +34,4 @@
 
         @endforeach
     </div>
-
-    <style>
-        #background{
-            background-image: url("https://images.unsplash.com/photo-1500964757637-c85e8a162699?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1203&q=80");
-            height: 30vh;
-        }
-    </style>
 @endsection

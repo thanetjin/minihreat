@@ -65,13 +65,7 @@
                     กิจกรรมที่สร้าง
                 </a>
             </span>
-
-            {{-- <h2 class="text-red-500">{{ $user->id }}</h2>
-            @foreach ($events as $event)
-            {{ $event->event_name}}
-            {{ $event->user_id }}
-            @endforeach --}}
-            
+        
             @foreach ($events as $event)
             @if ($user->id == $event->user_id)
             <div class="flex flex-col mt-4 items-center bg-white border border-gray-200 rounded-lg shadow md:flex-row">

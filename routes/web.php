@@ -38,7 +38,7 @@ Route::get('/', function () {
 });
 
 Route::middleware(['auth'])->group(function () {
-    Route::get('/admin', [AdminController::class, 'index'])
+Route::get('/admin', [AdminController::class, 'index'])
 ->name('admin.index');
 
 Route::get('/admin/comfirm/{event}', [AdminController::class, 'confirm'])
@@ -52,6 +52,10 @@ Route::post('/admin/reason/{event}', [AdminController::class, 'reason'])
 
 Route::post('/admin/accept/{event}',[AdminController::class, 'accept'])
 ->name('admin.accept');
+
+Route::post('/user/{user}/edit', [
+    UserController::class, 'updatePassword'
+])->name('update-password');
 
 Route::get('/user/{user}/certificate', [
     UserController::class, 'showCertificate'

@@ -6,7 +6,7 @@
         <!-- <img src="{{ URL('images/background-user.jpg') }}" 
         class="bg-center h-[30%] w-full"/> -->
         <img src="{{ URL('images/giphy.gif')}}" class="h-[30vh] w-full rounded-lg">
-        <p class="absolute text-3xl place-self-center font-semibold text-black tracking-widest md:text-5xl">กิจกรรมรวมจากผู้สร้างสรรค์</p>
+        <p class="absolute text-3xl place-self-center font-extrabold text-black tracking-widest md:text-5xl ">แหล่งรวบรวมอีเว้นท์ที่น่าสนใจ</p>
     </div>
     
     

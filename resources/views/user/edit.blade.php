@@ -44,16 +44,37 @@
         </div>
         <div class="col-span-2">
             <div class="w-full max-w-2xl mx-auto mt-32 p-4 bg-white border border-gray-200 rounded-lg shadow sm:p-6 md:p-8">
-                <form class="space-y-6" action="#">
+                <form class = "space-y-6" action="{{ route('update-password',['user' => $user]) }}" method="POST">
+                {{-- <form class="space-y-6" action="#"> --}}
                     @csrf
+                    @if (session('status'))
+                    {{-- <div class="p-4 mb-4 text-sm text-green-800 rounded-lg bg-green-50 dark:bg-gray-800 dark:text-green-400" role="alert">
+                        <h1 class="text-lg">{{ session('success') }}</h1>
+                      </div> --}}
+                      <div class="p-4 mb-4 text-sm text-green-800 rounded-lg bg-green-50 dark:bg-gray-800 dark:text-green-400" role="alert">
+                        <span class="font-medium">Success alert!</span> {{ session('success') }}
+                      </div>
+                @elseif (session('error'))
+                <div class="p-4 mb-4 text-sm text-red-800 rounded-lg bg-red-50 dark:bg-gray-800 dark:text-red-400" role="alert">
+                    <h1 class="text-lg">{{ session('error') }}</h1>
+                  </div>
+                @endif
+
                     <h5 class="text-xl font-medium text-gray-900 dark:text-white">แก้ใขข้อมูลส่วนตัว</h5>
                     <div>
-                        <label for="email" class="block mb-2 text-sm font-medium text-gray-900">old-password</label>
-                        <input type="email" name="email" id="email" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5" placeholder="Old-Password" required>
+                        <label for="passwor" class="block mb-2 text-sm font-medium text-gray-900">old-password</label>
+                        <input type="password" name="old_password" id="email" class="form-control @error('old_password') is-invalid @enderror bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5" placeholder="Old-Password" required>
+                        @error('new_password')
+                        <span class="text-danger">{{ $message }}</span>
+                    @enderror
                     </div>
                     <div>
                         <label for="password" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">New-password</label>
-                        <input type="password" name="password" id="password" placeholder="New-Password" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5" required>
+                        <input type="password" name="new_password" id="password" placeholder="New-Password" class="form-control @error('new_password') is-invalid @enderror bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5" required>
+                    </div>
+                    <div>
+                        <label for="password" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Confirm Password</label>
+                        <input type="password" name="new_password_confirmation" id="password" placeholder="Confirm-Password" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5" required>
                     </div>
                     <button type="submit" class="w-full text-white bg-yellow-300 hover:bg-yellow-400 focus:ring-4 font-semibold rounded-lg text-sm px-5 py-2.5 text-center">แก้ไข password</button>
                 </form>

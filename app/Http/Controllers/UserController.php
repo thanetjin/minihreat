@@ -109,7 +109,8 @@ class UserController extends Controller
     public function showCertificate(User $user){
         return view('user.certificate',[
             
-            'user' => User::find(2),
+            'user' => $user,
+            'events' => Event::get()->where('event_status',true)
             // 'user' => $username,
             // 'name' => User::find(2)->name,
             // 'detail' => User::find(2)
@@ -117,7 +118,7 @@ class UserController extends Controller
     }
     public function showCreateEvent(User $user){
         return view('user.showCreateEvent',[
-            'user' => User::find(2)
+            'user' => $user
         ]);
     }
     public function show_detail_event(Event $event)
@@ -155,6 +156,7 @@ class UserController extends Controller
             $path = $request->file('event_image')->store('event_image', 'public');
             $event->event_image = $path;
         }
+        $event->event_status = true;
         $event->save();
         return redirect()->route('user.index');
     }

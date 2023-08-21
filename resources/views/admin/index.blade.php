@@ -44,7 +44,7 @@
             <div class="overflow-y-scroll h-[70vh]">
                 @foreach ($events as $event)
                     <div class="mb-5 h-fit flex flex-col items-center bg-white border border-gray-200 rounded-lg shadow md:flex-row">
-                        <img class="w-full rounded-t-lg h-auto md:w-48 md:rounded-none md:rounded-l-lg" src="https://cdn.discordapp.com/emojis/664072372017692682.webp?size=96&quality=lossless" alt="images for event">
+                        <img class="w-full rounded-t-lg h-auto md:w-48 md:rounded-none md:rounded-l-lg" src="{{URL('images/card-header.png')}}" alt="images for event">
                         <div class="flex flex-col justify-between p-4 leading-normal w-full">
                             <h5 class="mb-2 text-xl font-bold tracking-tight text-gray-900">{{ $event->event_name }}</h5>
                             <p class="mb-3 font-normal text-sm text-gray-700">{{ $event->event_content }}</p>

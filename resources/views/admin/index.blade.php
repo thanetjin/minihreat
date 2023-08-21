@@ -21,9 +21,9 @@
             </div>
             <div class="block p-6 bg-white border border-black rounded-lg">
                 <p class="h-[5vh]">ประวัติส่วนตัว</p>
-                <div class="min-h-[40vh]">
+                <div>
                         <p class="h-[6vh]">อายุของคุณ : {{$user->age}}</p>
-                        <p>ที่อยู่ของคุณ : {{$user->address}}</p>
+                    
                 </div>
                 <form action="{{route('logout')}}" method="POST">
                     @csrf

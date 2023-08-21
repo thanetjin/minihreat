@@ -99,11 +99,9 @@ class DatabaseSeeder extends Seeder
         // มีใครบ้าง
         $event = Event::find(1);
         $event->users()->attach(3);
-        $event->users()->attach(2);
         
         
-        $event = Event::find(2);
-        $event->users()->attach(3);
+        $event = Event::find(2); 
         $event->users()->attach(4);
         $event->users()->attach(5);
 

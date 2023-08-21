@@ -80,12 +80,4 @@
     </div>
 </div>
 
-<form action="{{ route('admin.store') }}" method="POST" enctype="multipart/form-data">
-	@csrf
-	...
-	<input type="file" name="image_path" id="image_path">
-	...
-	<button type="submit">Submit</button>
-</form>
-
 @endsection

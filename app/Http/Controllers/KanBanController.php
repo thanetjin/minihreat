@@ -6,6 +6,7 @@ use App\Models\Task;
 use App\Models\Event;
 use App\Models\User;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 
 
 class KanBanController extends Controller
@@ -16,7 +17,7 @@ class KanBanController extends Controller
             // 'tasks_Todo' => Task::where('type','todo')->get(),
             // 'tasks_Inprocess' => Task::where('type','inProgress')->get(),
             // 'tasks_Done' => Task::where('type','done')->get(),
-            'user' => User::find(2),
+            'user' => Auth::user(),
             'event' => $event
         ]);
     }

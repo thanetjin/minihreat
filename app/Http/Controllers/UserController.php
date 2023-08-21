@@ -19,7 +19,7 @@ class UserController extends Controller
         // 'tasks_Inprocess' => Task::where('type','inProgress')->get(),
         // 'tasks_Done' => Task::where('type','done')->get()
 
-        $user = User::find(5);
+        $user = Auth::user();
         return view('user.index',[
             'user' => $user,
             // 'name' => User::find($user->id)->name,
@@ -33,7 +33,7 @@ class UserController extends Controller
      */
     public function create()
     {
-        $user = User::find(2);
+        $user = Auth::user();
         return view('user.create',[
             'user' => $user,
             'name' => User::find($user->id)->name
@@ -120,7 +120,7 @@ class UserController extends Controller
         ]);
     }
     public function showCreateEvent(Event $event){
-        $user = User::find(5);
+        $user = Auth::user();
         return view('user.showCreateEvent',[
             'user' => $user,
             // 'name' => User::find($user->id)->name,
@@ -134,7 +134,7 @@ class UserController extends Controller
         // 'tasks_Done' => Task::where('type','done')->get()
         return view('user.detail_event',[
             
-            'user' => User::find(3),
+            'user' => Auth::user(),
             'event' => Event::find($event->id)
 
             
@@ -148,7 +148,7 @@ class UserController extends Controller
         //     'event' => Event::find($event->id)
         // ]);
         // $event = Event::find(1);
-        $event->users()->attach(User::find(3)->id);
+        $event->users()->attach(Auth::user()->id);
         return redirect()->route('user.index');
     }
 

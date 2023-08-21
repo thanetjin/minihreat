@@ -27,13 +27,11 @@
                 </div>
                 <div class="py-10 px-4 border border-black font-semibold rounded-3xl">
                     <p class="">ประวัติส่วนตัว</p>
-                    <div class="h-[30vh]">
+                    
                         อายุของคุณ : {{$user->age}}
-                        <br><br>
-                        ที่อยู่ของคุณ : {{$user->address}}
-                        <br><br>
+                        <br />
                         สถานะของคุณ : {{$user->role}}
-                    </div>
+                    
 
                     
                     

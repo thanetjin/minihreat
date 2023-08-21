@@ -9,7 +9,11 @@
         <div class="col-span-1">
             
             <div class="h-screen p-4 shadow rounded-lg bg-white">
-                <img src="" alt="user profile" class="rounded-full w-[97px] h-[95px] bg-gray-800 mx-auto my-10">
+                @if($user->image)
+                <img class="rounded-full w-[97px] h-[95px] bg-gray-800 mx-auto my-10" src="" alt="user photo">
+            @else
+                <img class="rounded-full w-[97px] h-[95px] bg-gray-800 mx-auto my-10" src="https://cdn-icons-png.flaticon.com/512/3135/3135715.png" alt="">
+            @endif
                 <div class="flex justify-center mb-5">
                     <p class="font-semibold text-2xl text-center">{{$user->name}}</p>
                     <a href="{{ route('user.edit',['user' => $user ]); }}">
@@ -30,17 +34,7 @@
                         <br><br>
                         สถานะของคุณ : {{$user->role}}
                     </div>
-                    <div class="flex justify-center mb-4">
-                        <div class="text-center mr-5">
-                            <p>จำนวนกิจกรรมที่เข้าร่วม</p>
-                            <p> 0 </p>
-                        </div>
-                        <div style="border-left: 3px solid black; height:50px;"></div>
-                        <div class="text-center ml-5">
-                            <p>จำนวนที่ได้รับกิจกรรม</p>
-                            <p> 0 </p>
-                        </div>
-                    </div>
+                    
                     <button class="flex justify-center border w-[80%] mx-auto py-2 rounded-lg border-red-700 text-red-700 hover:bg-red-700 hover:text-white" id="box-button">
                         <svg class="w-3 h-6 mr-4 text-red-700" id="icon-logout" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 16 16">
                             <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 8h11m0 0-4-4m4 4-4 4m-5 3H3a2 2 0 0 1-2-2V3a2 2 0 0 1 2-2h3"/>
@@ -58,14 +52,15 @@
                 <a href="{{ route('user.show', ['user' => $user]) }}" class="px-4 py-2 text-xl font-semibold text-gray-900 bg-transparent border border-gray-900 rounded-l-lg hover:bg-gray-900 hover:text-white focus:z-10 focus:ring-2 focus:ring-gray-500 focus:bg-gray-900 focus:text-white">
                     กิจกรรมที่เข้าร่วม
                 </a>
-                <a href="{{ route('user.certificate', ['user' => $user]) }}" class="px-4 py-2 text-xl font-semibold text-gray-900 bg-transparent border border-gray-900 rounded-r-md hover:bg-gray-900 hover:text-white focus:z-10 focus:ring-2 focus:ring-gray-500 focus:bg-gray-900 focus:text-white">
+                <a href="{{ route('user.certificate', ['user' => $user]) }}" class="px-4 py-2 text-xl font-semibold text-gray-900 bg-transparent border border-gray-900 hover:bg-gray-900 hover:text-white focus:z-10 focus:ring-2 focus:ring-gray-500 focus:bg-gray-900 focus:text-white">
                     ได้รับเกียรติบัตร
                 </a>
-                <a href="{{ route('user.showCreateEvent', ['user' => $user]) }}" class="px-4 py-2 text-xl font-semibold text-gray-900 bg-transparent border border-gray-900 rounded-r-md hover:bg-gray-900 hover:text-white focus:z-10 focus:ring-2 focus:ring-gray-500 focus:bg-gray-900 focus:text-white">
+                <a href="{{ route('user.showCreateEvent', ['user' => $user]) }}" class="px-4 py-2 text-xl font-semibold border border-gray-900 rounded-r-md bg-gray-900 text-white focus:z-10 focus:ring-2 focus:ring-gray-500 focus:bg-gray-900 focus:text-white">
                     กิจกรรมที่สร้าง
                 </a>
             </span>
-        
+            @if($events->count() > 0)
+                    <div class="overflow-y-scroll h-[88vh]">
             @foreach ($events as $event)
             @if ($user->id == $event->user_id)
             <div class="flex flex-col mt-4 items-center bg-white border border-gray-200 rounded-lg shadow md:flex-row">
@@ -97,6 +92,19 @@
             </div>
             @endif
         @endforeach
+        </div>
+
+        @else
+            <div class="flex h-[70vh] border rounded-lg">
+                <div class="flex self-center text-gray-500 mx-auto">
+                <svg class="w-6 h-6 mr-5 text-gray-800 dark:text-white" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 20 20">
+                    <path fill="currentColor" d="m18.774 8.245-.892-.893a1.5 1.5 0 0 1-.437-1.052V5.036a2.484 2.484 0 0 0-2.48-2.48H13.7a1.5 1.5 0 0 1-1.052-.438l-.893-.892a2.484 2.484 0 0 0-3.51 0l-.893.892a1.5 1.5 0 0 1-1.052.437H5.036a2.484 2.484 0 0 0-2.48 2.481V6.3a1.5 1.5 0 0 1-.438 1.052l-.892.893a2.484 2.484 0 0 0 0 3.51l.892.893a1.5 1.5 0 0 1 .437 1.052v1.264a2.484 2.484 0 0 0 2.481 2.481H6.3a1.5 1.5 0 0 1 1.052.437l.893.892a2.484 2.484 0 0 0 3.51 0l.893-.892a1.5 1.5 0 0 1 1.052-.437h1.264a2.484 2.484 0 0 0 2.481-2.48V13.7a1.5 1.5 0 0 1 .437-1.052l.892-.893a2.484 2.484 0 0 0 0-3.51Z"/>
+                    <path fill="#fff" d="M8 13a1 1 0 0 1-.707-.293l-2-2a1 1 0 1 1 1.414-1.414l1.42 1.42 5.318-3.545a1 1 0 0 1 1.11 1.664l-6 4A1 1 0 0 1 8 13Z"/>
+                </svg>
+                    ยังไม่มีการสร้างกิจกรรม
+                </div>
+            </div>
+        @endif
 
         </div>
         

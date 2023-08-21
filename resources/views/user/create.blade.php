@@ -34,6 +34,7 @@
                 </div>
                 <label class="block mb-2 text-sm font-medium text-gray-900 dark:text-white" for="event_image">Upload file</label>
                 <input class="block w-full text-sm text-gray-900 border border-gray-300 rounded-lg cursor-pointer bg-gray-50 dark:text-gray-400 focus:outline-none dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400" id="event_image" name="event_image" type="file">
+                
                 <span class="flex justify-center mt-5">
                     <button type="submit" class="flex border border-black mx-auto px-12 py-2 rounded-lg text-sm hover:bg-black hover:text-white" id="box-button">
                         สร้าง

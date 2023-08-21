@@ -18,11 +18,15 @@ return new class extends Migration
             $table->string('event_name');
             $table->foreignIdFor(User::class); //เพื่อหา event_owner check จาก id
             $table->string('event_content');
-            $table->string('event_status');
-            $table->boolean('event_is_allow');
-            $table->string('event_rejection_reason');
+            $table->string('event_certificate')->nullable();
+            $table->boolean('event_status')->default(false);
+            $table->enum('event_is_allow', ['ACCEPT','REJECT','SENDING'])->default('SENDING'); 
+            $table->string('event_rejection_reason')->nullable();
+            $table->string('event_image')->nullable();
+            $table->integer('event_money');
             $table->softDeletes();
             $table->timestamps();
+            // $table->boolean('event_is_allow')->default(false); // false แสดงให้แอดมินว่าเปลี่ยน true ไหม
         });
     }
 

@@ -22,7 +22,7 @@
             <div class="block p-6 bg-white border border-black rounded-lg">
                 <p class="h-[5vh]">ประวัติส่วนตัว</p>
                 <div>
-                        <p class="h-[6vh]">อายุของคุณ : {{$user->age}}</p>
+                        <p class="h-[6vh]">สถานะของคุณ : {{$user->role}}</p>
                     
                 </div>
                 <form action="{{route('logout')}}" method="POST">

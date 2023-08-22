@@ -168,6 +168,7 @@ class UserController extends Controller
         $event->event_content = $request->event_content;
         $event->event_money = $request->event_money;
         $event->user_id = $user->id;
+        $event->event_member = $request->event_member;
         if ($request->hasFile('event_image')) {
             // บันทึกไฟล์รูปภาพลงใน folder ชื่อ 'artist_images' ที่ storage/app/public
             $path = $request->file('event_image')->store('event_image', 'public');

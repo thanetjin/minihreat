@@ -20,6 +20,7 @@ return new class extends Migration
             $table->string('event_content');
             $table->string('event_certificate')->nullable();
             $table->boolean('event_status')->default(false);
+            $table->integer('event_member');
             $table->enum('event_is_allow', ['ACCEPT','REJECT','SENDING'])->default('SENDING'); 
             $table->string('event_rejection_reason')->nullable();
             $table->string('event_image')->nullable();

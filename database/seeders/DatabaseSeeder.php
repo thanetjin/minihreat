@@ -29,7 +29,6 @@ class DatabaseSeeder extends Seeder
         $user->email_verified_at = now();
         $user->password = Hash::make('password');
         $user->role = "admin";
-        $user->age = 25;
         $user->address = fake()->paragraph();
         $user->save();
 
@@ -39,7 +38,6 @@ class DatabaseSeeder extends Seeder
         $user->email_verified_at = now();
         $user->password = Hash::make('password');
         $user->role = "user";
-        $user->age = 25;
         $user->address = fake()->paragraph();
         $user->save();
         User::factory()->count(5)->create();
@@ -47,6 +45,7 @@ class DatabaseSeeder extends Seeder
         $event = new Event();
         $event->event_name = 'งานรับน้อง';
         $event->user_id = 2;
+        $event->event_member = 10;
         $event->event_content = 'อะไรก็ได้เอามาเถอะ';
         $event->event_status = false;
         $event->event_rejection_reason = '';
@@ -57,6 +56,7 @@ class DatabaseSeeder extends Seeder
         $event = new Event();
         $event->event_name = 'กิจกรรมเพื่อส่งเสริมสุขภาพ';
         $event->user_id = 3;
+        $event->event_member = 10;
         $event->event_content = 'อิอิ';
         $event->event_status = false;
         $event->event_rejection_reason = '-';
@@ -69,6 +69,7 @@ class DatabaseSeeder extends Seeder
         $event = new Event();
         $event->event_name = 'การเปิดนิทรรศการศิลปะ';
         $event->user_id = 4;
+        $event->event_member = 10;
         $event->event_content = 'นิทรรศการการศิลปะ เพื่อ การสร้างสรรค์';
         $event->event_status = false;
         $event->event_money = 1000;
@@ -79,6 +80,7 @@ class DatabaseSeeder extends Seeder
         $event = new Event();
         $event->event_name = 'อาสาสมัครในชุมชน';
         $event->user_id = 5;
+        $event->event_member = 10;
         $event->event_content = 'มาลองคิด คณิตศาสตร์ แสนสนุกกัน สนใจมาเข้าร่วมกันไหม';
         $event->event_status = false;
         $event->event_money = 1000;
@@ -89,6 +91,7 @@ class DatabaseSeeder extends Seeder
         $event = new Event();
         $event->event_name = 'โครงการเรียนรู้ออนไลน์';
         $event->user_id = 3;
+        $event->event_member = 10;
         $event->event_content = 'อังกฤษฟังพูดอ่านเขียน เรียน ก็ง่ายสนใจมาเข้าร่วมกันไหม';
         $event->event_status = false;
         $event->event_money = 1000;
@@ -103,6 +106,15 @@ class DatabaseSeeder extends Seeder
         
         $event = Event::find(2); 
         $event->users()->attach(4);
+        $event->users()->attach(5);
+
+        $event->users()->attach(5);
+        $event->users()->attach(5);
+        $event->users()->attach(5);
+        $event->users()->attach(5);
+        $event->users()->attach(5);
+        $event->users()->attach(5);
+        $event->users()->attach(5);
         $event->users()->attach(5);
 
         $event = Event::find(3);
@@ -155,9 +167,6 @@ class DatabaseSeeder extends Seeder
         $task->type = 'inProgress';
         $task->event_id = 2;
         $task->save();
-
-
-
 
         $task = new Task();
         $task->name = 'เปิดกิจกรรม และ ส่งเสริมกิจกรรมให้ผู้เข้าร่วมระหว่างทำกิจกรรม';

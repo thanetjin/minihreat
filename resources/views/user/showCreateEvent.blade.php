@@ -25,16 +25,8 @@
                         </svg>
                     </a>
                 </div>
-                <div class="py-10 px-4 border border-black font-semibold rounded-3xl">
-                    <p class="">ประวัติส่วนตัว</p>
-                    
-                        อายุของคุณ : {{$user->age}}
-                        <br />
+                <div class="py-10 px-4 font-semibold rounded-3xl">
                         สถานะของคุณ : {{$user->role}}
-                    
-
-                    
-                    
                 </div>
             </div>
         </div>

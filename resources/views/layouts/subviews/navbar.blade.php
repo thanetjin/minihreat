@@ -2,7 +2,11 @@
     <div class="flex flex-wrap items-center justify-between max-w-screen-xl px-4 mx-auto">
         <div class="flex items-center">
             <img src="{{ URL('images/miniheart.jpg') }}" class="h-6 mr-3 sm:h-9" alt="Logo">
-            <a href="/user" class="self-center text-gray-700 text-3xl font-semibold whitespace-nowrap a">Miniheart</a>
+            @if($user->role === "user")
+                <a href="/user" class="self-center text-gray-700 text-3xl font-semibold whitespace-nowrap a">Miniheart</a>
+            @else
+                <p class="self-center text-gray-700 text-3xl font-semibold whitespace-nowrap a">Miniheart</p>
+            @endif
         </div>
         @if($user->role === "user")
         <div class="flex items-center lg:order-2">
@@ -37,12 +41,12 @@
                 <ul class="py-2" aria-labelledby="user-menu-button">
                     <li>
                         <a href="{{ route('user.show', ['user' => $user ]) }}" class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100">
-                            {{ $user->name }}
+                            {{ Auth::user()->name }}
                         </a>                        
                     </li>
                     <form action="{{ route('logout' )}}" method="POST">
                         @csrf
-                        <button type="submit" class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100"">Logout</button>
+                        <button type="submit" class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100">Logout</button>
                     </form>
                     
                 </ul>

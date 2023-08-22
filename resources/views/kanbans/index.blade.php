@@ -17,31 +17,32 @@
     <div class="flex justify-center ">
         
         
-            <div class="flex flex-col items-center mb-4">
+    <div class="flex flex-col items-center mb-4">
     <div class="mb-6 mr-4 flex flex-col">
-      <label for="email" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Todo</label>
       <input type="text" id="text" name="name" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" placeholder="Enter Tasks.." required> 
       <br>
-      <fieldset>
-            
-          
-        <div class="flex flex items-center mb-4">
-          <input  id="country-option-1" name="type" type="radio" value="todo" class="w-4 h-4 border-gray-300 focus:ring-2 focus:ring-blue-300 dark:focus:ring-blue-600 dark:focus:bg-blue-600 dark:bg-gray-700 dark:border-gray-600">
-          <label for="country-option-1" name="todo" class="block ml-2 text-sm font-medium text-gray-900 dark:text-gray-300">
-            todo
-          </label>
-          
-          <input id="country-option-1" type="radio"   name="type" value="inProgress" class="w-4 h-4 border-gray-300 focus:ring-2 focus:ring-blue-300 dark:focus:ring-blue-600 dark:focus:bg-blue-600 dark:bg-gray-700 dark:border-gray-600">
+        <fieldset>
+            <div class="flex items-center mb-5">
+                <input  id="todo" name="type" type="radio" value="todo" class="w-4 h-4 border-gray-300 focus:ring-2 focus:ring-blue-300 dark:focus:ring-blue-600 dark:focus:bg-blue-600 dark:bg-gray-700 dark:border-gray-600">
+                <label for="todo" name="todo" class="block ml-2 text-sm font-medium text-gray-900 dark:text-gray-300">
+                todo
+                </label>
+            </div>
 
-          <label for="country-option-1" name="inProgress"  class="block ml-2 text-sm font-medium text-gray-900 dark:text-gray-300">
-            inProgress
-          </label>
-          <input id="country-option-1" type="radio" name="type" value="done" class="w-4 h-4 border-gray-300 focus:ring-2 focus:ring-blue-300 dark:focus:ring-blue-600 dark:focus:bg-blue-600 dark:bg-gray-700 dark:border-gray-600">
-    <label for="country-option-1" name="done" class="block ml-2 text-sm font-medium text-gray-900 dark:text-gray-300">
-            done
-          </label>
-        </div>
-    </fieldset>
+            <div class="flex items-center mb-5">
+                <input id="inProgress" type="radio"   name="type" value="inProgress" class="w-4 h-4 border-gray-300 focus:ring-2 focus:ring-blue-300 dark:focus:ring-blue-600 dark:focus:bg-blue-600 dark:bg-gray-700 dark:border-gray-600">
+                <label for="inProgress" name="inProgress"  class="block ml-2 text-sm font-medium text-gray-900 dark:text-gray-300">
+                inProgress
+                </label>
+            </div>
+
+            <div class="flex items-center mb-5">
+                <input id="done" type="radio" name="type" value="done" class="w-4 h-4 border-gray-300 focus:ring-2 focus:ring-blue-300 dark:focus:ring-blue-600 dark:focus:bg-blue-600 dark:bg-gray-700 dark:border-gray-600">
+                <label for="done" name="done" class="block ml-2 text-sm font-medium text-gray-900 dark:text-gray-300">
+                        done
+                </label>
+            </div>
+        </fieldset>
       <button type="submit"  class="text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm w-full sm:w-auto px-5 py-2.5 text-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800">Submit</button>      
       
     </div>
@@ -125,6 +126,53 @@
         </div> 
  
     </div>
+    <div class="border-black border-b-4 w-full rounded-xl my-5"></div>
+    
+    <div class="relative overflow-x-auto rounded-xl">
+        <table class="w-full text-sm text-left text-gray-500 ">
+            <thead class="text-xs text-gray-700 uppercase bg-gray-50">
+                <tr>
+                    <th scope="col" class="px-6 py-3">
+                        Name
+                    </th>
+                    <th scope="col" class="px-6 py-3">
+                        Email
+                    </th>
+                    <th scope="col" class="px-6 py-3">
+                        Role
+                    </th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr class="bg-white border-b">
+                    <th scope="row" class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap">
+                        {{Auth::user()->name}}
+                    </th>
+                    <td class="px-6 py-4">
+                        {{Auth::user()->email}}
+                    </td>
+                    <td class="px-6 py-4">
+                        leader
+                    </td>
+                </tr>
+    
+                @foreach($event->users as $member)
+                <tr class="bg-white border-b">
+                    <th scope="row" class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap">
+                        {{$member->name}}
+                    </th>
+                    <td class="px-6 py-4">
+                        {{$member->email}}
+                    </td>
+                    <td class="px-6 py-4">
+                        member
+                    </td>
+                </tr>
+                @endforeach
+            </tbody>
+        </table>
+    </div>
+
     <form action="{{ route('kanbans.changeStatus', ['event' => $event]) }}" method="POST">                            
         @csrf
         <div class="flex justify-center items-center text-center m-4">

@@ -22,7 +22,7 @@
                     <p class="mb-3 font-normal text-sm text-gray-700">{{ $event->event_content }}</p>
                     @if ($event->event_is_allow == 'REJECT')
                         <h1 class="text-red-400">เหตุผลในการโดนปฏิเสธ: {{ $event->event_rejection_reason }}</h1>
-                    @elseif ($event->users->count() == $event->event_member)
+                    @elseif ($event->users->count() == $event->event_member && $event->user_id !== Auth::user()->id)
                         <div class="flex justify-end">
                             <p class="flex py-1 px-5 mr-3 mb-2 mt-2 text-sm font-semibold text-black focus:outline-none bg-white rounded-lg border border-gray-900 hover:bg-gray-100 hover:text-blue-700 focus:z-10 focus:ring-4 focus:ring-gray-200 cursor-not-allowed">     
                                 คนในกิจกรรมเต็มแล้ว

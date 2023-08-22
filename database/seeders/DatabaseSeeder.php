@@ -33,14 +33,40 @@ class DatabaseSeeder extends Seeder
         $user->save();
 
         $user = new User();
-        $user->name = "user";
-        $user->email = "user@gmail.com";
+        $user->name = "user2";
+        $user->email = "user2@gmail.com";
         $user->email_verified_at = now();
         $user->password = Hash::make('password');
         $user->role = "user";
         $user->address = fake()->paragraph();
         $user->save();
-        User::factory()->count(5)->create();
+
+        $user = new User();
+        $user->name = "user3";
+        $user->email = "user3@gmail.com";
+        $user->email_verified_at = now();
+        $user->password = Hash::make('password');
+        $user->role = "user";
+        $user->address = fake()->paragraph();
+        $user->save();
+
+        $user = new User();
+        $user->name = "user4";
+        $user->email = "user4@gmail.com";
+        $user->email_verified_at = now();
+        $user->password = Hash::make('password');
+        $user->role = "user";
+        $user->address = fake()->paragraph();
+        $user->save();
+
+        $user = new User();
+        $user->name = "user5";
+        $user->email = "user5@gmail.com";
+        $user->email_verified_at = now();
+        $user->password = Hash::make('password');
+        $user->role = "user";
+        $user->address = fake()->paragraph();
+        $user->save();
 
         $event = new Event();
         $event->event_name = 'งานรับน้อง';

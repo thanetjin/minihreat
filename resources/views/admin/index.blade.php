@@ -9,8 +9,7 @@
 }
 </style>
 
-<div class="grid grid-cols-3 gap-4">
-    <div class="block p-6 bg-white border border-gray-200 rounded-lg shadow">
+    <div class="container mx-auto p-6 bg-white border border-gray-200 rounded-lg shadow">
                 @if($user->image)
                     <img class="w-[97px] h-[95px] mx-auto rounded-full" src="{{ asset('storage/' . Auth::user()->image)}}" alt="admin image">
                 @else
@@ -19,15 +18,10 @@
             <div class="flex justify-center my-2">
                 <p class="text-center text-2xl">{{$user->name}}</p>
             </div>
-            <div class="block p-6 bg-white border border-black rounded-lg">
-                <p class="h-[5vh]">ประวัติส่วนตัว</p>
-                <div>
-                        <p class="h-[6vh]">สถานะของคุณ : {{$user->role}}</p>
-                    
-                </div>
+            <div class="p-6 bg-white">
                 <form action="{{route('logout')}}" method="POST">
                     @csrf
-                    <button type="submit" class="flex justify-center border w-[80%] mx-auto py-2 rounded-lg border-red-700 text-red-700 hover:bg-red-700 hover:text-white" id="box-button">
+                    <button type="submit" class="flex justify-center border w-[10%] mx-auto py-2 rounded-lg border-red-700 text-red-700 hover:bg-red-700 hover:text-white" id="box-button">
                     
                         <svg class="w-3 h-6 mr-4 text-red-700" id="icon-logout" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 16 16">
                             <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 8h11m0 0-4-4m4 4-4 4m-5 3H3a2 2 0 0 1-2-2V3a2 2 0 0 1 2-2h3"/>
@@ -39,7 +33,7 @@
             </div>
     
     </div>
-    <div class="col-span-2 block p-6 bg-white border border-gray-200 rounded-lg shadow">
+    <div class="container mx-auto mt-5">
         <span class="flex justify-center">
             <div class="p-4 text-center text-2xl mx-auto">
                 คำร้อง
@@ -78,6 +72,5 @@
         @endif
 
     </div>
-</div>
 
 @endsection

@@ -62,4 +62,10 @@ public function store(Request $request,Event $event)
         $kanban->delete();
         return redirect()->back();
     }
+    public function showEvent(Event $event){
+        return view('kanbans.showEvent',[
+            'user' => Auth::user(),
+            'event' => $event
+        ]);
+    }
 }

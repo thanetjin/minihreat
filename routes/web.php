@@ -87,6 +87,9 @@ Route::post('/user/store/{user}',[
 
 Route::resource('/kanbans',KanBanController::class);
 
+Route::get('/kanbans/{event}',[KanBanController::class, 'showEvent'])
+->name('kanbans.showEvent');
+
 
 Route::get('/songs', [SongController::class, 'index'])
     ->name('songs.index');

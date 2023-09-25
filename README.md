@@ -61,6 +61,12 @@ sail artisan storage:link
 sail yarn dev
 ```
 
+> รัน seeder และสร้าง table ใหม่
+
+```bash
+sail artisan migrate:fresh --seed
+```
+
 ### role ในการใช้งาน
 
 ---

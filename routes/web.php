@@ -34,8 +34,12 @@ Route::get('/', function () {
 });
 
 Route::middleware(['auth'])->group(function () {
+
+    // Admin Route
 Route::get('/admin', [AdminController::class, 'index'])
 ->name('admin.index');
+Route::post('/admin', [AdminController::class, 'store']) 
+    ->name('admin.store');
 
 Route::get('/admin/comfirm/{event}', [AdminController::class, 'confirm'])
 ->name('admin.confirm');
@@ -48,6 +52,13 @@ Route::post('/admin/reason/{event}', [AdminController::class, 'reason'])
 
 Route::post('/admin/accept/{event}',[AdminController::class, 'accept'])
 ->name('admin.accept');
+
+    // User Route
+
+Route::resource('/user', UserController::class)
+    ->missing(function (Request $request){
+        return Redirect::route('user.index');
+    });
 
 Route::post('/user/{user}/edit', [
     UserController::class, 'updatePassword'
@@ -69,7 +80,6 @@ Route::get('/user/show/event_detail/{event}/enter', [
     UserController::class, 'enterEvent'
 ])->name('user.enterEvent');
 
-// changeStatus
 
 Route::get('/user/show/event_detail/{event}/kanbans/', [
     KanBanController::class, 'index'
@@ -87,109 +97,30 @@ Route::post('/user/store/{user}',[
     UserController::class, 'storeEvent'
 ])->name('user.storeEvent');
 
+    // Kanban Route
 Route::resource('/kanbans',KanBanController::class)->only([
     'edit','update'
 ]);;
-
-Route::get('/songs', [SongController::class, 'index'])
-    ->name('songs.index');
-
-Route::resource('/user', UserController::class)
-    ->missing(function (Request $request){
-        return Redirect::route('user.index');
-    });
-
-Route::post('/admin', [AdminController::class, 'store']) 
-    ->name('admin.store');
+    // Auth Route
 
 Route::post('/logout',[UserController::class, 'logout'])
     ->name('user.logout');
 });
 
+// Not sure
+
 Route::get('/dashboard', function () {
     return view('dashboard');
 })->middleware(['auth', 'verified'])->name('dashboard');
 
+// might be useful for debugging
 // Route::get('/', function () {
 //     $event = Event::first();
 
 //     return view('welcome', compact('event'));
 // });
 
-// Route::get('/hello', function () {
-//     return "Hello Laravel";
-// })->name("hello");
 
-// Route::get('/hello/{name}', function ($name) {
-//     return "Hello {$name}";
-// })->name("hello.name");
-
-// Route::get('/about', [AboutController::class, 'index'])
-//     ->name('about.index');
-// // Route::get('/kanbans', function () {
-// //         return view('kanban');
-// //     });
-// Route::resource('/kanbans',KanBanController::class);
-
-
-// Route::get('/songs', [SongController::class, 'index'])
-//     ->name('songs.index');
-    
-// Route::resource('/user', UserController::class)
-//     ->missing(function (Request $request){
-//         return Redirect::route('user.index');
-//     });
-
-// // Route::get('/user/{id}', function (string $id) {
-// //     return 'User '.$id;
-// // });
-    
-// Route::get('/user/{user}/certificate', [
-//     UserController::class, 'showCertificate'
-// ])->name('user.certificate');
-
-// Route::get('/user/{user}/showCreateEvent', [
-//     UserController::class, 'showCreateEvent'
-// ])->name('user.showCreateEvent');
-
-// Route::get('/user/show/event_detail/{event}', [
-//     UserController::class, 'show_detail_event'
-// ])->name('user.show_detail_event');
-
-// Route::get('/user/show/event_detail/{event}/enter', [
-//     UserController::class, 'enterEvent'
-// ])->name('user.enterEvent');
-
-// Route::get('/user/show/event_detail/{event}/kanbans/', [
-//     KanBanController::class, 'index'
-// ])->name('kanbans.index');
-
-// Route::post('/user/show/event_detail/{event}/kanbans/', [
-//     KanBanController::class, 'store'
-// ])->name('kanbans.store');
-
-// Route::post('/user/store/{user}',[
-//     UserController::class, 'storeEvent'
-// ])->name('user.storeEvent');
-
-// // Route::get('/detail-event', function () {
-// //     return view('user.detail_event');
-// // })->name("detail-event");
-
-// Route::get('/admin', [AdminController::class, 'index'])
-// ->name('admin.index');
-
-// Route::get('/admin/comfirm/{event}', [AdminController::class, 'confirm'])
-// ->name('admin.confirm');
-
-// Route::get('/admin/reject/{event}', [AdminController::class, 'reject'])
-// ->name('admin.reject');
-
-// Route::post('/admin/reason/{event}', [AdminController::class, 'reason'])
-// ->name('admin.reason');
-
-// Route::post('/admin/accept/{event}',[AdminController::class, 'accept'])
-// ->name('admin.accept');
 
 
 require __DIR__.'/auth.php';

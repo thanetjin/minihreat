@@ -4,8 +4,9 @@ namespace App\Http\Controllers;
 
 use Illuminate\Support\Facades\Hash;
 use App\Models\Event;
-use Illuminate\Http\Request;
 use App\Models\User;
+use App\Models\Task;
+use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Http\RedirectResponse;
 
@@ -16,26 +17,21 @@ class UserController extends Controller
      */
     public function index()
     {
-        // 'tasks_Todo' => Task::where('type','todo')->get(),
-        // 'tasks_Inprocess' => Task::where('type','inProgress')->get(),
-        // 'tasks_Done' => Task::where('type','done')->get()
         
         $user = Auth::user();
         return view('user.index',[
-            'user' => $user,
-            // 'name' => User::find($user->id)->name,
+            'user' => $user,            
             'events' => Event::get()
         ]);
     }
 
-
     /**
      * Show the form for creating a new resource.
      */
+
+    //  สร้าง event
     public function create()
     {
-
-
         $user = Auth::user();
         return view('user.create',[
             'user' => $user,
@@ -46,28 +42,10 @@ class UserController extends Controller
     /**
      * Store a newly created resource in storage.
      */
+
+    //  สร้างเสร็จไปที user.index
     public function store(Request $request)
     {
-        // $task = new Task;
-        // $task->name = $request->name;
-        // $task->type = $request->type;
-        
-        // $task->save();
-        // return redirect()->route('kanbans.index');
-        // error_log('Some message here.');
-        
-        // $event = new Event();
-        // $event->event_name = $request->event_name;
-        // $event->event_content = $request->event_content;
-        // $event->event_money = $request->event_money;
-        // if ($request->hasFile('image_path')) {
-        //     // บันทึกไฟล์รูปภาพลงใน folder ชื่อ 'artist_images' ที่ storage/app/public
-        //     $path = $request->file('image_path')->store('event_images', 'public');
-        //     $event->image_path = $path;
-        // }
-        // $event->user_id = User::first()->id;
-        // $event->user_id = User::find(5)->id;
-        // $event->save();
         return redirect()->route('user.index');
         
     }
@@ -75,26 +53,27 @@ class UserController extends Controller
     /**
      * Display the specified resource.
      */
+
+    //  โชว์พวกเกียติบัตรของ user
     public function show(User $user)
     {
         return view('user.show',[
             'user' => $user,
             'events' => Event::get()
-            
-            // 'name' => User::find($user->id)->name,
-            // 'detail' => User::find($user->id)
         ]);
     }
 
     /**
      * Show the form for editing the specified resource.
      */
+
+    //แก้ไขข้อมูลส่วนตัวของ user
     public function edit(User $user)
     {
         $user = Auth::user();
         return view('user.edit',[
             'user' => $user,
-            // 'name' => User::find($user->id)->name
+            
         ]);
     }
 
@@ -119,16 +98,13 @@ class UserController extends Controller
             
             'user' => $user,
             'events' => Event::where('event_status',true)->get()
-            // 'user' => $username,
-            // 'name' => User::find(2)->name,
-            // 'detail' => User::find(2)
         ]);
     }
     public function showCreateEvent(Event $event){
         $user = Auth::user();
         return view('user.showCreateEvent',[
             'user' => $user,
-            // 'name' => User::find($user->id)->name,
+            
             'events' => Event::get()
         ]);
     }
@@ -136,32 +112,19 @@ class UserController extends Controller
     
     public function show_detail_event(Event $event)
     {
-        // 'tasks_Done' => Task::where('type','done')->get()
+        
         return view('user.detail_event',[
-            
-
-            
-
             'user' => Auth::user(),
             'event' => Event::find($event->id)
-
-            
-            
         ]);   
     }
     public function enterEvent(Event $event)
-    {
-        // return view('user.enterEvent',[
-        //     'user' => User::find(5),
-        //     'event' => Event::find($event->id)
-        // ]);
-        // $event = Event::find(1);
-        
-
+    {   
         $event->users()->attach(Auth::user()->id);
         return redirect()->route('user.index');
     }
 
+    // เกิดขึ้นเมื่อ user กดปุ้มสร้าง event
     public function storeEvent(Request $request, User $user){
         $event = new Event();
         $event->event_name = $request->event_name;
@@ -175,6 +138,45 @@ class UserController extends Controller
             $event->event_image = $path;
         }
         $event->save();
+
+        // $table->id();
+        // $table->string('name');
+        // $table->string('type');
+        // $table->string('role');
+
+        $task = new Task();
+        $task->name = 'การตรวจสอบความปลอดภัยของไฟฟ้า';
+        $task->type = 'todo';
+        $task->role = 'engineer';
+        $task->event_id = $event->id;
+        $task->save();
+
+        $task = new Task();
+        $task->name = 'การตรวจสอบความปลอดภัยของเครื่องยนตร์';
+        $task->type = 'todo';
+        $task->role = 'engineer';
+        $task->event_id = $event->id;
+        $task->save();
+
+        $task = new Task();
+        $task->name = 'การตรวจสอบความปลอดภัยของไฟ';
+        $task->type = 'todo';
+        $task->role = 'firefighter';
+        $task->event_id = $event->id;
+        $task->save();
+        
+        //
+        
+        $task = new Task();
+        $task->name = 'การตรวจสอบความปลอดภัยของน้ำ';
+        $task->type = 'todo';
+        $task->role = 'scientist';
+        $task->event_id = $event->id;
+        $task->save();
+
+
+
+
         return redirect()->route('user.index');
     }
     public function userLogout(Request $request): RedirectResponse

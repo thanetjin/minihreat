@@ -11,11 +11,28 @@ class AdminController extends Controller
 {
     public function index(){
         return view('admin.index',[
+            // user first คือ admin
             'user' => User::first(),
+            // query database laravel 
             'events' => Event::where('event_is_allow','SENDING')->get()
         ]);
     }
 
+    // ยังนึกไม่ออกว่าจะมีทำไมแฮะๆ สำหรับ store
+    public function store(Request $request)
+    {
+	
+        $admin = User::where('role','admin')->first();
+
+        if($request->hasFile('image_path')){            
+            $path = $request->file('image_path')->store('admin_images', 'public');
+            $admin->image = $path;
+        }
+
+        $admin->save();
+        return redirect()->back();
+    }
+    // คอนเฟิร์ม event นั้นว่าจะเอาใช่ไหม
     public function confirm(Event $event){
         return view('admin.confirm',[
             'user' => User::first(),
@@ -23,14 +40,14 @@ class AdminController extends Controller
             'owner' => User::find($event->user_id)->name
         ]);
     }
-
+    // ข้อมูลในการปฏิเสธ event นั้นๆ
     public function reject(Event $event){
         return view('admin.reject',[
             'user' => User::first(),
             'event' => $event
         ]);
     }
-
+    // เหตุผลในการปฏิเสธ event นั้นๆ
     public function reason(Request $request, Event $event){
         $request->validate([
             'reason' => ['required','string','min:4']
@@ -45,23 +62,12 @@ class AdminController extends Controller
         return redirect()->route('admin.index');
     }
 
+    // เปลี่ยนสถานะว่าให้ถูกยอมรับ event นั้นๆ
     public function accept(Event $event){
         $event->event_is_allow = 'ACCEPT';
         $event->save();
         return redirect()->route('admin.index');
     }
 
-    public function store(Request $request)
-    {
-	
-        $admin = User::where('role','admin')->first();
-
-        if($request->hasFile('image_path')){
-            $path = $request->file('image_path')->store('admin_images', 'public');
-            $admin->image = $path;
-        }
-
-        $admin->save();
-        return redirect()->back();
-    }
+    
 }

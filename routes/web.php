@@ -38,6 +38,8 @@ Route::middleware(['auth'])->group(function () {
     // Admin Route
 Route::get('/admin', [AdminController::class, 'index'])
 ->name('admin.index');
+
+    // ยังนึกไม่ออกแหะว่าจะไปทำไม
 Route::post('/admin', [AdminController::class, 'store']) 
     ->name('admin.store');
 

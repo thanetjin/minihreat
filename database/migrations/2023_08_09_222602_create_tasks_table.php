@@ -13,6 +13,9 @@ return new class extends Migration
             $table->id();
             $table->string('name');
             $table->string('type');
+            // trying to add
+            $table->string('role')->default('firefighter');
+
             $table->foreignIdFor(\App\Models\Event::class); // Event_id (FK)
             $table->softDeletes();
             $table->timestamps();

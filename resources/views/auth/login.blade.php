@@ -3,11 +3,12 @@
     <x-auth-session-status class="mb-4" :status="session('status')" />
 
     <form method="POST" action="{{ route('login') }}">
-
-
-
-    <h1 class="text-center text-black-400 font-bold uppercase" style="font-size: 35px">Login</h1>
         @csrf
+
+
+
+    <h1 class="text-center text-black-400 font-bold" style="font-size: 42px">Sign in</h1>
+        
 
         <!-- Email Address -->
         <div>
@@ -31,17 +32,26 @@
         <!-- Remember Me -->
             
 
-        <div class="flex items-center justify-end mt-4">
+        <div class="flex flex-col items-center justify-end mt-4 ">
+            <div class="m-4">
+            <x-primary-button class="ml-3 text-white bg-gray-800 hover:bg-gray-900 focus:outline-none focus:ring-4 focus:ring-gray-300 rounded-full text-sm px-5 py-2.5 mr-2 mb-2 dark:bg-gray-800 dark:hover:bg-gray-700 dark:focus:ring-gray-700 dark:border-gray-700 font-bold">
+                {{ __('Log in') }}
+            </x-primary-button>
+
+            {{-- <button type="button" class="text-white bg-gray-800 hover:bg-gray-900 focus:outline-none focus:ring-4 focus:ring-gray-300 rounded-full text-sm px-5 py-2.5 mr-2 mb-2 dark:bg-gray-800 dark:hover:bg-gray-700 dark:focus:ring-gray-700 dark:border-gray-700 font-bold">Sign in</button> --}}
+
+        </div>
+        <div class="flex flex-row">
             @if (Route::has('password.request'))
-                <a class="text-sm text-gray-600">ยังไม่เป็นสมาชิก?</a>
+                <a class="font-Kanit text-sm text-black-600">ยังไม่เป็นสมาชิก?</a>
                 <a class="underline text-sm text-blue-600 hover:text-gray-900 rounded-md focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500" href="{{ route('register') }}">
                     {{ __('สมัครสมาชิกที่นี่') }}
                 </a>
             @endif
+        </div>
 
-            <x-primary-button class="ml-3">
-                {{ __('Log in') }}
-            </x-primary-button>
+            
         </div>
     </form>
 </x-guest-layout>
+

@@ -1,11 +1,11 @@
 <nav class="bg-white border-gray-200 py-2.5">
     <div class="flex flex-wrap items-center justify-between max-w-screen-xl px-4 mx-auto">
         <div class="flex items-center">
-            <img src="{{ URL('images/miniheart.jpg') }}" class="h-6 mr-3 sm:h-9" alt="Logo">
+            <img src="{{ URL('images/factoryImage2.png') }}" class="h-6 mr-3 sm:h-9" alt="Logo">
             @if($user->role === "user")
-                <a href="/user" class="self-center text-gray-700 text-3xl font-semibold whitespace-nowrap a">Miniheart</a>
+                <a href="/user" class="self-center text-gray-700 text-3xl font-semibold whitespace-nowrap a">FactoryQA</a>
             @else
-                <p class="self-center text-gray-700 text-3xl font-semibold whitespace-nowrap a">Miniheart</p>
+                <p class="self-center text-gray-700 text-3xl font-semibold whitespace-nowrap a">FactoryQA</p>
             @endif
         </div>
         @if($user->role === "user")

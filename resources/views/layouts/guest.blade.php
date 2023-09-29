@@ -15,28 +15,15 @@
         @vite(['resources/css/app.css', 'resources/js/app.js'])
     </head>
     <body class="font-sans text-gray-900 antialiased ">
-
-        <div class="grid grid-cols-2 gap-4">
-            
-            <div>
-
-                <img src="{{ URL('images/login-image.png')}}" alt="" class="min-h-screen" >
-            </div>
- 
-        
-            <div class="min-h-screen flex flex-col sm:justify-center items-center pt-6 sm:pt-0">
-                <div>
-                    <!-- <a href="/">
-                        <x-application-logo class="w-20 h-20 fill-current text-gray-500" />
-                    </a> -->
-    
-                    <img src="{{ URL('images/miniheart.jpg') }}"  alt="Logo" width="110" height="600" class="sm:rounded-lg">
-                </div>
-    
-                <div class="w-full sm:max-w-md mt-6 px-6 py-4 bg-white shadow-2xl overflow-hidden sm:rounded-lg">
+            <section class="bg-gray-50 min-h-screen flex items-center justify-center">
+                {{-- login container --}}
+                <div class="bg-[#fbfbf9] flex rounded-2xl shadow-lg max-w-3xl p-5">
+                    {{-- form --}} 
                     {{ $slot }}
+                
+
                 </div>
-            </div>
-        </div>
+            </section>
     </body>
+    
 </html>

@@ -2,13 +2,65 @@
 
 @section('content')
 
-    <div class="relative grid mb-10">
+@php
+    $counter = 1;
+@endphp
+
+@php
+    $counter_allow_sending = 0;
+    $counter_allow_accept = 0;
+    $counter_allow_success = 0;
+    
+@endphp
+
+@foreach ($events as $event)
+
+        @if ($event->event_is_allow === 'SENDING')
+            @php
+                $counter_allow_sending++
+            @endphp            
+        @endif
+        @if ($event->event_status)
+            @php
+                $counter_allow_success++
+            @endphp            
+        @endif
+        
+        @if ($event->event_is_allow === 'ACCEPT')
+            @php
+                $counter_allow_accept++;
+            @endphp            
+        @endif        
+        @endforeach
+
+<ul class="flex flex-col md:grid grid-cols-3 gap-5 text-redis-neutral-800 max-w-2xl mx-auto p-10 mt-10">
+    <li
+        class="w-full text-sm font-semibold text-slate-900 p-6 bg-white border border-slate-900/10 bg-clip-padding shadow-md shadow-slate-900/5 rounded-lg flex flex-col justify-center">
+        <span class="mb-1 text-[#2ed4c0] font-display text-5xl">{{$counter_allow_sending}}</span>
+        {{-- ['ACCEPT','REJECT','SENDING'] --}}
+        
+
+        กำลังรอการอนุมัติ
+    </li>
+    <li
+        class="w-full text-sm font-semibold text-slate-900 p-6 bg-white border border-slate-900/10 bg-clip-padding shadow-md shadow-slate-900/5 rounded-lg flex flex-col justify-center">
+        <span class="mb-1 text-[#2ed4c0] font-display text-5xl">{{$counter_allow_accept}}</span>
+        กำลังดำเนินการ
+    </li>
+    
+    <li
+        class="w-full text-sm font-semibold text-slate-900 p-6 bg-white border border-slate-900/10 bg-clip-padding shadow-md shadow-slate-900/5 rounded-lg flex flex-col justify-center">
+        <span class="mb-1 text-[#2ed4c0] font-display text-5xl">{{$counter_allow_success}}</span>
+        สำเร็จลุล่วง
+    </li>
+</ul>
+
+    {{-- <div class="relative grid mb-10">
         <!-- <img src="{{ URL('images/background-user.jpg') }}" 
         class="bg-center h-[30%] w-full"/> -->
         <img src="{{ URL('images/giphy.gif')}}" class="h-[30vh] w-full rounded-lg">
         <p class="absolute text-3xl place-self-center font-extrabold text-black tracking-widest md:text-5xl ">แหล่งรวบรวมอีเว้นท์ที่น่าสนใจ</p>
-    </div>
-    
+    </div> --}}
     
     <div class="container mx-auto grid grid-cols-2 gap-10">
         @foreach ($events as $event)
@@ -18,6 +70,16 @@
                     <div class="flex flex-col justify-between p-4 leading-normal truncate w-full">
                         <h5 class="mb-2 text-xl font-bold tracking-tight text-gray-900 ">{{ $event->event_name }}</h5>
                         <h1 class="mb-3 font-normal text-sm text-gray-700 ">{{ $event->event_content }}</h1>
+                        {{-- member event --}}
+                        {{-- <h1>{{$event->event_member}}</h1> --}}
+                        @foreach ($event->users as $user)
+                            
+                            @php
+                            $counter++;
+                            @endphp
+                        @endforeach                        
+                        <h2>{{$counter}}<span>/</span>{{$event->event_member}}</h2>
+
                         <div class="flex justify-end items-center text-center space-x-3">
                             
                             
@@ -40,11 +102,14 @@
                                     <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M1 5h12m0 0L9 1m4 4L9 9"/>
                                 </svg>
                             </a>
-                            @endif
-                        </div>
-                    </div>
+                            @endif                        
+                        </div>                        
+                    </div>                    
             </div>
-
+            @php
+    $counter = 1;
+@endphp
         @endforeach
+        
     </div>
 @endsection

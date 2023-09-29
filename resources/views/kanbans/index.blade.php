@@ -7,6 +7,8 @@
         class="bg-center h-[30%] w-full"/> -->        
     </div>
     
+    
+    
     {{-- <form action="{{ route('artists.songs.store', ['artist' => $artist]) }}" method="POST"> --}}
     {{-- <form action="{{ route('artists.songs.store', ['artist' => $artist]) }}" method="POST"> --}}
     {{-- <form action="{{ route('kanbans.update', ['kanban' => $task]) }}" method="POST">--}}                                
@@ -291,6 +293,10 @@
  
     </div>
 
+    {{-- Testing member count --}}
+                
+        
+
     {{-- member --}}
     <div class="border-black border-b-4 w-full rounded-xl my-5"></div>
     <div class="relative overflow-x-auto rounded-xl">
@@ -320,12 +326,16 @@
                         leader
                     </td>
                 </tr>
+                
     
+                
                 @foreach($event->users as $member)
+                
                 <tr class="bg-white border-b">
                     <th scope="row" class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap">
                         {{$member->name}}
                     </th>
+                    
                     <td class="px-6 py-4">
                         {{$member->email}}
                     </td>

@@ -19,7 +19,6 @@ export default {
                 // sans: ['Figtree', ...defaultTheme.fontFamily.sans],
                 // sans: ['Noto Sans Thai',...defaultTheme.fontFamily.sans]
                 sans: ["Kanit", ...defaultTheme.fontFamily.sans],
-                // Kanit: ["Kanit", "sans-serif", defaultTheme.fontFamily.sans],
             },
         },
     },

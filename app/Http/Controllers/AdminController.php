@@ -68,6 +68,22 @@ class AdminController extends Controller
         $event->save();
         return redirect()->route('admin.index');
     }
-
+    //สร้าง staff คนใหม่ขึ้นมา
+    public function createStaff(Request $request){
+        return view('admin.createStaff',[
+            'user' => User::first(),            
+            
+        ]);
+        
+    }
+    public function handleStaffButton(Request $request){
+        $user = new User();
+        $user->name = $request->name;
+        $user->email = $request->email;
+        $user->password = $request->password;  
+        $user->role = 'staff';
+        $user->save();        
+        return redirect()->route('admin.index');
+    }
     
 }

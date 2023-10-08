@@ -43,6 +43,12 @@ Route::get('/admin', [AdminController::class, 'index'])
 Route::post('/admin', [AdminController::class, 'store']) 
     ->name('admin.store');
 
+
+Route::get('/admin/createStaff', [AdminController::class, 'createStaff']) 
+    ->name('admin.createStaff');
+Route::post('/admin/createStaff', [AdminController::class, 'handleStaffButton']) 
+    ->name('admin.handleStaffButton');
+
 Route::get('/admin/comfirm/{event}', [AdminController::class, 'confirm'])
 ->name('admin.confirm');
 

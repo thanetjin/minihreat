@@ -1,8 +1,11 @@
-<x-app-layout>
-    <x-slot name="header">
-        <h2 class="font-semibold text-xl text-gray-800 leading-tight">Active Loans </h2>
-    </x-slot>
+@php use Carbon\Carbon; @endphp
 
+
+
+
+@extends('layouts.main')
+
+@section('content')
 
     <div class="py-12">
         <div class="shadow-sm sm:rounded-lg">
@@ -16,7 +19,9 @@
                 @endif
 
 
-                @if($loans->count() > 0)
+                {{-- @if($loans->count() > 0) --}}
+                @if (!empty($loans))                    
+
                     <table class="mx-auto">
                         <thead>
                         <tr>
@@ -51,7 +56,7 @@
                                 <td class="px-6 py-4 whitespace-no-wrap border-b border-gray-200">
                                     <div class="flex items-center">
                                         <div class="text-sm font-medium leading-5 text-gray-900">
-                                            {{$loan->book->name}}
+                                            {{$loan->tool->name}}
                                         </div>
                                     </div>
                                 </td>
@@ -80,4 +85,4 @@
             </div>
         </div>
     </div>
-</x-app-layout>
+@endsection

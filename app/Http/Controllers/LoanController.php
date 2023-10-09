@@ -18,9 +18,10 @@ class LoanController extends Controller
     //         ->loans()
     //         ->where('is_returned', false)
     //         ->get();
-    public function index(): View {        
+    public function index(): View {
+        $user = Auth::user();        
         // return view('loans.index', ['loans' => Auth::user()->activeLoans]);
-        return view('loans.index', ['loans' => Auth::user()->loans->where('is_returned', false)->get()]);
+        return view('loans.index', ['user' => $user,'loans' => Auth::user()->loans->where('is_returned', false)->all()]);
         
     }
     public function store(Tool $tool, Request $request): RedirectResponse {
@@ -55,6 +56,7 @@ class LoanController extends Controller
         ]);
 
 
+        // $loanDetails['tool_id'] = $tool->id;
         $loanDetails['tool_id'] = $tool->id;
         $loanDetails['user_id'] = Auth::user()->id;
 
@@ -68,7 +70,8 @@ class LoanController extends Controller
 
 
     public function create(Tool $tool): View {
-        return view('loans.create', ['tool' => $tool]);
+        $user = Auth::user();        
+        return view('loans.create', ['user' => $user,'tool' => $tool]);
     }
 
 

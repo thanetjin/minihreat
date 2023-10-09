@@ -14,7 +14,7 @@ class Loan extends Model
     protected $fillable = [
         'number_borrowed',
         'return_date',
-        'book_id',
+        'tool_id',
         'user_id',
     ];
     public function user(): BelongsTo {

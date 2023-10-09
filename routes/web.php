@@ -65,10 +65,14 @@ Route::post('/admin/accept/{event}',[AdminController::class, 'accept'])
 
     // User Route
 
-Route::resource('/user', UserController::class)
-    ->missing(function (Request $request){
-        return Redirect::route('user.index');
-    });
+// Route::resource('/user', UserController::class)
+//     ->missing(function (Request $request){
+//         return Redirect::route('user.index');
+//     });
+
+Route::resources([
+    '/user' => UserController::class,    
+]);
 
 Route::post('/user/{user}/edit', [
     UserController::class, 'updatePassword'
@@ -108,11 +112,16 @@ Route::post('/user/store/{user}',[
 ])->name('user.storeEvent');
 
 // Loan and Tool Route
+
+
 Route::get('/tool', [ToolController::class, 'index'])->name('tools.index');
 Route::get('/loans', [LoanController::class, 'index'])->name('loans.index');
 Route::get('/loans/{tool}', [LoanController::class, 'create'])->name('loans.create');
 Route::post('/loans/{tool}', [LoanController::class, 'store'])->name('loans.store');
 Route::get('/loans/terminate/{loan}', [LoanController::class, 'terminate'])->name('loans.terminate');
+// Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
+// Route::patch('/profile', [ProfileController::class, 'update'])->name('profile.update');
+// Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
 
     // Kanban Route
 Route::resource('/kanbans',KanBanController::class)->only([

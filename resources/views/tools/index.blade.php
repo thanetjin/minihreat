@@ -3,7 +3,7 @@
 
 @section('content')
 
-    <h2 class="m-6 text-xl font-semibold text-gray-900 text-center">Laravel Library App</h2>
+    <h2 class="m-6 text-xl font-semibold text-gray-900 text-center">ยืมอุปกรณ์</h2>
 
     <table class="mx-auto">
         <thead>
@@ -14,24 +14,21 @@
             </th>
             <th
                 class="px-6 py-3 text-xs font-medium leading-4 tracking-wider text-left text-gray-500 uppercase border-b border-gray-200 bg-gray-50">
-                name
+                ชื่อ
             </th>
             <th
                 class="px-6 py-3 text-xs font-medium leading-4 tracking-wider text-left text-gray-500 uppercase border-b border-gray-200 bg-gray-50">
-                desc
+                คำอธิบาย
             </th> 
+            
             <th
                 class="px-6 py-3 text-xs font-medium leading-4 tracking-wider text-left text-gray-500 uppercase border-b border-gray-200 bg-gray-50">
-                Released Copies
-            </th>
-            <th
-                class="px-6 py-3 text-xs font-medium leading-4 tracking-wider text-left text-gray-500 uppercase border-b border-gray-200 bg-gray-50">
-                Available Copies
+                จำนวนทั้งหมด
             </th>
             @auth
                 <th
                     class="px-6 py-3 text-xs font-medium leading-4 tracking-wider text-left text-gray-500 uppercase border-b border-gray-200 bg-gray-50">
-                    Actions
+                    จำนวนคงเหลือ
                 </th>
             @endif
         </tr>
@@ -50,13 +47,10 @@
                 </td>
 
                 <td class="px-6 py-4 whitespace-no-wrap border-b border-gray-200">
-                    <div class="text-sm leading-5 text-gray-500">{{$tool->name}}</div>
+                    <div class="text-sm leading-5 text-gray-500">{{$tool->description}}</div>
                 </td>
 
-                <td
-                    class="px-6 py-4 text-sm leading-5 text-gray-500 whitespace-no-wrap border-b border-gray-200">
-                    {{$tool->desc}}
-                </td>
+                
 
                 <td class="px-6 py-4 whitespace-no-wrap border-b border-gray-200">
                     @if($tool->copies < 10)
@@ -98,9 +92,9 @@
                     <td
                         class="px-6 py-4 text-sm leading-5 text-gray-500 whitespace-no-wrap border-b border-gray-200">
                     @if($tool->canBeBorrowed())
-                        <a href="{{ route('loans.create', ['tool' => $tool->id]) }}">Borrow tool</a>
+                        <a href="{{ route('loans.create', ['tool' => $tool->id]) }}">ยืมอุปกรณ์</a>
                         @else
-                        <p class="text-red-600"> No copies available to borrow</p>
+                        <p class="text-red-600">ไม่สามารถยืมได้</p>
                         @endif
                     </td>
                 @endif

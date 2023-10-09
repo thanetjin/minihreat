@@ -31,19 +31,19 @@
                             </th>
                             <th
                                 class="px-6 py-3 text-xs font-medium leading-4 tracking-wider text-left text-gray-500 uppercase border-b border-gray-200 bg-gray-50">
-                                Tool
+                                เครื่องมือ
                             </th>
                             <th
                                 class="px-6 py-3 text-xs font-medium leading-4 tracking-wider text-left text-gray-500 uppercase border-b border-gray-200 bg-gray-50">
-                                Number Borrowed
+                                จำนวนที่ต้องการยืม
                             </th>
                             <th
                                 class="px-6 py-3 text-xs font-medium leading-4 tracking-wider text-left text-gray-500 uppercase border-b border-gray-200 bg-gray-50">
-                                Return date
+                                เวลาในการคืน
                             </th>
                             <th
                                 class="px-6 py-3 text-xs font-medium leading-4 tracking-wider text-left text-gray-500 uppercase border-b border-gray-200 bg-gray-50">
-                                Actions
+                                
                             </th>
                         </tr>
                         </thead>
@@ -73,14 +73,14 @@
                                 </td>
                                 <td
                                     class="px-6 py-4 text-sm leading-5 text-gray-500 whitespace-no-wrap border-b border-gray-200">
-                                    <a href="{{ route('loans.terminate', ['loan' => $loan->id]) }}">Return tool</a>
+                                    <a href="{{ route('loans.terminate', ['loan' => $loan->id]) }}">คืนเครื่องมือ</a>
                                 </td>
                             </tr>
                         @endforeach
                         </tbody>
                     </table>
                 @else
-                    <h1 class="m-6 text-xl font-semibold text-gray-900 text-center">You have no active loans</h1>
+                    <h1 class="m-6 text-xl font-semibold text-gray-900 text-center">ไม่พบรายการการยืม</h1>
                 @endif
             </div>
         </div>

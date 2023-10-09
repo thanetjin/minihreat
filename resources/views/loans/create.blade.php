@@ -2,13 +2,10 @@
 
 @section('content')
     
-        <h2 class="font-semibold text-xl text-gray-800 leading-tight">
-            {{ __('Borrow Tool') }} "{{$tool->name}}"
+        <h2 class="font-semibold text-xl text-gray-800 leading-tight text-center">
+            {{ __('อุปกรณ์ที่ต้องการยืมคือ ') }} "{{$tool->name}}"
         </h2>
-        <h2>
-            {{ __('tool id') }} "{{$tool->id}}"
-        </h2>
-    
+        
 
     <div class="py-12">
         <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
@@ -19,9 +16,9 @@
                         @csrf
                         <div class="mb-6">
                             <label class="block">
-                                <span class="text-gray-700">How many copies would you like to borrow?</span>
+                                <span class="text-gray-700">จำนวนที่ต้องการยืม</span>
                                 <input type="number" name="number_borrowed" class="block w-full mt-1 rounded-md"
-                                       placeholder="How many copies would you like to borrow?"
+                                       placeholder="กรุณากรอกจำนวนที่ต้องการยืม?"
                                        value="{{old('number_borrowed')}}"/>
                             </label>
                             @error('number_borrowed')
@@ -30,7 +27,7 @@
                         </div>
                         <div class="mb-6">
                             <label class="block">
-                                <span class="text-gray-700">Return date</span>
+                                <span class="text-gray-700">เวลาที่ต้องการคืน</span>
                                 <input type="date" name="return_date" class="block w-full mt-1 rounded-md"
                                        placeholder="" value="{{old('return_date')}}"/>
                             </label>
@@ -39,7 +36,7 @@
                             @enderror
                         </div>
                         <x-primary-button type="submit">
-                            Submit
+                            ยืนยันการยืม
                         </x-primary-button>
 
                     </form>

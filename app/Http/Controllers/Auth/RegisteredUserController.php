@@ -30,10 +30,21 @@ class RegisteredUserController extends Controller
      */
     public function store(Request $request): RedirectResponse
     {
+        // $request->validate([
+        //     'name' => ['required', 'string', 'max:255'],
+        //     'email' => ['required', 'string', 'email', 'max:255', 'unique:'.User::class],
+        //     'password' => ['required', 'confirmed', Rules\Password::defaults()],
+        // ]);
+
         $request->validate([
             'name' => ['required', 'string', 'max:255'],
             'email' => ['required', 'string', 'email', 'max:255', 'unique:'.User::class],
-            'password' => ['required', 'confirmed', Rules\Password::defaults()],
+            'password' => ['required', 'confirmed','min:7', Rules\Password::defaults()],
+        ],[
+            'password.required' => 'กรุณากรอกรหัสผ่าน',
+            'password.confirmed' => 'กรุณากรอกรหัสผ่านตรงกัน',
+            'password.min' => 'กรุณากรอกรหัสผ่านอย่างน้อย 7 ตัวขึ้นไป',
+            'email.unique' => 'อีเมลนี้มีคนใช้งานแล้ว',
         ]);
 
         $user = User::create([
@@ -46,6 +57,6 @@ class RegisteredUserController extends Controller
         event(new Registered($user));
 
 
-        return redirect(RouteServiceProvider::LOGIN);
+        return redirect(RouteServiceProvider::LOGIN)->with('status','คุณได้ทำการสมัครสมาชิกเรียบร้อยแล้ว');
     }
 }

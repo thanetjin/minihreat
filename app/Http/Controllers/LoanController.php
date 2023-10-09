@@ -37,7 +37,7 @@ class LoanController extends Controller
             if ($numberBorrowed > $availableCopies) {
                 $validator->errors()->add(
                     'number_borrowed',
-                    "You cannot borrow more than {$availableCopies} book(s)"
+                    "คุณไม่สามารถยืมได้มากกว่า {$availableCopies}"
                 );
             }
         });
@@ -80,7 +80,7 @@ class LoanController extends Controller
 
 
         return to_route('loans.index')
-            ->with('status', 'Book returned successfully');
+            ->with('status', 'ได้ทำการคืนเครื่องมือเป็นที่เรียบร้อยแล้ว');
     }
     
         

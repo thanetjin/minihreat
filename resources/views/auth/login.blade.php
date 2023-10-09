@@ -1,12 +1,19 @@
 <x-guest-layout>
     <!-- Session Status -->
-    <x-auth-session-status class="mb-4" :status="session('status')" />
+    {{-- <x-auth-session-status class="mb-4" :status="session('status')" /> --}}
 
     <div class="md:w-1/2 px-16">
         <h2 class="font-bold text-2xl text-black">เข้าสู่ระบบ</h2>
         <p class="text-sm mt-4 text-black    ">
             ยินดีต้อนรับ! กรุณากรอกเพื่อทำการเข้าสู่ระบบ
         </p>
+        @if (session()->has('status'))
+        <div
+            class="bg-green-100 border border-green-400 text-green-700 px-4 py-3 rounded   text-center mx-auto m-5"
+            role="alert">
+            <span class="block sm:inline">{{ session()->get('status') }}</span>
+        </div>
+    @endif
 
         <form method="POST" class="flex flex-col gap-4" action="{{ route('login') }}">
             @csrf

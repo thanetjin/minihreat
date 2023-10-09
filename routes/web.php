@@ -117,8 +117,12 @@ Route::post('/user/store/{user}',[
 Route::get('/tool', [ToolController::class, 'index'])->name('tools.index');
 Route::get('/loans', [LoanController::class, 'index'])->name('loans.index');
 Route::get('/loans/{tool}', [LoanController::class, 'create'])->name('loans.create');
+
+
 Route::get('/loans/{tool}/edit', [ToolController::class, 'edit'])->name('tools.edit');
 Route::put('/loans/{tool}/edit', [ToolController::class, 'update'])->name('tools.update');
+
+
 Route::post('/loans/{tool}', [LoanController::class, 'store'])->name('loans.store');
 Route::get('/loans/terminate/{loan}', [LoanController::class, 'terminate'])->name('loans.terminate');
 // Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');

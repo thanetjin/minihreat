@@ -50,8 +50,7 @@
                         </div>
                         <x-primary-button type="submit">
                             ยืนยันการยืม
-                        </x-primary-button>
-
+                        </x-primary-button>                        
                     </form>
                 </div>
             </div>

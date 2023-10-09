@@ -100,6 +100,9 @@ class LoanController extends Controller
         return to_route('loans.index')
             ->with('status', 'ได้ทำการคืนเครื่องมือเป็นที่เรียบร้อยแล้ว');
     }
+    public function showLoaner(){
+        
+    }
     
         
 

@@ -2,7 +2,7 @@
     <div class="flex flex-wrap items-center justify-between max-w-screen-xl px-4 mx-auto">
         <div class="flex items-center">
             <img src="{{ URL('images/factoryImage2.png') }}" class="h-6 mr-3 sm:h-9" alt="Logo">
-            @if($user->role === "user")
+            @if($user->role === "user" || $user->role === "asset")
                 <a href="/user" class="self-center text-gray-700 text-3xl font-semibold whitespace-nowrap a">FactoryQA</a>
             @else
             <a href="/admin" class="self-center text-gray-700 text-3xl font-semibold whitespace-nowrap a">FactoryQA</a>

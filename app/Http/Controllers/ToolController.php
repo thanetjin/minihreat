@@ -32,4 +32,7 @@ class ToolController extends Controller
         $tool->save();
         return redirect()->route('tools.index')->with('success','เครื่องมือได้เปลี่ยนแปลงเรียบร้อนแล้ว');
     }
+    public function show() {
+        
+    }
 }

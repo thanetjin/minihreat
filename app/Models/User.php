@@ -4,6 +4,7 @@ namespace App\Models;
 
 // use Illuminate\Contracts\Auth\MustVerifyEmail;
 use Illuminate\Database\Eloquent\Relations\BelongsToMany;
+use Illuminate\Database\Eloquent\Relations\HasMany;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
@@ -49,5 +50,15 @@ class User extends Authenticatable
     {
         return $this->belongsToMany(Event::class);
     }
+    public function activeLoans() {
+        return $this
+            ->loans()
+            ->where('is_returned', false)
+            ->get();
+    }    
+    public function loans(): HasMany {
+        return $this->hasMany(Loan::class);
+    }
+
     
 }

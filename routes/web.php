@@ -9,6 +9,8 @@ use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\SongController;
 use App\Http\Controllers\UserController;
 use App\Http\Controllers\KanBanController;
+use App\Http\Controllers\ToolController;
+use App\Http\Controllers\LoanController;
 use App\Http\Controllers\AuthController;
 
 
@@ -105,6 +107,13 @@ Route::post('/user/store/{user}',[
     UserController::class, 'storeEvent'
 ])->name('user.storeEvent');
 
+// Loan and Tool Route
+Route::get('/tool', [ToolController::class, 'index'])->name('tools.index');
+Route::get('/loans', [LoanController::class, 'index'])->name('loans.index');
+Route::get('/loans/{tool}', [LoanController::class, 'create'])->name('loans.create');
+Route::post('/loans/{tool}', [LoanController::class, 'store'])->name('loans.store');
+Route::get('/loans/terminate/{loan}', [LoanController::class, 'terminate'])->name('loans.terminate');
+
     // Kanban Route
 Route::resource('/kanbans',KanBanController::class)->only([
     'edit','update'
@@ -115,18 +124,11 @@ Route::post('/logout',[UserController::class, 'logout'])
     ->name('user.logout');
 });
 
-// Not sure
 
 Route::get('/dashboard', function () {
     return view('dashboard');
 })->middleware(['auth', 'verified'])->name('dashboard');
 
-// might be useful for debugging
-// Route::get('/', function () {
-//     $event = Event::first();
-
-//     return view('welcome', compact('event'));
-// });
 
 
 

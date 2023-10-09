@@ -9,7 +9,7 @@
             @endif
         </div>
         
-        @if(Auth::user()->role === "staff" || Auth::user()->role === "user")
+        @if(Auth::user()->role === "staff" || Auth::user()->role === "user" || Auth::user()->role === "asset")
         <div class="flex items-center lg:order-2">
             <div class="hidden mt-2 mr-4 sm:inline-block">
                 {{-- <span>My role is : {{$user->role }}</span>
@@ -27,7 +27,7 @@
             </a>          
             @endif
             
-            @if (Auth::user()->role === "user")
+            @if (Auth::user()->role === "user" || Auth::user()->role === "asset")
             <a href="{{ route('tools.index') }}" class="flex py-1 px-5 mr-3 mb-2 mt-2 text-sm font-semibold text-black focus:outline-none bg-white rounded-lg border border-gray-900 hover:bg-gray-100 hover:text-blue-700 focus:z-10 focus:ring-4 focus:ring-gray-200">    
                 ยืมเครื่องมือ
                 <svg class="w-3 h-3 ml-3 mt-1 text-gray-800" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none">

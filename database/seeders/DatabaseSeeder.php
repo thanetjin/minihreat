@@ -31,6 +31,15 @@ class DatabaseSeeder extends Seeder
         $user->role = "admin";
         $user->address = fake()->paragraph();
         $user->save();
+        
+        $user = new User();
+        $user->name = "asset";
+        $user->email = "asset@gmail.com";
+        $user->email_verified_at = now();
+        $user->password = Hash::make('password');
+        $user->role = "asset";
+        $user->address = fake()->paragraph();
+        $user->save();
 
         $user = new User();
         $user->name = "user2";

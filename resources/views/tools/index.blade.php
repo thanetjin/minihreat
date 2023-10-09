@@ -4,6 +4,14 @@
 @section('content')
 
     <h2 class="m-6 text-xl font-semibold text-gray-900 text-center">ยืมอุปกรณ์</h2>
+    @if ($message = Session::get('success'))
+    <div
+                        class="bg-green-100 border border-green-400 text-green-700 px-4 py-3 rounded relative w-7/12  text-center mx-auto m-5"
+                        role="alert">
+                        <span class="block sm:inline">{{ session()->get('status') }}</span>
+                        {{ $message}}
+                    </div>
+    @endif
 
     <table class="mx-auto">
         <thead>
@@ -89,6 +97,7 @@
                     @endif
                 </td>
                 @auth
+                @if (Auth::user()->role === "user")                                    
                     <td
                         class="px-6 py-4 text-sm leading-5 text-gray-500 whitespace-no-wrap border-b border-gray-200">
                     @if($tool->canBeBorrowed())
@@ -97,6 +106,13 @@
                         <p class="text-red-600">ไม่สามารถยืมได้</p>
                         @endif
                     </td>
+                    @endif
+                    @if (Auth::user()->role === "asset")                                    
+                    <td
+                        class="px-6 py-4 text-sm leading-5 text-gray-500 whitespace-no-wrap border-b border-gray-200">                    
+                        <a href="{{ route('tools.edit', ['tool' => $tool->id]) }}">จัดการอุปกรณ์</a>                    
+                    </td>
+                    @endif
                 @endif
             </tr>
         @endforeach

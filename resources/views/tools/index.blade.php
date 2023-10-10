@@ -128,4 +128,7 @@
 
         </tbody>
     </table>
+    <div class="mx-auto pb-10 w-4/5">
+        {{ $tools->links() }}
+    </div>
 @endsection

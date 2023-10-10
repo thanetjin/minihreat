@@ -20,22 +20,34 @@
                 <div class="flex flex-col justify-between p-4 w-full">
                     <h5 class="mb-2 text-xl font-bold tracking-tight text-gray-900">หัวเรื่อง : {{ $event->event_name }}</h5>
                     <p class="mb-3 font-normal text-sm text-gray-700">{{ $event->event_content }}</p>
+                    
+                    {{-- {{ $event->id}} --}}                    
                     @if ($event->event_is_allow == 'REJECT')
-                        <h1 class="text-red-400">เหตุผลในการโดนปฏิเสธ: {{ $event->event_rejection_reason }}</h1>
-                    @elseif ($event->users->count() == $event->event_member-1 && $event->user_id !== Auth::user()->id)
+                        <h1 class="text-red-400">เหตุผลในการโดนปฏิเสธ: {{ $event->event_rejection_reason }}</h1>                                         
+                    {{-- @elseif (($event->users->count() == $event->event_member-1) && ($event->user_id != Auth::user()->id))
+                    
                         <div class="flex justify-end">
+                            
                             <p class="flex py-1 px-5 mr-3 mb-2 mt-2 text-sm font-semibold text-black focus:outline-none bg-white rounded-lg border border-gray-900 hover:bg-gray-100 hover:text-blue-700 focus:z-10 focus:ring-4 focus:ring-gray-200 cursor-not-allowed">     
                                 คนในกิจกรรมเต็มแล้ว
                             </p>
                         </div>
+                    @else --}}
+                            
+                    
+                    
+                        @if ($event->users->count() == $event->event_member-1)                        
+                        <div class="flex justify-end">                            
+                            <p class="flex py-1 px-5 mr-3 mb-2 mt-2 text-sm font-semibold text-black focus:outline-none bg-white rounded-lg border border-gray-900 hover:bg-gray-100 hover:text-blue-700 focus:z-10 focus:ring-4 focus:ring-gray-200 cursor-not-allowed">     
+                                คนในกิจกรรมเต็มแล้ว
+                            </p>
+                        </div>
+                        @endif
                     @else
-                    <div class="flex justify-end">
-                        
 
+                    <div class="flex justify-end">
                         @if ($user->id === $event->user_id)
-                            <a href="{{ route('kanbans.index', ['event' => $event]) }}" class="flex py-1 px-5 mr-3 mb-2 mt-2 text-sm font-semibold text-black focus:outline-none bg-white rounded-lg border border-gray-900 hover:bg-gray-100 hover:text-blue-700 focus:z-10 focus:ring-4 focus:ring-gray-200">     
-                                    
-    
+                            <a href="{{ route('kanbans.index', ['event' => $event]) }}" class="flex py-1 px-5 mr-3 mb-2 mt-2 text-sm font-semibold text-black focus:outline-none bg-white rounded-lg border border-gray-900 hover:bg-gray-100 hover:text-blue-700 focus:z-10 focus:ring-4 focus:ring-gray-200">                                             
                                 ไป kanban 
                                 <svg class="w-3 h-3 ml-3 mt-1 text-gray-800" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 14 10">
                                     <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M1 5h12m0 0L9 1m4 4L9 9"/>
@@ -44,9 +56,16 @@
                         @else
                             @foreach($event->users as $member)
                                 @if($user->id === $member->id)
-                                    <p class="flex py-1 px-5 mr-3 mb-2 mt-2 text-sm font-semibold text-black focus:outline-none bg-white rounded-lg border border-gray-900 hover:bg-gray-100 hover:text-blue-700 focus:z-10 focus:ring-4 focus:ring-gray-200 cursor-not-allowed">     
+                                    {{-- <p class="flex py-1 px-5 mr-3 mb-2 mt-2 text-sm font-semibold text-black focus:outline-none bg-white rounded-lg border border-gray-900 hover:bg-gray-100 hover:text-blue-700 focus:z-10 focus:ring-4 focus:ring-gray-200 cursor-not-allowed">     
                                         เข้าร่วมอยู่แล้ว
-                                    </p>
+                                    </p> --}}
+
+                                    <a href="{{ route('kanbans.index', ['event' => $event]) }}" class="flex py-1 px-5 mr-3 mb-2 mt-2 text-sm font-semibold text-black focus:outline-none bg-white rounded-lg border border-gray-900 hover:bg-gray-100 hover:text-blue-700 focus:z-10 focus:ring-4 focus:ring-gray-200">                                             
+                                        ไป kanban 
+                                        <svg class="w-3 h-3 ml-3 mt-1 text-gray-800" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 14 10">
+                                            <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M1 5h12m0 0L9 1m4 4L9 9"/>
+                                        </svg>
+                                    </a>
                                         @php
                                             $check = true;
                                         @endphp

@@ -315,9 +315,10 @@
                 </tr>
             </thead>
             <tbody>
-                <tr class="bg-white border-b">
+                {{-- event->user_id --}}
+                {{-- <tr class="bg-white border-b">
                     <th scope="row" class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap">
-                        {{Auth::user()->name}}
+                        {{$event->user_id}}
                     </th>
                     <td class="px-6 py-4">
                         {{Auth::user()->email}}
@@ -325,10 +326,8 @@
                     <td class="px-6 py-4">
                         leader
                     </td>
-                </tr>
-                
-    
-                
+                </tr> --}}
+
                 @foreach($event->users as $member)
                 
                 <tr class="bg-white border-b">
@@ -340,7 +339,7 @@
                         {{$member->email}}
                     </td>
                     <td class="px-6 py-4">
-                        member
+                        {{$member->role}}
                     </td>
                 </tr>
                 @endforeach

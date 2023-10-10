@@ -109,6 +109,7 @@ class UserController extends Controller
         return view('user.detail_event',[
             'user' => Auth::user(),
             'event' => Event::find($event->id)
+            
         ]);   
     }
     public function enterEvent(Event $event)

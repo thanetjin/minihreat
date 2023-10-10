@@ -17,7 +17,8 @@ class ToolController extends Controller
 {
     public function index(): View {
         $user = Auth::user();
-        return view('tools.index', ['user' => $user,'tools' => Tool::all(),'loans' => Loan::all()]);
+        // return view('tools.index', ['user' => $user,'tools' => Tool::all(),'loans' => Loan::all()]);
+        return view('tools.index', ['user' => $user,'tools' => Tool::paginate(10),'loans' => Loan::paginate(10)]);
     }
     public function edit(Tool $tool): View {
         $user = Auth::user();        

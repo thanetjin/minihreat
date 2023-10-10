@@ -4,6 +4,7 @@
 
 namespace App\Http\Controllers;
 use App\Models\Tool;
+use App\Models\Loan;
 use Illuminate\Http\Request;
 use Illuminate\Contracts\View\View;
 use Illuminate\Support\Facades\Auth;
@@ -13,7 +14,7 @@ class ToolController extends Controller
 {
     public function index(): View {
         $user = Auth::user();
-        return view('tools.index', ['user' => $user,'tools' => Tool::all()]);
+        return view('tools.index', ['user' => $user,'tools' => Tool::all(),'loans' => Loan::all()]);
     }
     public function edit(Tool $tool): View {
         $user = Auth::user();        
@@ -33,6 +34,14 @@ class ToolController extends Controller
         return redirect()->route('tools.index')->with('success','เครื่องมือได้เปลี่ยนแปลงเรียบร้อนแล้ว');
     }
     public function show() {
+        $user = Auth::user();
         
+        return view('tools.show', ['user' => $user,'loans' => Loan::all()]);
     }
+    // public function index(): View {
+    //     $user = Auth::user();        
+    //     // return view('loans.index', ['loans' => Auth::user()->activeLoans]);
+    //     return view('loans.index', ['user' => $user,'loans' => Auth::user()->loans->where('is_returned', false)->all()]);
+        
+    // }
 }

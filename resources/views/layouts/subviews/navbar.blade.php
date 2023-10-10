@@ -35,8 +35,7 @@
                 </svg>
             </a>
             <a href="{{ route('loans.index') }}" class="flex py-1 px-5 mr-3 mb-2 mt-2 text-sm font-semibold text-black focus:outline-none bg-white rounded-lg border border-gray-900 hover:bg-gray-100 hover:text-blue-700 focus:z-10 focus:ring-4 focus:ring-gray-200">    
-                รายการยืม
-                
+            รายการยืม
             </a>
             
                       

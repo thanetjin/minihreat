@@ -4,6 +4,9 @@
 @section('content')
 
     <h2 class="m-6 text-xl font-semibold text-gray-900 text-center">ยืมอุปกรณ์</h2>
+    {{-- <h2 class="m-6 text-xl font-semibold text-gray-900 text-center">รายชื่อผู้ยืมทั้งหมด</h2>     --}}
+
+    
     @if ($message = Session::get('success'))
     <div
                         class="bg-green-100 border border-green-400 text-green-700 px-4 py-3 rounded relative w-7/12  text-center mx-auto m-5"
@@ -114,8 +117,9 @@
                     </td>
                     <td
                         class="px-6 py-4 text-sm leading-5 text-gray-500 whitespace-no-wrap border-b border-gray-200">                    
-                        <a href="{{ route('tools.show', ['tool' => $tool->id]) }}">รายชื่อผู้ยืม</a>                    
+                        <a href="{{ route('tools.show', ['tool' => $tool]) }}">รายชื่อผู้ยืม</a>                    
                     </td>
+                    {{-- <a  class="m-6 text-xl font-semibold text-gray-900 text-center" href="{{ route('tools.getAll')}}">รายชื่อผู้ยืมทั้งหมด</a>                     --}}
 
                     @endif
                 @endif

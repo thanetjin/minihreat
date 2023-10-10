@@ -5,21 +5,10 @@
 @section('content')
 {{-- debug --}}
 <h1>555</h1>
-@foreach ($user->loans as $loan)
-    {{ $loan->name}}
-@endforeach
+<h2>what</h2>
     <div class="py-12">
         <div class="shadow-sm sm:rounded-lg">
             <div class="mx-auto sm:px-6 lg:px-8">
-                @if (session()->has('status'))
-                    <div
-                        class="bg-green-100 border border-green-400 text-green-700 px-4 py-3 rounded relative w-7/12  text-center mx-auto m-5"
-                        role="alert">
-                        <span class="block sm:inline">{{ session()->get('status') }}</span>
-                    </div>
-                @endif
-
-
                 {{-- @if($loans->count() > 0) --}}
                 
                 @if (!empty($loans))                    
@@ -52,7 +41,9 @@
 
 
                         <tbody class="bg-white">
-                        @foreach($loans as $loan)                                                
+                        {{-- @foreach($loans as $loan)                                                 --}}
+                        {{-- @foreach ($user->loans as $loan) --}}
+                        @foreach ($loans as $loan)
                             <tr>
                                 <td class="px-6 py-4 whitespace-no-wrap border-b border-gray-200">{{ $loop->index + 1 }}</td>
                                 <td class="px-6 py-4 whitespace-no-wrap border-b border-gray-200">
@@ -68,11 +59,15 @@
                                     <div class="text-sm leading-5 text-gray-500">{{$loan->number_borrowed}}</div>
                                 </td>
 
-
                                 <td
                                     class="px-6 py-4 text-sm leading-5 text-gray-500 whitespace-no-wrap border-b border-gray-200">
                                     {{Carbon::parse($loan->return_date)->format('l jS F, Y')}}
                                 </td>
+                                {{-- add --}}
+                                {{-- <td class="px-6 py-4 whitespace-no-wrap border-b border-gray-200">
+                                    <div class="text-sm leading-5 text-gray-500">{{$loan->user->name}}</div>
+                                </td> --}}
+                                
                                 <td
                                     class="px-6 py-4 text-sm leading-5 text-gray-500 whitespace-no-wrap border-b border-gray-200">
                                     <a href="{{ route('loans.terminate', ['loan' => $loan->id]) }}">คืนเครื่องมือ</a>

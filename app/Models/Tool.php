@@ -4,6 +4,7 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\Relations\BelongsToMany;
 use Illuminate\Database\Eloquent\Relations\HasMany;
 
 class Tool extends Model
@@ -24,4 +25,5 @@ class Tool extends Model
     public function availableCopies(): int {
         return $this->copies - $this->activeLoans();
     }
+    
 }

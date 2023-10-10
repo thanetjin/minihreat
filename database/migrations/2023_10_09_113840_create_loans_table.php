@@ -14,9 +14,10 @@ return new class extends Migration
         Schema::create('loans', function (Blueprint $table) {
             $table->id();
             $table->foreignId('tool_id');
-            $table->foreignId('user_id');
+            // $table->foreignId('user_id');
+            $table->foreignId('user_id')->references('id')->on('users');
             $table->integer('number_borrowed');
-            $table->dateTime('return_date');
+            $table->dateTime('return_date');            
             $table->boolean('is_returned')->default(false);
             $table->timestamps();
         });

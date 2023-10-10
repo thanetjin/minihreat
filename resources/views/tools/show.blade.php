@@ -44,6 +44,9 @@
                         {{-- @foreach($loans as $loan)                                                 --}}
                         {{-- @foreach ($user->loans as $loan) --}}
                         @foreach ($loans as $loan)
+                        @if ($loan->is_returned === 0)
+                            
+                        
                             <tr>
                                 <td class="px-6 py-4 whitespace-no-wrap border-b border-gray-200">{{ $loop->index + 1 }}</td>
                                 <td class="px-6 py-4 whitespace-no-wrap border-b border-gray-200">
@@ -70,9 +73,22 @@
                                 
                                 <td
                                     class="px-6 py-4 text-sm leading-5 text-gray-500 whitespace-no-wrap border-b border-gray-200">
+                                    <h1>Loan ID : {{$loan->id}}</h1>
+                                </td>
+                                <td
+                                    class="px-6 py-4 text-sm leading-5 text-gray-500 whitespace-no-wrap border-b border-gray-200">
+                                    <h1>User ID : {{$loan->user->name}}</h1>
+                                </td>
+                                <td
+                                    class="px-6 py-4 text-sm leading-5 text-gray-500 whitespace-no-wrap border-b border-gray-200">
+                                    <h1>Status ID : {{$loan->is_returned}}</h1>
+                                </td>
+                                <td
+                                    class="px-6 py-4 text-sm leading-5 text-gray-500 whitespace-no-wrap border-b border-gray-200">
                                     <a href="{{ route('loans.terminate', ['loan' => $loan->id]) }}">คืนเครื่องมือ</a>
                                 </td>
                             </tr>
+                            @endif
                         @endforeach
                         </tbody>
                     </table>

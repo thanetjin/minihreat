@@ -115,10 +115,7 @@
                         class="px-6 py-4 text-sm leading-5 text-gray-500 whitespace-no-wrap border-b border-gray-200">                    
                         <a href="{{ route('tools.edit', ['tool' => $tool->id]) }}">จัดการอุปกรณ์</a>                    
                     </td>
-                    <td
-                        class="px-6 py-4 text-sm leading-5 text-gray-500 whitespace-no-wrap border-b border-gray-200">                    
-                        <a href="{{ route('tools.show', ['tool' => $tool]) }}">รายชื่อผู้ยืม</a>                    
-                    </td>
+                    
 
                     @endif
                 @endif

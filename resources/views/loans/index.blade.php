@@ -4,7 +4,6 @@
 
 @section('content')
 {{-- debug --}}
-<h1>555</h1>
 @foreach ($user->loans as $loan)
     {{ $loan->name}}
 @endforeach
@@ -82,7 +81,7 @@
                         </tbody>
                     </table>
                 @else
-                    <h1 class="m-6 text-xl font-semibold text-gray-900 text-center">ไม่พบรายการการยืม</h1>
+                    <h1 class="m-6 text-3xl font-semibold text-gray-900 text-center">ไม่พบรายการการยืม</h1>
                 @endif
             </div>
         </div>

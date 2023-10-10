@@ -4,8 +4,6 @@
 
 @section('content')
 {{-- debug --}}
-<h1>555</h1>
-<h2>what</h2>
     <div class="py-12">
         <div class="shadow-sm sm:rounded-lg">
             <div class="mx-auto sm:px-6 lg:px-8">

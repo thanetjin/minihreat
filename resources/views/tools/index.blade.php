@@ -3,9 +3,13 @@
 
 @section('content')
 
-    <h2 class="m-6 text-xl font-semibold text-gray-900 text-center">ยืมอุปกรณ์</h2>
-    {{-- <h2 class="m-6 text-xl font-semibold text-gray-900 text-center">รายชื่อผู้ยืมทั้งหมด</h2>    --}}
-    <a href="{{ route('tools.show') }}">รายชื่อผู้ยืมทั้งหมด</a>                    
+@if (Auth::user()->role === "user")
+    <h2 class="m-6 text-3xl font-semibold text-gray-900 text-center">ยืมอุปกรณ์</h2>    
+    @endif
+    
+    @if (Auth::user()->role === "asset")
+    <a class="flex m-6 text-3xl font-semibold text-gray-900 text-center justify-center items-center" href="{{ route('tools.show') }}">รายชื่อผู้ยืมทั้งหมด</a>                    
+    @endif
     
     @if ($message = Session::get('success'))
     <div

@@ -92,14 +92,7 @@ class UserController extends Controller
     {
         //
     }
-
-    public function showCertificate(User $user){
-        return view('user.certificate',[
-            
-            'user' => $user,
-            'events' => Event::where('event_status',true)->get()
-        ]);
-    }
+    
     public function showCreateEvent(Event $event){
         $user = Auth::user();
         return view('user.showCreateEvent',[

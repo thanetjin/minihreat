@@ -78,9 +78,7 @@ Route::post('/user/{user}/edit', [
     UserController::class, 'updatePassword'
 ])->name('update-password');
 
-Route::get('/user/{user}/certificate', [
-    UserController::class, 'showCertificate'
-])->name('user.certificate');
+
 
 Route::get('/user/{user}/showCreateEvent', [
     UserController::class, 'showCreateEvent'

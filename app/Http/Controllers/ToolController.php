@@ -34,9 +34,12 @@ class ToolController extends Controller
         return redirect()->route('tools.index')->with('success','เครื่องมือได้เปลี่ยนแปลงเรียบร้อนแล้ว');
     }
     public function show() {
-        $user = Auth::user();
-        
+        $user = Auth::user();        
         return view('tools.show', ['user' => $user,'loans' => Loan::all()]);
+    }
+    public function show2() {
+        $user = Auth::user();        
+        return view('tools.show2', ['user' => $user]);
     }
     // public function index(): View {
     //     $user = Auth::user();        

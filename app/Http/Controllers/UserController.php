@@ -121,15 +121,16 @@ class UserController extends Controller
     // เกิดขึ้นเมื่อ user กดปุ้มสร้าง event
     public function storeEvent(Request $request, User $user){
         $event = new Event();
-        $event->event_name = $request->event_name;
-        $event->event_content = $request->event_content;
-        $event->event_money = $request->event_money;
+        $event->name = $request->name;
+        $event->address = $request->address;        
         $event->user_id = $user->id;
-        $event->event_member = $request->event_member;
-        if ($request->hasFile('event_image')) {
+        $event->member = $request->member;
+        $event->serial_number = $request->serial_number;
+        $event->date = $request->date;    
+        if ($request->hasFile('image')) {
             // บันทึกไฟล์รูปภาพลงใน folder ชื่อ 'artist_images' ที่ storage/app/public
-            $path = $request->file('event_image')->store('event_image', 'public');
-            $event->event_image = $path;
+            $path = $request->file('image')->store('image', 'public');
+            $event->image = $path;
         }
         $event->save();
 

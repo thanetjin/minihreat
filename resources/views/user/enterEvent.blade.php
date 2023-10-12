@@ -21,8 +21,8 @@
             
             <div class="flex flex-col items-center  bg-white border border-gray-200 rounded-lg shadow md:flex-row md:max-w-xl">
                 <div class="flex flex-col justify-between p-4 ">
-                    <h5 class="mb-2 text-xl font-bold tracking-tight text-gray-900">หัวเรื่อง : {{ $event->event_name }}</h5>
-                    <p class="mb-3 font-normal text-sm text-gray-700">{{ $event->event_content }}</p>
+                    <h5 class="mb-2 text-xl font-bold tracking-tight text-gray-900">หัวเรื่อง : {{ $event->name }}</h5>
+                    <p class="mb-3 font-normal text-sm text-gray-700">{{ $event->address }}</p>
                     
                     <div class="flex justify-end">
                         

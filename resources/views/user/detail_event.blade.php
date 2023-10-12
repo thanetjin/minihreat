@@ -9,7 +9,7 @@
     <div class="relative grid mb-10 bg-cover bg-center" id="background">
         <!-- <img src="{{ URL('images/background-user.jpg') }}" 
         class="bg-center h-[30%] w-full"/> -->
-        <p class="text-3xl place-self-center font-semibold text-white tracking-widest md:text-5xl">กิจกรรมของ {{$event->event_name}} </p>
+        <p class="text-3xl place-self-center font-semibold text-white tracking-widest md:text-5xl">กิจกรรมของ {{$event->name}} </p>
     </div>
 
 
@@ -18,12 +18,12 @@
             
             <div class="flex flex-col items-center bg-white border border-gray-200 rounded-lg shadow md:flex-row w-1/2">
                 <div class="flex flex-col justify-between p-4 w-full">
-                    <h5 class="mb-2 text-xl font-bold tracking-tight text-gray-900">หัวเรื่อง : {{ $event->event_name }}</h5>
-                    <p class="mb-3 font-normal text-sm text-gray-700">{{ $event->event_content }}</p>
+                    <h5 class="mb-2 text-xl font-bold tracking-tight text-gray-900">หัวเรื่อง : {{ $event->name }}</h5>
+                    <p class="mb-3 font-normal text-sm text-gray-700">{{ $event->address }}</p>
                     
                     {{-- {{ $event->id}} --}}                    
-                    @if ($event->event_is_allow == 'REJECT')
-                        <h1 class="text-red-400">เหตุผลในการโดนปฏิเสธ: {{ $event->event_rejection_reason }}</h1>                                         
+                    @if ($event->is_allow == 'REJECT')
+                        <h1 class="text-red-400">เหตุผลในการโดนปฏิเสธ: {{ $event->rejection_reason }}</h1>                                         
                     {{-- @elseif (($event->users->count() == $event->event_member-1) && ($event->user_id != Auth::user()->id))
                     
                         <div class="flex justify-end">
@@ -36,7 +36,7 @@
                             
                     
                     
-                        @if ($event->users->count() == $event->event_member-1)                        
+                        @if ($event->users->count() == $event->member-1)                        
                         <div class="flex justify-end">                            
                             <p class="flex py-1 px-5 mr-3 mb-2 mt-2 text-sm font-semibold text-black focus:outline-none bg-white rounded-lg border border-gray-900 hover:bg-gray-100 hover:text-blue-700 focus:z-10 focus:ring-4 focus:ring-gray-200 cursor-not-allowed">     
                                 คนในกิจกรรมเต็มแล้ว

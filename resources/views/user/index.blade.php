@@ -5,6 +5,7 @@
 @php
     $counter = 1;
 @endphp
+@php use Carbon\Carbon; @endphp
 
 @php
     $counter_allow_sending = 0;
@@ -15,18 +16,18 @@
 
 @foreach ($events as $event)
 
-        @if ($event->event_is_allow === 'SENDING')
+        @if ($event->is_allow === 'SENDING')
             @php
                 $counter_allow_sending++
             @endphp            
         @endif
-        @if ($event->event_status)
+        @if ($event->status)
             @php
                 $counter_allow_success++
             @endphp            
         @endif
         
-        @if ($event->event_is_allow === 'ACCEPT')
+        @if ($event->is_allow === 'ACCEPT')
             @php
                 $counter_allow_accept++;
             @endphp            
@@ -68,8 +69,10 @@
                 <img class = "h-auto max-w-lg rounded-lg" src="{{ URL('images/card-header.png') }}">
             
                     <div class="flex flex-col justify-between p-4 leading-normal truncate w-full">
-                        <h5 class="mb-2 text-xl font-bold tracking-tight text-gray-900 ">{{ $event->event_name }}</h5>
-                        <h1 class="mb-3 font-normal text-sm text-gray-700 ">{{ $event->event_content }}</h1>
+                        <h5 class="mb-2 text-xl font-bold tracking-tight text-gray-900 ">{{ $event->name }}</h5>
+                        <h1 class="mb-3 font-normal text-sm text-gray-700 ">{{ $event->address }}</h1>
+                        <h1 class="text-gray-500 whitespace-no-wrap border-gray-200">
+                                    {{Carbon::parse($event->date)->format('l jS F, Y')}}</h1>
                         {{-- member event --}}
                         {{-- <h1>{{$event->event_member}}</h1> --}}
                         @foreach ($event->users as $user)
@@ -78,24 +81,24 @@
                             $counter++;
                             @endphp
                         @endforeach                        
-                        <h2>{{$counter}}<span>/</span>{{$event->event_member}}</h2>
+                        <h2>{{$counter}}<span>/</span>{{$event->member}}</h2>
 
                         <div class="flex justify-end items-center text-center space-x-3">
                             
                             
-                            @if($event->event_is_allow == 'SENDING' && $event->event_status == false)
+                            @if($event->is_allow == 'SENDING' && $event->status == false)
                             <p class="text-yellow-400">กำลังรอการอนุมัติ</p>
                             @endif
-                            @if($event->event_is_allow == 'ACCEPT' && $event->event_status == false)
+                            @if($event->is_allow == 'ACCEPT' && $event->status == false)
                             <p class="text-green-400">กำลังดำเนินการ</p>
                             @endif
-                            @if($event->event_is_allow == 'REJECT' && $event->event_status == false)
+                            @if($event->is_allow == 'REJECT' && $event->status == false)
                             <p class="text-red-400">ถูกปฏิเสธโดยเจ้าหน้าที่</p>
                             @endif
-                            @if($event->event_status)
+                            @if($event->status)
                             <p class="text-red-400">กิจกรรมจบแล้ว</p>
                             @endif  
-                            @if (($event->event_is_allow == "ACCEPT" && $event->event_status == false) || ($event->event_is_allow == 'REJECT' ))
+                            @if (($event->is_allow == "ACCEPT" && $event->status == false) || ($event->is_allow == 'REJECT' ))
                             <a href="{{ route('user.show_detail_event', ['event' => $event]) }}" class="flex py-1 px-5 mb-2 mt-2  text-sm font-semibold text-black focus:outline-none bg-white rounded-lg border border-gray-900 hover:bg-gray-100 hover:text-blue-700 focus:ring-4 focus:ring-gray-200">
                                 รายละเอียด
                                 <svg class="w-3 h-3 ml-3 mt-1 text-gray-800" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 14 10">

@@ -14,7 +14,7 @@ class AdminController extends Controller
             // user first คือ admin
             'user' => User::first(),
             // query database laravel 
-            'events' => Event::where('event_is_allow','SENDING')->get()
+            'events' => Event::where('is_allow','SENDING')->get()
         ]);
     }
 
@@ -55,8 +55,8 @@ class AdminController extends Controller
             'reason' => 'กรุณาใส่เหตุผลการส่ง'
         ]);
 
-        $event->event_is_allow = 'REJECT';
-        $event->event_rejection_reason = $request->get('reason');
+        $event->is_allow = 'REJECT';
+        $event->rejection_reason = $request->get('reason');
         $event->save();
         
         return redirect()->route('admin.index');
@@ -64,7 +64,7 @@ class AdminController extends Controller
 
     // เปลี่ยนสถานะว่าให้ถูกยอมรับ event นั้นๆ
     public function accept(Event $event){
-        $event->event_is_allow = 'ACCEPT';
+        $event->is_allow = 'ACCEPT';
         $event->save();
         return redirect()->route('admin.index');
     }

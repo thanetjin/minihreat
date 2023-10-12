@@ -67,7 +67,7 @@ public function store(Request $request,Event $event)
     }
     public function changeStatus(Event $event)
     {
-        $event->event_status = true;
+        $event->status = true;
         $event->save();
         return redirect()->route('user.index');
     }

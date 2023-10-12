@@ -16,10 +16,16 @@ use Illuminate\Support\Facades\DB;
 class ToolController extends Controller
 {
     public function index(): View {
+        $tools = Tool::orderby('created_at','DESC');
+        if(request()->has('search')){
+            $tools = $tools->where('name', '%' . request()->get('search',''). '%');
+        }
+
         $user = Auth::user();
         // return view('tools.index', ['user' => $user,'tools' => Tool::all(),'loans' => Loan::all()]);
         return view('tools.index', ['user' => $user,'tools' => Tool::paginate(10),'loans' => Loan::paginate(10)]);
     }
+
     public function edit(Tool $tool): View {
         $user = Auth::user();        
         return view('tools.edit', ['user' => $user,'tool' => $tool]);

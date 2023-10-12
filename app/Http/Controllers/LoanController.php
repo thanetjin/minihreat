@@ -31,7 +31,6 @@ class LoanController extends Controller
             'return_date'     => 'required',
         ]);
 
-
         $validator->after(function (Validator $validator) use ($tool) {
             $numberBorrowed = $validator->safe()->number_borrowed;
             $availableCopies = $tool->availableCopies();

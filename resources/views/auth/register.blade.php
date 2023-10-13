@@ -36,8 +36,6 @@
                             name="password_confirmation" required autocomplete="new-password" />
 
             <x-input-error :messages="$errors->get('password_confirmation')" class="mt-2" />
-    
-
             <x-input-error :messages="$errors->get('password')" class="mt-2" />
                 {{-- Register Button --}}
                 

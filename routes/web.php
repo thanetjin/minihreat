@@ -48,6 +48,8 @@ Route::post('/admin', [AdminController::class, 'store'])
 
 Route::get('/admin/createStaff', [AdminController::class, 'createStaff']) 
     ->name('admin.createStaff');
+    Route::get('/admin/showStaff', [AdminController::class, 'showStaff']) 
+    ->name('admin.showStaff');
 Route::post('/admin/createStaff', [AdminController::class, 'handleStaffButton']) 
     ->name('admin.handleStaffButton');
 Route::get('/admin/createAsset', [AdminController::class, 'createAsset']) 

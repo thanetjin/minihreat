@@ -16,6 +16,20 @@ class User extends Authenticatable
 {
     use HasApiTokens, HasFactory, Notifiable;
 
+    public function events(): BelongsToMany
+    {
+        return $this->belongsToMany(Event::class);
+    }
+    public function activeLoans() {
+        return $this
+            ->loans()
+            ->where('is_returned', false)
+            ->get();
+    }    
+    public function loans(): HasMany {
+        return $this->hasMany(Loan::class);
+    }
+
     /**
      * The attributes that are mass assignable.
      *
@@ -26,7 +40,6 @@ class User extends Authenticatable
         'email',
         'password',
     ];
-
     /**
      * The attributes that should be hidden for serialization.
      *
@@ -46,19 +59,4 @@ class User extends Authenticatable
         'email_verified_at' => 'datetime',
         'password' => 'hashed',
     ];
-    public function events(): BelongsToMany
-    {
-        return $this->belongsToMany(Event::class);
-    }
-    public function activeLoans() {
-        return $this
-            ->loans()
-            ->where('is_returned', false)
-            ->get();
-    }    
-    public function loans(): HasMany {
-        return $this->hasMany(Loan::class);
-    }
-
-    
 }

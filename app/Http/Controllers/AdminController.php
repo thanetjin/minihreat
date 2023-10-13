@@ -6,6 +6,9 @@ use App\Models\Event;
 
 use Illuminate\Http\Request;
 use App\Models\User;
+use Illuminate\Support\Facades\Hash;
+use Illuminate\Validation\Rules;
+use Illuminate\Auth\Events\Registered;
 
 class AdminController extends Controller
 {
@@ -74,25 +77,41 @@ class AdminController extends Controller
             'user' => User::first(),                        
         ]);        
     }
+    public function showStaff(Request $request){
+        return view('admin.showStaff',[
+            'user' => User::first(),                        
+        ]);
+    }
     public function createAsset(Request $request){
         return view('admin.createAsset',[
             'user' => User::first(),                        
         ]);        
     }
+    
     public function handleStaffButton(Request $request){
+
+        $request->validate([
+            'name' => ['required', 'string', 'max:255'],
+            'email' => ['required', 'string', 'email', 'max:255', 'unique:'.User::class],
+            'password' => ['required', 'confirmed', Rules\Password::defaults()],
+        ],[
+            'password.required' => 'กรุณากรอกรหัสผ่าน',
+            'password.confirmed' => 'กรุณากรอกรหัสผ่านตรงกัน',            
+            'email.unique' => 'อีเมลนี้มีคนใช้งานแล้ว',
+        ]);
         $user = new User();
         $user->name = $request->name;
         $user->email = $request->email;
-        $user->password = $request->password;  
+        $user->password = Hash::make($request->password);
         $user->role = 'staff';
         $user->save();        
-        return redirect()->route('admin.index');
+        return redirect()->route('admin.index')->with('success','คุณได้ทำการสมัครสมาชิกเรียบร้อยแล้ว');        
     }
     public function handleAssetButton(Request $request){
         $user = new User();
         $user->name = $request->name;
         $user->email = $request->email;
-        $user->password = $request->password;  
+        $user->password = Hash::make($request->password);
         $user->role = 'asset';
         $user->save();        
         return redirect()->route('admin.index');

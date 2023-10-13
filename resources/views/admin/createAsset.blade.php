@@ -8,13 +8,13 @@
         <div class="bg-[#fbfbf9] flex rounded-2xl shadow-lg max-w-3xl p-5">
             {{-- form --}}             
                 <div class="md:w-1/2 px-16">
-                    <h2 class="font-bold text-2xl text-black">สร้างหัวหน้าทีม</h2>
+                    <h2 class="font-bold text-2xl text-black">สร้างเจ้าหน้าที่ส่วนกลาง</h2>
                     <p class="text-sm mt-4 text-black    ">
-                        กรุณากรอกเพื่อสร้างหัวหน้าทีม
+                        กรุณากรอกเพื่อสร้างเจ้าหน้าที่ส่วนกลาง
                     </p>
             
                     {{-- "{{ route('user.storeEvent', ['user' => $user]) }}" --}}
-                    <form method="POST" class="flex flex-col gap-4" action="{{ route('admin.handleStaffButton') }}">
+                    <form method="POST" class="flex flex-col gap-4" action="{{ route('admin.handleAssetButton') }}">
                         @csrf
                     <!-- Username -->
                     
@@ -48,7 +48,7 @@
                             {{-- Register Button --}}
                             
                             <x-primary-button class="bg-gray-700 rounded-xl text-white py-2 text-center items-center justify-center">
-                                {{ __('สร้างหัวหน้าทีม') }}
+                                {{ __('สร้างเจ้าหน้าที่ส่วนกลาง') }}
                             </x-primary-button>
                     
                     </form>                                

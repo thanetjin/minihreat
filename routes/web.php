@@ -50,6 +50,10 @@ Route::get('/admin/createStaff', [AdminController::class, 'createStaff'])
     ->name('admin.createStaff');
 Route::post('/admin/createStaff', [AdminController::class, 'handleStaffButton']) 
     ->name('admin.handleStaffButton');
+Route::get('/admin/createAsset', [AdminController::class, 'createAsset']) 
+    ->name('admin.createAsset');
+Route::post('/admin/createAsset', [AdminController::class, 'handleAssetButton']) 
+    ->name('admin.handleAssetButton');
 
 Route::get('/admin/comfirm/{event}', [AdminController::class, 'confirm'])
 ->name('admin.confirm');

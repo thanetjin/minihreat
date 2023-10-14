@@ -55,6 +55,8 @@
         สำเร็จลุล่วง
     </li>
 </ul>
+<h1 class="text-3xl">GG</h1>
+<a href="{{ route('user.terminate', ['user' => $user->id]) }}">คืนเครื่องมือ</a>
 
     {{-- <div class="relative grid mb-10">
         <!-- <img src="{{ URL('images/background-user.jpg') }}" 
@@ -71,6 +73,7 @@
                     <div class="flex flex-col justify-between p-4 leading-normal truncate w-full">
                         <h5 class="mb-2 text-xl font-bold tracking-tight text-gray-900 ">{{ $event->name }}</h5>
                         <h1 class="mb-3 font-normal text-sm text-gray-700 ">{{ $event->address }}</h1>
+                        
                         <h1 class="text-gray-500 whitespace-no-wrap border-gray-200">
                                     {{Carbon::parse($event->date)->format('l jS F, Y')}}</h1>
                         {{-- member event --}}

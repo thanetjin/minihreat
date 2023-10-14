@@ -14,6 +14,7 @@
         
             <x-text-input id="name" class="p-2 mt-8" placeholder="username" type="text" name="name" :value="old('name')" required autofocus autocomplete="name" />
             <x-input-error :messages="$errors->get('name')" class="mt-2" />
+                
         
 
             {{-- email --}}
@@ -29,6 +30,7 @@
                             />
 
             <!-- Confirm Password -->
+            
         
             
             <x-text-input id="password_confirmation" class="p-2" placeholder="confirm password"
@@ -37,6 +39,27 @@
 
             <x-input-error :messages="$errors->get('password_confirmation')" class="mt-2" />
             <x-input-error :messages="$errors->get('password')" class="mt-2" />
+
+                {{-- duty --}}
+<div>
+<div class="flex items-center mb-2">
+    <input  type="radio" value="eletricalEngineer" name="duty" class="w-4 h-4 text-blue-600 bg-gray-100 border-gray-300 focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600">
+    <label for="default-radio-1" class="ml-2 text-sm font-medium text-gray-900 dark:text-gray-300">นักวิทยาศาสตร์</label>
+</div>
+<div class="flex items-center mb-2">
+    <input  type="radio" value="mechanicalEngineer" name="duty" class="w-4 h-4 text-blue-600 bg-gray-100 border-gray-300 focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600">
+    <label for="default-radio-2" class="ml-2 text-sm font-medium text-gray-900 dark:text-gray-300">วิศวกรทั่วไป</label>
+</div>
+<div class="flex items-center mb-2">
+    <input  type="radio" value="generalEngineer" name="duty" class="w-4 h-4 text-blue-600 bg-gray-100 border-gray-300 focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600">
+    <label for="default-radio-2" class="ml-2 text-sm font-medium text-gray-900 dark:text-gray-300">วิศวเครื่องกล</label>
+</div>
+<div class="flex items-center mb-2">
+    <input type="radio" value="scientist" name="duty" class="w-4 h-4 text-blue-600 bg-gray-100 border-gray-300 focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600">
+    <label for="default-radio-2" class="ml-2 text-sm font-medium text-gray-900 dark:text-gray-300">วิศวไฟฟ้า</label>
+</div>
+</div>
+                
                 {{-- Register Button --}}
                 
                 <x-primary-button class="bg-gray-700 rounded-xl text-white py-2 text-center items-center justify-center">

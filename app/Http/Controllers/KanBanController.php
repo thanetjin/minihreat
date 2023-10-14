@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Task;
 use App\Models\Event;
+use Illuminate\Http\RedirectResponse;
 use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
@@ -65,10 +66,27 @@ public function store(Request $request,Event $event)
         $kanban->delete();
         return redirect()->back();
     }
-    public function changeStatus(Event $event)
-    {
-        $event->status = true;
-        $event->save();
-        return redirect()->route('user.index');
-    }
+    public function handleChangeUser(Request $request,User $member)
+        {
+            if($member->is_available){
+                $member->is_available = false;
+            }else{
+                $member->is_available = true;
+            }
+            $member->save();            
+        }
+        public function changeStatus(Event $event)
+        {
+            $event->status = true;
+            $event->save();
+            return redirect()->route('user.index');
+        }
+        public function terminate(User $user): RedirectResponse {
+            $user->terminate();
+            return redirect()->route('user.index');
+    
+    
+            // return to_route('user.index')
+            //     ->with('status', 'ได้ทำการคืนเครื่องมือเป็นที่เรียบร้อยแล้ว');
+        }
 }

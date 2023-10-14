@@ -19,6 +19,7 @@
             <div class="flex flex-col items-center bg-white border border-gray-200 rounded-lg shadow md:flex-row w-1/2">
                 <div class="flex flex-col justify-between p-4 w-full">
                     <h5 class="mb-2 text-xl font-bold tracking-tight text-gray-900">หัวเรื่อง : {{ $event->name }}</h5>
+                    
                     <p class="mb-3 font-normal text-sm text-gray-700">{{ $event->address }}</p>
                     
                     {{-- {{ $event->id}} --}}                    
@@ -46,6 +47,7 @@
                     @else
 
                     <div class="flex justify-end">
+                        
                         @if ($user->id === $event->user_id)
                             <a href="{{ route('kanbans.index', ['event' => $event]) }}" class="flex py-1 px-5 mr-3 mb-2 mt-2 text-sm font-semibold text-black focus:outline-none bg-white rounded-lg border border-gray-900 hover:bg-gray-100 hover:text-blue-700 focus:z-10 focus:ring-4 focus:ring-gray-200">                                             
                                 ไป kanban 
@@ -53,7 +55,14 @@
                                     <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M1 5h12m0 0L9 1m4 4L9 9"/>
                                 </svg>
                             </a>
+                            <a href="{{ route('kanbans.index', ['event' => $event]) }}" class="flex py-1 px-5 mr-3 mb-2 mt-2 text-sm font-semibold text-black focus:outline-none bg-white rounded-lg border border-gray-900 hover:bg-gray-100 hover:text-blue-700 focus:z-10 focus:ring-4 focus:ring-gray-200">                                             
+                                ออกจากห้องนี้ไป
+                                <svg class="w-3 h-3 ml-3 mt-1 text-gray-800" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 14 10">
+                                    <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M1 5h12m0 0L9 1m4 4L9 9"/>
+                                </svg>
+                            </a>
                         @else
+                        
                             @foreach($event->users as $member)
                                 @if($user->id === $member->id)
                                     {{-- <p class="flex py-1 px-5 mr-3 mb-2 mt-2 text-sm font-semibold text-black focus:outline-none bg-white rounded-lg border border-gray-900 hover:bg-gray-100 hover:text-blue-700 focus:z-10 focus:ring-4 focus:ring-gray-200 cursor-not-allowed">     
@@ -66,6 +75,9 @@
                                             <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M1 5h12m0 0L9 1m4 4L9 9"/>
                                         </svg>
                                     </a>
+                                    {{-- <a href="{{ route('loans.terminate', ['loan' => $loan->id]) }}">คืนเครื่องมือ</a>                                    --}}
+                                    
+                                    
                                         @php
                                             $check = true;
                                         @endphp

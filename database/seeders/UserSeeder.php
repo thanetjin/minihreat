@@ -1,4 +1,4 @@
-<?php
+in<?php
 
 namespace Database\Seeders;
 
@@ -21,8 +21,7 @@ class UserSeeder extends Seeder
         $user->email = "aatox@example.com";
         $user->password = Hash::make("password");
         $user->role = "admin";
-        $user->age = "666";
-        $user->address = "End of The World";
+        $user->age = "666";        
         $user->save();
 
         $user = User::factory()->count(10)->create();

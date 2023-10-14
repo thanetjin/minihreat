@@ -207,5 +207,18 @@ class UserController extends Controller
 
         return back()->with("status", "Password changed successfully!");
 }
+        public function change_available(Request $request,User $member)
+        {
+            if($member->is_available){
+                $member->is_available = false;
+            }else{
+                $member->is_available = true;
+            }            
+            $member->save();
+        }
+        public function terminate(User $user): RedirectResponse {
+            $user->terminate();    
+            return redirect()->route('user.index');
+        }
 
 }

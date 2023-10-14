@@ -40,21 +40,30 @@ class RegisteredUserController extends Controller
             'name' => ['required', 'string', 'max:255'],
             'email' => ['required', 'string', 'email', 'max:255', 'unique:'.User::class],
             'password' => ['required', 'confirmed','min:7', Rules\Password::defaults()],
+            'duty'=>['required']            
         ],[
             'password.required' => 'กรุณากรอกรหัสผ่าน',
             'password.confirmed' => 'กรุณากรอกรหัสผ่านตรงกัน',
             'password.min' => 'กรุณากรอกรหัสผ่านอย่างน้อย 7 ตัวขึ้นไป',
             'email.unique' => 'อีเมลนี้มีคนใช้งานแล้ว',
+            'duty.require' => 'กรุณาเลือกบทบาท'
         ]);
 
-        $user = User::create([
-            'name' => $request->name,
-            'email' => $request->email,
-            'role' => 'user',
-            'password' => Hash::make($request->password),
-        ]);
-
-        event(new Registered($user));
+        // $user = User::create([
+        //     'name' => $request->name,
+        //     'email' => $request->email,
+        //     'role' => 'user',
+        //     'duty' => '55',
+        //     'password' => Hash::make($request->password),
+        // ]);
+        $user = new User();
+        $user->name = $request->name;
+        $user->email = $request->email;
+        $user->password = Hash::make($request->password);
+        $user->role = 'user';
+        $user->is_available = true;
+        $user->duty = $request->duty;        
+        $user->save();        
 
 
         return redirect(RouteServiceProvider::LOGIN)->with('status','คุณได้ทำการสมัครสมาชิกเรียบร้อยแล้ว');

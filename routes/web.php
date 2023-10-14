@@ -90,6 +90,10 @@ Route::get('/user/{user}/showCreateEvent', [
     UserController::class, 'showCreateEvent'
 ])->name('user.showCreateEvent');
 
+Route::get('/user/terminate/{user}', [UserController::class, 'terminate'])->name('user.terminate');
+
+
+
 Route::get('/user/show/event_detail/{event}', [
     UserController::class, 'show_detail_event'
 ])->name('user.show_detail_event');
@@ -106,10 +110,13 @@ Route::get('/user/show/event_detail/{event}/kanbans/', [
 Route::post('/user/show/event_detail/{event}/kanbans/', [
     KanBanController::class, 'store'
 ])->name('kanbans.store');
-
 Route::post('/user/show/event_detail/{event}/kanbans/changeStatus', [
     KanBanController::class, 'changeStatus'
 ])->name('kanbans.changeStatus');
+
+Route::get('/user/show/event_detail/{event}/kanbans/terminate', [
+    KanBanController::class, 'terminate'
+])->name('kanbans.terminate');
 
 Route::post('/user/store/{user}',[
     UserController::class, 'storeEvent'

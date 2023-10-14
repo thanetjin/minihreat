@@ -29,6 +29,17 @@ class User extends Authenticatable
     public function loans(): HasMany {
         return $this->hasMany(Loan::class);
     }
+    public function terminate() {
+        if($this->is_available){
+            $this->is_available = false;
+        }else{
+            $this->is_available = true;
+        }
+        $this->save();            
+    }
+
+
+    
 
     /**
      * The attributes that are mass assignable.

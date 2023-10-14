@@ -312,6 +312,9 @@
                     <th scope="col" class="px-6 py-3">
                         Role
                     </th>
+                    <th scope="col" class="px-6 py-3">
+                        สถานะในการทำงาน
+                    </th>
                 </tr>
             </thead>
             <tbody>
@@ -341,12 +344,29 @@
                     <td class="px-6 py-4">
                         {{$member->role}}
                     </td>
+                    <td class="px-6 py-4">
+                        @if ($member->is_available)
+                            ว่าง
+                        @endif                        
+                    </td>
+                    {{-- <a href="{{ route('loans.terminate', ['loan' => $loan->id]) }}">คืนเครื่องมือ</a> --}}
+                    <td class="px-6 py-4">
+                        @if ($member->is_available)         
+                        <form action="{{ route('kanbans.editAvailable', ['event' => $event,'member' => $member]) }}" method="POST">                            
+                            @csrf
+                            <div class="flex justify-center items-center text-center">
+                          <button type="submit"  class="text-white bg-red-500 hover:bg-red-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm w-full sm:w-auto px-5 py-2.5 text-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800">Finish</button>      
+                        </div>
+                        </form>
+                        @endif                        
+                    </td>
                 </tr>
                 @endforeach
             </tbody>
         </table>
     </div>
 
+    {{-- <form action="{{ route('kanbans.store', ['event' => $event]) }}" method="POST">                             --}}
     <form action="{{ route('kanbans.changeStatus', ['event' => $event]) }}" method="POST">                            
         @csrf
         <div class="flex justify-center items-center text-center m-4">

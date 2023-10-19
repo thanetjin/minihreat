@@ -19,7 +19,7 @@ return new class extends Migration
             $table->string('password');
             $table->string('address')->nullable();
             $table->string('duty')->nullable();
-            $table->boolean('is_available')->nullable();
+            $table->boolean('is_available')->default(true);
             $table->string('role')->nullable()->default('user');
             $table->longText('image')->nullable();            
             $table->rememberToken();

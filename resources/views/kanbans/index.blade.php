@@ -1,6 +1,7 @@
 @extends('layouts.main')
 
 @section('content')
+@php use Carbon\Carbon; @endphp
 
     <div class="relative grid mb-10 bg-cover bg-center" id="background">
         <!-- <img src="{{ URL('images/background-user.jpg') }}" 
@@ -28,11 +29,9 @@
                     <th scope="col" class="px-6 py-3">
                         Desc
                     </th>
+                    
                     <th scope="col" class="px-6 py-3">
-                        Role
-                    </th>
-                    <th scope="col" class="px-6 py-3">
-                        Checklist
+                        Update_time
                     </th>
                     
                 </tr>
@@ -48,11 +47,9 @@
                     <td class="px-6 py-4">
                         {{$task->desc}}
                     </td>
+                    
                     <td class="px-6 py-4">
-                        {{$task->role}}
-                    </td>
-                    <td class="px-6 py-4">
-                        {{$task->checklist}}
+                        {{Carbon::parse($task->updated_at)->format('g:i a l jS F, Y')}}
                     </td>
                     <td>
                         {{-- <form method="POST" action="{{ route('kanbans.change',['task' => $task->id]) }}">
@@ -397,12 +394,21 @@
                         {{$member->role}}
                     </td>
                     <td class="px-6 py-4">
-                        @if ($member->is_available)
+                        @if($member->is_available == false)                       
+                        <span
+                            class="inline-flex px-2 text-xs font-semibold leading-5 text-green-800 bg-green-100 rounded-full">
                             ว่าง
-                        @endif                        
+                            </span>                        
+                        @endif
+                        @if($member->is_available == true)                       
+                        <span
+                            class="inline-flex px-2 text-xs font-semibold leading-5 text-red-800 bg-red-100 rounded-full">
+                               ไม่ว่าง
+                            </span>
+                        @endif
                     </td>
                     {{-- <a href="{{ route('loans.terminate', ['loan' => $loan->id]) }}">คืนเครื่องมือ</a> --}}
-                    <td class="px-6 py-4">
+                    {{-- <td class="px-6 py-4">
                         @if ($member->is_available)         
                         <form action="{{ route('kanbans.editAvailable', ['event' => $event,'member' => $member]) }}" method="POST">                            
                             @csrf
@@ -411,7 +417,7 @@
                         </div>
                         </form>
                         @endif                        
-                    </td>
+                    </td> --}}
                 </tr>
                 @endforeach
             </tbody>

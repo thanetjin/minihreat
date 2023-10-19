@@ -65,6 +65,16 @@
 </ul>
 <h1 class="text-3xl">GG</h1>
 <a href="{{ route('user.terminate', ['user' => $user->id]) }}">คืนเครื่องมือ</a>
+<div class="flex items-center justify-center text-center">
+{{ $user->is_available }}    
+@if($user->is_available == false)
+<a href="{{ route('user.change_available',['user' => $user])}}"  class="inline-flex px-2 text-xs font-semibold leading-5 text-green-800 bg-green-100 rounded-full hover:bg-green-900 hover:text-white focus:outline-none focus:ring-4 focus:ring-red-300  py-2.5 text-center mr-2 mb-2 dark:bg-red-600 dark:hover:bg-red-700 dark:focus:ring-red-900">สถานะตอนนี้พร้อมทำงาน</a>
+@endif
+@if($user->is_available == true)
+<a href="{{ route('user.change_available',['user' => $user])}}"  class="inline-flex px-2 text-xs font-semibold leading-5 text-red-800 bg-red-100 rounded-full hover:bg-red-900 hover:text-white focus:outline-none focus:ring-4 focus:ring-red-300  py-2.5 text-center mr-2 mb-2 dark:bg-red-600 dark:hover:bg-red-700 dark:focus:ring-red-900">สถานะตอนนี้ไม่ว่าง</a>
+@endif
+</div>
+
 
     {{-- <div class="relative grid mb-10">
         <!-- <img src="{{ URL('images/background-user.jpg') }}" 

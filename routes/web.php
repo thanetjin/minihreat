@@ -79,11 +79,20 @@ Route::post('/admin/accept/{event}',[AdminController::class, 'accept'])
 Route::resources([
     '/user' => UserController::class,    
 ]);
+// Route::get('/user', [
+//     UserController::class, 'change_available'
+// ])->name('user.change_available');
+
+Route::get('/user/{user}/changeAvaiable', [
+    UserController::class, 'change_available'
+])->name('user.change_available');
+// Route::post('/user/{user}/changeAvaiable', [
+//     UserController::class, 'change_available'
+// ])->name('user.change_available');
 
 Route::post('/user/{user}/edit', [
     UserController::class, 'updatePassword'
 ])->name('update-password');
-
 
 
 Route::get('/user/{user}/showCreateEvent', [

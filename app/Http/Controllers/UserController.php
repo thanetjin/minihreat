@@ -209,12 +209,26 @@ class UserController extends Controller
 }
         public function change_available(Request $request,User $member)
         {
-            if($member->is_available){
-                $member->is_available = false;
-            }else{
-                $member->is_available = true;
-            }            
-            $member->save();
+            $user = Auth::user();
+            $statusForUser = false;
+            if($user->is_available == true){
+                $statusForUser = false;
+            }
+            if($user->is_available == false){
+                $statusForUser = true;
+            }
+            
+            // if($member->is_available){
+            //     $member->is_available = false;
+            // }else{
+            //     $member->is_available = true;
+            // }
+                        
+            User::whereId(auth()->user()->id)->update([
+                // 'is_available' => $member->is_available
+                'is_available' => $statusForUser
+            ]);            
+            return redirect()->route('user.index')->with("success", "คุณได้เปลี่ยนสถานะแล้ว!");;
         }
         public function terminate(User $user): RedirectResponse {
             $user->terminate();    

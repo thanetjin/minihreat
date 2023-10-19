@@ -6,11 +6,7 @@
         $check = false;
     @endphp
 
-    <div class="relative grid mb-10 bg-cover bg-center" id="background">
-        <!-- <img src="{{ URL('images/background-user.jpg') }}" 
-        class="bg-center h-[30%] w-full"/> -->
-        <p class="text-3xl place-self-center font-semibold text-white tracking-widest md:text-5xl">กิจกรรมของ {{$event->name}} </p>
-    </div>
+    
 
 
     <div class="mx-auto justify-center flex items-center">

@@ -13,53 +13,93 @@ use Illuminate\Support\Facades\Auth;
 class KanBanController extends Controller
 {
     public function index(Event $event)
+    
     {
-        return view('kanbans.index',[
+        $user = Auth::user();
+        return view('kanbans.index',[            
+            'user' => $user,            
+            'event' => $event                    
+        ]);
+    }
+    public function create(Event $event)
+    {
+        $user = Auth::user();
+        return view('kanbans.create',[
+            
             // 'tasks_Todo' => Task::where('type','todo')->get(),
             // 'tasks_Inprocess' => Task::where('type','inProgress')->get(),
             // 'tasks_Done' => Task::where('type','done')->get(),
-            'user' => User::find(2),
+            'user' => $user,
             // 'user' => Auth::user(),
             'event' => $event
         ]);
     }
 public function store(Request $request,Event $event)
     {
-        
-        
-        // $event = Auth::event();
+        $user = Auth::user();
+        $request->validate([
+            'name' => 'required',
+            'role' => 'required',
+        ]);
         $task = new Task();
         $task->name = $request->name;
-        $task->type = $request->type;
-
-        // $task->event_id = 1;
-        // $task->save();
-
+        $task->type = $request->role;        
+        $checkbox_data = $request->input("duty");
+        $task->checklist = implode(',',$checkbox_data);
         $task->event_id = $event->id;
         $task->save();
-
-        // $task->event_id = $event
-        //$artist->songs()->save($song);
-
-        // $event->tasks()->save($task);
-        // return redirect()->route('kanbans.index', ['event' => $event]);
-        return redirect()->back();
+        return redirect()->route('kanbans.index',['user' => $user,            
+        'event' => $event])->with('success','คุณได้ทำการสร้างฟอร์มเรียบร้อยแล้ว!');
         error_log('Some message here.');
         
     }
-    public function update(Request $request, Task $kanban)
+    // public function edit(Event $event,Task $task)
+    // {
+    //     return view('kanbans.edit',compact('task'));        
+    // }
+    // public function edit(Tool $tool): View {
+    //     $user = Auth::user();        
+    //     return view('tools.edit', ['user' => $user,'tool' => $tool]);
+    // }
+    public function change(Task $task)
     {
-        if($request->get('todo')) {
-            $kanban->type = $request->get('todo'); 
-        }
-        else if($request->get('inProgress')) {
-            $kanban->type = $request->get('inProgress'); 
-        }
-        else if($request->get('done')) {
-            $kanban->type = $request->get('done'); 
-        }
-        $kanban->save();
-        return redirect()->back();
+        
+        $user = Auth::user();
+        return view('kanbans.change',[            
+            'user' => $user,                        
+            'task' => $task,        
+        ]);
+    }
+    public function handleChange(Request $request,$id)
+    {
+        $user = Auth::user();
+        $request->validate([
+            'name' => 'required',
+            'role' => 'required',
+        ]);        
+        $task = Task::find($id);
+        $task->name = $request->name;
+        $task->type = $request->role;
+        $checkbox_data = $request->input("duty");
+        $task->checklist = implode(',',$checkbox_data);
+        $task->save();
+        return redirect()->route('user.index',['user' => $user])->with('success','คุณได้ทำการแก้ไขฟอร์มเป็นที่เรียบร้อยแล้วครับ!');
+    }
+
+    public function update(Task $task)
+    {
+
+        // if($request->get('todo')) {
+        //     $kanban->type = $request->get('todo'); 
+        // }
+        // else if($request->get('inProgress')) {
+        //     $kanban->type = $request->get('inProgress'); 
+        // }
+        // else if($request->get('done')) {
+        //     $kanban->type = $request->get('done'); 
+        // }
+        // $kanban->save();
+        return redirect()->route('user.index');
     }
     public function destroy(Task $kanban)
     {

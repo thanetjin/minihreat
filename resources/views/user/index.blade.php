@@ -13,6 +13,14 @@
     $counter_allow_success = 0;
     
 @endphp
+@if ($message = Session::get('success'))
+<div
+                    class="bg-green-100 border border-green-400 text-green-700 px-4 py-3 rounded relative w-7/12  text-center mx-auto m-5"
+                    role="alert">
+                    <span class="block sm:inline">{{ session()->get('status') }}</span>
+                    {{ $message}}
+                </div>
+@endif
 
 @foreach ($events as $event)
 
@@ -75,7 +83,7 @@
                         <h1 class="mb-3 font-normal text-sm text-gray-700 ">{{ $event->address }}</h1>
                         
                         <h1 class="text-gray-500 whitespace-no-wrap border-gray-200">
-                                    {{Carbon::parse($event->date)->format('l jS F, Y')}}</h1>
+                            {{Carbon::parse($event->created_at)->format('g:i a l jS F, Y')}}
                         {{-- member event --}}
                         {{-- <h1>{{$event->event_member}}</h1> --}}
                         @foreach ($event->users as $user)

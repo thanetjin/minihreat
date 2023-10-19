@@ -139,35 +139,35 @@ class UserController extends Controller
         // $table->string('type');
         // $table->string('role');
 
-        $task = new Task();
-        $task->name = 'การตรวจสอบความปลอดภัยของไฟฟ้า';
-        $task->type = 'todo';
-        $task->role = 'engineer';
-        $task->event_id = $event->id;
-        $task->save();
+        // $task = new Task();
+        // $task->name = 'การตรวจสอบความปลอดภัยของไฟฟ้า';
+        // $task->type = 'todo';
+        // $task->role = 'engineer';
+        // $task->event_id = $event->id;
+        // $task->save();
 
-        $task = new Task();
-        $task->name = 'การตรวจสอบความปลอดภัยของเครื่องยนตร์';
-        $task->type = 'todo';
-        $task->role = 'engineer';
-        $task->event_id = $event->id;
-        $task->save();
+        // $task = new Task();
+        // $task->name = 'การตรวจสอบความปลอดภัยของเครื่องยนตร์';
+        // $task->type = 'todo';
+        // $task->role = 'engineer';
+        // $task->event_id = $event->id;
+        // $task->save();
 
-        $task = new Task();
-        $task->name = 'การตรวจสอบความปลอดภัยของไฟ';
-        $task->type = 'todo';
-        $task->role = 'firefighter';
-        $task->event_id = $event->id;
-        $task->save();
+        // $task = new Task();
+        // $task->name = 'การตรวจสอบความปลอดภัยของไฟ';
+        // $task->type = 'todo';
+        // $task->role = 'firefighter';
+        // $task->event_id = $event->id;
+        // $task->save();
         
-        //
+        // //
         
-        $task = new Task();
-        $task->name = 'การตรวจสอบความปลอดภัยของน้ำ';
-        $task->type = 'todo';
-        $task->role = 'scientist';
-        $task->event_id = $event->id;
-        $task->save();
+        // $task = new Task();
+        // $task->name = 'การตรวจสอบความปลอดภัยของน้ำ';
+        // $task->type = 'todo';
+        // $task->role = 'scientist';
+        // $task->event_id = $event->id;
+        // $task->save();
 
 
 

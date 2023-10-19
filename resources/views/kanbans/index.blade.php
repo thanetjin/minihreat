@@ -6,19 +6,86 @@
         <!-- <img src="{{ URL('images/background-user.jpg') }}" 
         class="bg-center h-[30%] w-full"/> -->        
     </div>
+    <div>
+    <a class="text-white bg-green-500 hover:bg-green-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm w-full sm:w-auto px-5 py-2.5 text-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800" href="{{ route('kanbans.create', ['event' => $event]) }}">สร้างฟอร์ม</a>
+</div>
+@if ($message = Session::get('success'))
+<div
+                    class="bg-green-100 border border-green-400 text-green-700 px-4 py-3 rounded relative w-7/12  text-center mx-auto m-5"
+                    role="alert">
+                    <span class="block sm:inline">{{ session()->get('status') }}</span>
+                    {{ $message}}
+                </div>
+@endif
+    <div class="border-black border-b-4 w-full rounded-xl my-5"></div>
+    <div class="relative overflow-x-auto rounded-xl">
+        <table class="w-full text-sm text-left text-gray-500 ">
+            <thead class="text-xs text-gray-700 uppercase bg-gray-50">
+                <tr>
+                    <th scope="col" class="px-6 py-3">
+                        ID
+                    </th>
+                    <th scope="col" class="px-6 py-3">
+                        Desc
+                    </th>
+                    <th scope="col" class="px-6 py-3">
+                        Role
+                    </th>
+                    <th scope="col" class="px-6 py-3">
+                        Checklist
+                    </th>
+                    
+                </tr>
+            </thead>
+            <tbody>                
+                @foreach($event->tasks as $task)
+                
+                <tr class="bg-white border-b">
+                    <th scope="row" class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap">
+                        {{$task->id}}
+                    </th>
+                    
+                    <td class="px-6 py-4">
+                        {{$task->desc}}
+                    </td>
+                    <td class="px-6 py-4">
+                        {{$task->role}}
+                    </td>
+                    <td class="px-6 py-4">
+                        {{$task->checklist}}
+                    </td>
+                    <td>
+                        {{-- <form method="POST" action="{{ route('kanbans.change',['task' => $task->id]) }}">
+                            @csrf
+                            @method("PUT")
+                            <h1>{{$task->id}}</h1>
+                            <button>Edit</button> --}}
+                            <td
+                        class="px-6 py-4 text-sm leading-5 text-gray-500 whitespace-no-wrap border-b border-gray-200">
+                        <h1>Event id is :  {{ $event->id}}</h1>                    
+                        <a href="{{ route('kanbans.change', ['task' => $task->id])}}">EDIT</a>                    
+                    </td>
+                    </td>
+                    
+                    {{-- <a href="{{ route('loans.terminate', ['loan' => $loan->id]) }}">คืนเครื่องมือ</a> --}}
+                    
+                </tr>
+                @endforeach
+            </tbody>
+        </table>
+    </div>
+</div>
+
+
+     
+
     
     
     
-    {{-- <form action="{{ route('artists.songs.store', ['artist' => $artist]) }}" method="POST"> --}}
-    {{-- <form action="{{ route('artists.songs.store', ['artist' => $artist]) }}" method="POST"> --}}
-    {{-- <form action="{{ route('kanbans.update', ['kanban' => $task]) }}" method="POST">--}}                                
-    <form action="{{ route('kanbans.store', ['event' => $event]) }}" method="POST">                            
-    @csrf
-    {{-- <h1>{{ $event }}</h1>
-    <h1>{{ $event->id }}</h1> --}}
-    <div class="flex justify-center ">
-        
-        
+    
+    {{-- <form action="{{ route('kanbans.store', ['event' => $event]) }}" method="POST">                            
+    @csrf    
+    <div class="flex justify-center ">        
     <div class="flex flex-col items-center mb-4">
     <div class="mb-6 mr-4 flex flex-col">
       <input type="text" id="text" name="name" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" placeholder="Enter Tasks.." required> 
@@ -50,17 +117,15 @@
       
     </div>
 </div>
-</form>
-
-
-</div>
-  
-    {{-- role engineer  --}}
+</form> --}}
+{{-- </div> --}}
+{{--   
+    role engineer 
     <h1 class="text-3xl font-bold">Engineer</h1>
-    <br>
+    <br> --}}
 
     {{-- Todo --}}
-    <div class="flex bg-slate-300">
+    {{-- <div class="flex bg-slate-300">
         <div class="items-center m-5 w-full font-bold">
             <div class="flex flex-col items-center bg-white border border-gray-200 rounded-lg shadow md:flex-row md:max-w-xl">
                 <div class="flex flex-col justify-between p-4 leading-normal overflow-hidden text-ellipsis">
@@ -82,9 +147,9 @@
                     @endforeach
                 </div>
             </div>    
-        </div>
+        </div> --}}
             {{-- In-Progrss --}}
-        <div class="items-center m-5 w-full font-bold">
+        {{-- <div class="items-center m-5 w-full font-bold">
             <div class="flex flex-col items-center bg-white border border-gray-200 rounded-lg shadow md:flex-row md:max-w-xl">
                 <div class="flex flex-col justify-between p-4 leading-normal overflow-hidden text-ellipsis">
                     <h5 class="mb-2 text-xl font-bold tracking-tight text-gray-900">In Progress</h5>
@@ -105,10 +170,10 @@
                     @endforeach
                 </div>
             </div>    
-        </div>
+        </div> --}}
         
         {{-- Done --}}
-        <div class="items-center m-5 w-full font-bold">
+        {{-- <div class="items-center m-5 w-full font-bold">
             <div class="flex flex-col items-center bg-white border border-gray-200 rounded-lg shadow md:flex-row md:max-w-xl">
                 <div class="flex flex-col justify-between p-4 leading-normal overflow-hidden text-ellipsis">
                     <h5 class="mb-2 text-xl font-bold tracking-tight text-gray-900">Done</h5>
@@ -129,18 +194,18 @@
                     @endforeach
                 </div>
             </div>    
-        </div> 
+        </div>  --}}
  
-    </div>
+    {{-- </div> --}}
 
     {{-- role   --}}
-    <div class="mt-4">
+    {{-- <div class="mt-4">
     <h1 class="text-3xl ">Firefighter</h1>
     <br>
-</div>
+</div> --}}
 
     {{-- Todo --}}
-    <div class="flex bg-slate-300">
+    {{-- <div class="flex bg-slate-300">
         <div class="items-center m-5 w-full font-bold">
             <div class="flex flex-col items-center bg-white border border-gray-200 rounded-lg shadow md:flex-row md:max-w-xl">
                 <div class="flex flex-col justify-between p-4 leading-normal overflow-hidden text-ellipsis">
@@ -162,9 +227,9 @@
                     @endforeach
                 </div>
             </div>    
-        </div>
+        </div> --}}
             {{-- In-Progrss --}}
-        <div class="items-center m-5 w-full font-bold">
+        {{-- <div class="items-center m-5 w-full font-bold">
             <div class="flex flex-col items-center bg-white border border-gray-200 rounded-lg shadow md:flex-row md:max-w-xl">
                 <div class="flex flex-col justify-between p-4 leading-normal overflow-hidden text-ellipsis">
                     <h5 class="mb-2 text-xl font-bold tracking-tight text-gray-900">In Progress</h5>
@@ -185,10 +250,10 @@
                     @endforeach
                 </div>
             </div>    
-        </div>
+        </div> --}}
         
         {{-- Done --}}
-        <div class="items-center m-5 w-full font-bold">
+        {{-- <div class="items-center m-5 w-full font-bold">
             <div class="flex flex-col items-center bg-white border border-gray-200 rounded-lg shadow md:flex-row md:max-w-xl">
                 <div class="flex flex-col justify-between p-4 leading-normal overflow-hidden text-ellipsis">
                     <h5 class="mb-2 text-xl font-bold tracking-tight text-gray-900">Done</h5>
@@ -211,16 +276,16 @@
             </div>    
         </div> 
  
-    </div>
+    </div> --}}
 
     {{-- role scientist  --}}
-    <div class="mt-4">
+    {{-- <div class="mt-4">
         <h1 class="text-3xl ">Scientist</h1>
         <br>
-    </div>
+    </div> --}}
 
     {{-- Todo --}}
-    <div class="flex bg-slate-300">
+    {{-- <div class="flex bg-slate-300">
         <div class="items-center m-5 w-full font-bold">
             <div class="flex flex-col items-center bg-white border border-gray-200 rounded-lg shadow md:flex-row md:max-w-xl">
                 <div class="flex flex-col justify-between p-4 leading-normal overflow-hidden text-ellipsis">
@@ -242,9 +307,9 @@
                     @endforeach
                 </div>
             </div>    
-        </div>
+        </div> --}}
             {{-- In-Progrss --}}
-        <div class="items-center m-5 w-full font-bold">
+        {{-- <div class="items-center m-5 w-full font-bold">
             <div class="flex flex-col items-center bg-white border border-gray-200 rounded-lg shadow md:flex-row md:max-w-xl">
                 <div class="flex flex-col justify-between p-4 leading-normal overflow-hidden text-ellipsis">
                     <h5 class="mb-2 text-xl font-bold tracking-tight text-gray-900">In Progress</h5>
@@ -265,10 +330,10 @@
                     @endforeach
                 </div>
             </div>    
-        </div>
+        </div> --}}
         
         {{-- Done --}}
-        <div class="items-center m-5 w-full font-bold">
+        {{-- <div class="items-center m-5 w-full font-bold">
             <div class="flex flex-col items-center bg-white border border-gray-200 rounded-lg shadow md:flex-row md:max-w-xl">
                 <div class="flex flex-col justify-between p-4 leading-normal overflow-hidden text-ellipsis">
                     <h5 class="mb-2 text-xl font-bold tracking-tight text-gray-900">Done</h5>
@@ -291,7 +356,7 @@
             </div>    
         </div> 
  
-    </div>
+    </div> --}}
 
     {{-- Testing member count --}}
                 
@@ -317,20 +382,7 @@
                     </th>
                 </tr>
             </thead>
-            <tbody>
-                {{-- event->user_id --}}
-                {{-- <tr class="bg-white border-b">
-                    <th scope="row" class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap">
-                        {{$event->user_id}}
-                    </th>
-                    <td class="px-6 py-4">
-                        {{Auth::user()->email}}
-                    </td>
-                    <td class="px-6 py-4">
-                        leader
-                    </td>
-                </tr> --}}
-
+            <tbody>                
                 @foreach($event->users as $member)
                 
                 <tr class="bg-white border-b">
@@ -365,6 +417,7 @@
             </tbody>
         </table>
     </div>
+</div>
 
     {{-- <form action="{{ route('kanbans.store', ['event' => $event]) }}" method="POST">                             --}}
     <form action="{{ route('kanbans.changeStatus', ['event' => $event]) }}" method="POST">                            

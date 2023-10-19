@@ -110,6 +110,24 @@ Route::get('/user/show/event_detail/{event}/kanbans/', [
 Route::post('/user/show/event_detail/{event}/kanbans/', [
     KanBanController::class, 'store'
 ])->name('kanbans.store');
+// Route::get('/user/show/event_detail/{event}/kanbans/edit/{task}', [
+//     KanBanController::class, 'change'
+// ])->name('kanbans.change');
+// Route::put('/user/show/event_detail/{event}/kanbans/edit/{task}', [
+//     KanBanController::class, 'change'
+// ])->name('kanbans.change');
+Route::get('/user/taskeditor/{task}', [
+    KanBanController::class, 'change'
+])->name('kanbans.change');
+Route::put('/user/taskeditor/{task}', [
+    KanBanController::class, 'handleChange'
+])->name('kanbans.handleChange');
+Route::post('/user/show/event_detail/{event}/kanbans/create', [
+    KanBanController::class, 'create'
+])->name('kanbans.create');
+Route::get('/user/show/event_detail/{event}/kanbans/create', [
+    KanBanController::class, 'create'
+])->name('kanbans.create');
 Route::post('/user/show/event_detail/{event}/kanbans/changeStatus', [
     KanBanController::class, 'changeStatus'
 ])->name('kanbans.changeStatus');
@@ -144,6 +162,9 @@ Route::get('/loans/terminate/{loan}', [LoanController::class, 'terminate'])->nam
 Route::resource('/kanbans',KanBanController::class)->only([
     'edit','update'
 ]);;
+// Route::resource('/kanbans',KanBanController::class)->only([
+//     'delete'
+// ]);;
     // Auth Route
 
 Route::post('/logout',[UserController::class, 'logout'])

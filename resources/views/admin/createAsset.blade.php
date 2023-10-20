@@ -47,9 +47,9 @@
                         <x-input-error :messages="$errors->get('password')" class="mt-2" />
                             {{-- Register Button --}}
                             
-                            <x-primary-button class="bg-gray-700 rounded-xl text-white py-2 text-center items-center justify-center">
-                                {{ __('สร้างเจ้าหน้าที่ส่วนกลาง') }}
-                            </x-primary-button>
+                            <button class="inline-flex p-4 text-xl font-semibold leading-5 text-white bg-black rounded-full hover:bg-slate-800 hover:text-white focus:outline-none focus:ring-4 focus:ring-red-300  py-2.5 text-center mr-2 mb-2 dark:bg-red-600 dark:hover:bg-red-700 dark:focus:ring-red-900">
+                                สร้างเจ้าหน้าที่ส่วนกลาง
+                            </button>
                     
                     </form>                                
                 </div>

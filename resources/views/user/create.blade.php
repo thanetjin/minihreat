@@ -30,7 +30,7 @@
                     <label for="description" class="block mb-2 text-sm font-medium text-gray-900">ที่อยู่โรงงาน</label>
                     <textarea name="address"  id="description" name="description" rows="10" 
                         class="block p-2.5 w-full text-sm text-gray-900 bg-gray-50 rounded-lg border border-gray-300 focus:ring-blue-500 focus:border-blue-500" 
-                            placeholder="กรุณาใส่ที่อยู่ของโรงงาน"></textarea>
+                            placeholder="กรุณาใส่ที่อยู่ของโรงงาน" required></textarea>
                 </div>
                 <div class="mt-5">
                     <label for="member" class="block mb-2 text-sm font-medium text-gray-900">จำนวนคนที่ต้องการ</label>
@@ -44,12 +44,18 @@
                     <label class="block">
                         <span class="text-gray-700">กำหนดการปฏิบัติงาน</span>
                         <input type="date" name="date" class="block w-full mt-1 rounded-md text-gray-900 bg-gray-50 border border-gray-300 focus:ring-blue-500 focus:border-blue-500"
-                               placeholder="" value="{{old('date')}}"/>
+                               placeholder="" required value="{{old('date')}}"/>
                     </label>
                     @error('date')
                     <div class="text-sm text-red-600">{{ $message }}</div>
                     @enderror
                 </div>
+
+    <div class="mt-4">
+<label class="block mb-2 text-md font-medium text-gray-700" dark:text-white" for="file_input">อัพโหลดรูปโรงงาน</label>
+<input name="image_path" class="block w-full text-md text-gray-900 border border-gray-300 rounded-lg cursor-pointer bg-gray-50 dark:text-gray-400 focus:outline-none dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400" id="file_input" type="file" required>
+</div>
+
                                 
                 
                 <span class="flex justify-center mt-5">

@@ -106,10 +106,10 @@
         สำเร็จลุล่วง
     </li>
 </ul>
-<h1 class="text-3xl">GG</h1>
-<a href="{{ route('user.terminate', ['user' => $user->id]) }}">คืนเครื่องมือ</a>
+
+
 <div class="flex items-center justify-center text-center">
-{{ $user->is_available }}    
+
 @if($user->is_available == false)
 <a href="{{ route('user.change_available',['user' => $user])}}"  class="inline-flex px-2 text-xs font-semibold leading-5 text-green-800 bg-green-100 rounded-full hover:bg-green-900 hover:text-white focus:outline-none focus:ring-4 focus:ring-red-300  py-2.5 text-center mr-2 mb-2 dark:bg-red-600 dark:hover:bg-red-700 dark:focus:ring-red-900">สถานะตอนนี้พร้อมทำงาน</a>
 @endif
@@ -129,7 +129,13 @@
     <div class="container mx-auto grid grid-cols-2 gap-10">
         @foreach ($events as $event)
             <div class="flex flex-col  items-center bg-white border border-gray-200 rounded-lg shadow md:flex-row">
-                <img class = "h-auto max-w-lg rounded-lg" src="{{ URL('images/card-header.png') }}">
+                {{-- <img class = "h-auto max-w-lg rounded-lg" src="{{ URL('images/card-header.png') }}"> --}}
+                {{-- <img class = "h-auto max-w-lg rounded-lg" src="{{ URL('images/card-header.png') }}"> --}}
+                @if($event->image)
+                <img class="w-40 h-40 object-cover rounded-lg" src="{{ asset('storage/' . $event->image) }}">
+            @else
+                <img class="h-auto max-w-lg rounded-lg" src="images/card-header.png" alt="default image">
+            @endif
             
                     <div class="flex flex-col justify-between p-4 leading-normal truncate w-full">
                         <h5 class="mb-2 text-xl font-bold tracking-tight text-gray-900 ">{{ $event->name }}</h5>

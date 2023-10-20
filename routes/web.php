@@ -125,18 +125,28 @@ Route::post('/user/show/event_detail/{event}/kanbans/', [
 // Route::put('/user/show/event_detail/{event}/kanbans/edit/{task}', [
 //     KanBanController::class, 'change'
 // ])->name('kanbans.change');
-Route::get('/user/taskeditor/{task}', [
-    KanBanController::class, 'change'
-])->name('kanbans.change');
-Route::put('/user/taskeditor/{task}', [
-    KanBanController::class, 'handleChange'
-])->name('kanbans.handleChange');
+
+
+// Route::get('/user/taskeditor/{task}', [
+//     KanBanController::class, 'change'
+// ])->name('kanbans.change');
+// Route::put('/user/taskeditor/{task}', [
+//     KanBanController::class, 'handleChange'
+// ])->name('kanbans.handleChange');
+
+
 Route::post('/user/show/event_detail/{event}/kanbans/create', [
     KanBanController::class, 'create'
 ])->name('kanbans.create');
 Route::get('/user/show/event_detail/{event}/kanbans/create', [
     KanBanController::class, 'create'
 ])->name('kanbans.create');
+Route::get('/user/show/event_detail/{event}/kanbans/taskeditor/{task}', [
+    KanBanController::class, 'change'
+])->name('kanbans.change');
+Route::put('/user/show/event_detail/{event}/kanbans/taskeditor/{task}', [
+    KanBanController::class, 'handleChange'
+])->name('kanbans.handleChange');
 Route::post('/user/show/event_detail/{event}/kanbans/changeStatus', [
     KanBanController::class, 'changeStatus'
 ])->name('kanbans.changeStatus');

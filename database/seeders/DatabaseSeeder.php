@@ -42,6 +42,16 @@ class DatabaseSeeder extends Seeder
         $user->save();
 
         $user = new User();
+        $user->name = "staff";
+        $user->email = "staff@gmail.com";
+        $user->email_verified_at = now();
+        $user->password = Hash::make('password');
+        $user->role = "staff";
+        $user->duty = "chemicalEngineer";
+        $user->address = fake()->paragraph();
+        $user->save();
+
+        $user = new User();
         $user->name = "user2";
         $user->email = "user2@gmail.com";
         $user->email_verified_at = now();
@@ -85,7 +95,8 @@ class DatabaseSeeder extends Seeder
         $event->status = false;
         $event->rejection_reason = '';
         
-        $event->image = "image/cert_1.jpeg";
+        $event->image = "event_images/esXIgyQffVeb3hk3GpHlAjsBXHxuUh2B70ZcHz4r.jpg";
+        
         $event->save();
         
         $event = new Event();
@@ -94,10 +105,8 @@ class DatabaseSeeder extends Seeder
         $event->member = 10;
         $event->address = 'อิอิ';
         $event->status = false;
-        $event->rejection_reason = '-';
-        
-        $event->image = "image/cert_2.jpeg";
-
+        $event->rejection_reason = '-';        
+        $event->image = "event_images/esXIgyQffVeb3hk3GpHlAjsBXHxuUh2B70ZcHz4r.jpg";
         $event->save();
 
 
@@ -107,9 +116,8 @@ class DatabaseSeeder extends Seeder
         $event->member = 10;
         $event->address = 'นิทรรศการการศิลปะ เพื่อ การสร้างสรรค์';
         $event->status = false;
-        
-        $event->rejection_reason = '-';
-        $event->image = "image/cert_3.jpeg";
+        $event->image = "event_images/esXIgyQffVeb3hk3GpHlAjsBXHxuUh2B70ZcHz4r.jpg";        
+        $event->rejection_reason = '-';        
         $event->save();
 
         $event = new Event();
@@ -120,7 +128,7 @@ class DatabaseSeeder extends Seeder
         $event->status = false;
         
         $event->rejection_reason = '-';
-        $event->image = "image/cert_4.jpeg";
+        $event->image = "event_images/esXIgyQffVeb3hk3GpHlAjsBXHxuUh2B70ZcHz4r.jpg";
         $event->save();
 
         $event = new Event();
@@ -131,7 +139,7 @@ class DatabaseSeeder extends Seeder
         $event->status = false;
         
         $event->rejection_reason = '-';
-        $event->image = "image/cert_5.jpeg";
+        $event->image = "event_images/esXIgyQffVeb3hk3GpHlAjsBXHxuUh2B70ZcHz4r.jpg";
         $event->save();
 
         // มีใครบ้าง

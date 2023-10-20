@@ -7,9 +7,11 @@
 <h2 class="font-semibold text-xl text-gray-800 leading-tight text-center">
     {{ __('โรงงานที่ตรวจสอบ : ') }} "{{$event->name}}"
 </h2>
+@if (Auth::user()->role === "staff")
     <div>
     <a class="inline-flex p-4 text-xl font-semibold leading-5 text-green-800 bg-green-100 rounded-full hover:bg-green-900 hover:text-white focus:outline-none focus:ring-4 focus:ring-red-300  py-2.5 text-center mr-2 mb-2 dark:bg-red-600 dark:hover:bg-red-700 dark:focus:ring-red-900" href="{{ route('kanbans.create', ['event' => $event]) }}">สร้างฟอร์ม</a>
 </div>
+@endif
 @if ($message = Session::get('success'))
 <div
                     class="bg-green-100 border border-green-400 text-green-700 px-4 py-3 rounded relative w-7/12  text-center mx-auto m-5"
@@ -60,7 +62,8 @@
                             <td
                         class="px-6 py-4 text-sm leading-5 text-gray-500 whitespace-no-wrap border-b border-gray-200">
                         <h1>Event id is :  {{ $event->id}}</h1>                    
-                        <a href="{{ route('kanbans.change', ['task' => $task->id])}}">EDIT</a>                    
+                        {{-- <a href="{{ route('kanbans.change', ['task' => $task->id])}}">EDIT</a>                     --}}
+                        <a href="{{ route('kanbans.change', ['event' => $event->id,'task' => $task->id])}}">EDIT</a>                    
                     </td>
                     </td>
                     
@@ -390,7 +393,7 @@
                         {{$owner->email}}
                     </td>
                     <td class="px-6 py-4">
-                        {{$owner->role}}
+                        {{$owner->duty}}
                     </td>
                     <td class="px-6 py-4">
                         @if($owner->is_available == false)                       
@@ -420,7 +423,14 @@
                         {{$member->email}}
                     </td>
                     <td class="px-6 py-4">
-                        {{$member->role}}
+                        @if ($member->duty === "fireman")
+                        นักอัคคีภัย
+                        @elseif ($member->duty === "chemicalEngineer")
+                        วิศวกรเคมี                        
+                        @elseif ($member->duty === "eletricalEngineer")
+                        วิศวกรไฟฟ้า
+                        @endif
+                        {{-- {{$member->duty}} --}}
                     </td>
                     <td class="px-6 py-4">
                         @if($member->is_available == false)                       

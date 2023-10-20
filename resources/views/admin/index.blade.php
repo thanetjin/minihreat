@@ -11,7 +11,7 @@
 
     <div class="container mx-auto p-6 bg-white border border-gray-200 rounded-lg shadow">
                 @if($user->image)
-                    <img class="w-[97px] h-[95px] mx-auto rounded-full" src="{{ asset('storage/' . Auth::user()->image)}}" alt="admin image">
+                    <img class="w-40 h-40 object-cover rounded-lg" src="{{ asset('storage/' . $event->image) }}">
                 @else
                     <img class="w-[97px] h-[95px] mx-auto rounded-full" src="https://cdn-icons-png.flaticon.com/512/3135/3135715.png" alt="default image">
                 @endif
@@ -52,7 +52,11 @@
             <div class="overflow-y-scroll h-[70vh]">
                 @foreach ($events as $event)
                     <div class="mb-5 h-fit flex flex-col items-center bg-white border border-gray-200 rounded-lg shadow md:flex-row">
-                        <img class="w-full rounded-t-lg h-auto md:w-48 md:rounded-none md:rounded-l-lg" src="{{URL('images/card-header.png')}}" alt="images for event">
+                        @if($event->image)
+                <img class="w-40 h-40 object-cover rounded-lg" src="{{ asset('storage/' . $event->image) }}">
+            @else
+                <img class="h-auto max-w-lg rounded-lg" src="images/card-header.png" alt="default image">
+            @endif
                         <div class="flex flex-col justify-between p-4 leading-normal w-full">
                             <h5 class="mb-2 text-xl font-bold tracking-tight text-gray-900">{{ $event->name }}</h5>
                             <p class="mb-3 font-normal text-sm text-gray-700">{{ $event->address }}</p>

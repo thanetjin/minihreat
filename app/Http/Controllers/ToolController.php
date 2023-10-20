@@ -27,8 +27,9 @@ class ToolController extends Controller
     }
 
     public function edit(Tool $tool): View {
-        $user = Auth::user();        
-        return view('tools.edit', ['user' => $user,'tool' => $tool]);
+        $user = Auth::user();
+        $allUser = User::get();        
+        return view('tools.edit', ['user' => $user,'tool' => $tool,'allUser' => $allUser]);
     }
     public function update(Request $request,$id){
         $request->validate([
@@ -36,6 +37,7 @@ class ToolController extends Controller
             'desc' => 'required',
             'copies' => 'required',
         ]);
+                
         $tool = Tool::find($id);
         $tool->name = $request->name;
         $tool->description = $request->desc;

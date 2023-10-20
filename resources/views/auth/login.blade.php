@@ -21,7 +21,7 @@
             {{-- email --}}
             {{-- <input class="p-2 mt-8" type="text" name="email" placeholder="email"> --}}
             {{-- <x-input-label for="email" :value="__('Email')" /> --}}
-            <x-text-input id="email" class="p-2 mt-8" type="email" name="email" placeholder="email" :value="old('email')" required autofocus autocomplete="username" />
+            <x-text-input id="email" class="p-2 mt-8" type="email" name="email" placeholder="อีเมล" :value="old('email')" required autofocus autocomplete="username" />
             <x-input-error :messages="$errors->get('email')" class="mt-2" />
                 {{-- <x-input-error :messages="$errors->get('ชื่อไม่ถูกต้อง')" class="mt-2" /> --}}
 
@@ -34,17 +34,18 @@
                             type="password"
                             name="password"
                             required autocomplete="current-password" 
-                            placeholder="password"
+                            placeholder="รหัสผ่าน"
                             />
 
             <x-input-error :messages="$errors->get('password')" class="mt-2" />
             
 
                 {{-- Login Button --}}
-                
-                <x-primary-button class="bg-gray-700 rounded-xl text-white py-2 text-center items-center justify-center">
-                    {{ __('เข้าสู่ระบบ') }}
-                </x-primary-button>
+                <div class="justify-start items-start text-center">
+                <button class="inline-flex p-4 text-xl font-semibold leading-5 text-white bg-black rounded-full hover:bg-slate-800 hover:text-white focus:outline-none focus:ring-4 focus:ring-red-300  py-2.5 text-center mr-2 mb-2 dark:bg-red-600 dark:hover:bg-red-700 dark:focus:ring-red-900">
+                    เข้าสู่ระบบ
+                </button>
+            </div>
             
 
             {{-- <button class="bg-cyan-400 rounded-xl text-white py-2">Login</button> --}}

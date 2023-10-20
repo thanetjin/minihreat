@@ -46,10 +46,26 @@
             
                         <x-input-error :messages="$errors->get('password')" class="mt-2" />
                             {{-- Register Button --}}
+
+                                         {{-- duty --}}
+<div>
+    <div class="flex items-center mb-2">
+        <input required type="radio" value="fireman" name="duty" class="w-4 h-4 text-blue-600 bg-gray-100 border-gray-300 focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600">
+        <label for="default-radio-1" class="ml-2 text-sm font-medium text-gray-900 dark:text-gray-300">นักอัคคีภัย</label>
+    </div>
+    <div class="flex items-center mb-2">
+        <input required type="radio" value="chemicalEngineer" name="duty" class="w-4 h-4 text-blue-600 bg-gray-100 border-gray-300 focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600">
+        <label for="default-radio-2" class="ml-2 text-sm font-medium text-gray-900 dark:text-gray-300">วิศวกรเคมี</label>
+    </div>
+    <div class="flex items-center mb-2">
+        <input required type="radio" value="eletricalEngineer" name="duty" class="w-4 h-4 text-blue-600 bg-gray-100 border-gray-300 focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600">
+        <label for="default-radio-2" class="ml-2 text-sm font-medium text-gray-900 dark:text-gray-300">วิศวไฟฟ้า</label>
+    </div>
+    </div>
                             
-                            <x-primary-button class="bg-gray-700 rounded-xl text-white py-2 text-center items-center justify-center">
-                                {{ __('สร้างหัวหน้าทีม') }}
-                            </x-primary-button>
+    <button class="inline-flex p-4 text-xl font-semibold leading-5 text-white bg-black rounded-full hover:bg-slate-800 hover:text-white focus:outline-none focus:ring-4 focus:ring-red-300  py-2.5 text-center mr-2 mb-2 dark:bg-red-600 dark:hover:bg-red-700 dark:focus:ring-red-900">
+        สร้างหัวหน้าทีม
+    </button>
                     
                     </form>                                
                 </div>

@@ -20,9 +20,13 @@
                     <path d="M16.9401 1.05856C15.5279 -0.352853 13.2292 -0.352853 11.817 1.05856L10.5282 2.34755L15.6521 7.47202L16.941 6.18303C18.3532 4.77072 18.3532 2.47087 16.9401 1.05856Z" fill="#1F2A37"/>
                 </svg>
             </a>
+            
         </div>
+        <h1>User id : {{ $user->id }}</h1>
     </div>
+    
 </div>
+
         <div class="mt-5 container mx-auto">
             <span class="flex rounded-md justify-center mb-10" role="group">
                 <a href="{{ route('user.show', ['user' => $user]) }}" class="px-4 py-2 text-xl font-semibold border border-gray-900 rounded-l-lg bg-gray-900 text-white focus:z-10 focus:ring-2 focus:ring-gray-500 focus:bg-gray-900 focus:text-white">
@@ -60,7 +64,11 @@
                         @if($user->id === $member->id)
                             {{-- card --}}
                                 <div class="h-fit flex mx-auto flex-col mt-4 items-center bg-white border border-gray-200 rounded-lg shadow md:flex-row">
-                                    <img class = "h-auto max-w-lg rounded-lg" src="{{ URL('images/card-header.png') }}">                                
+                                    @if($event->image)
+                <img class="w-40 h-40 object-cover rounded-lg" src="{{ asset('storage/' . $event->image) }}">
+            @else
+                <img class="h-auto max-w-lg rounded-lg" src="images/card-header.png" alt="default image">
+            @endif
                                         <div class="flex flex-col justify-between p-4 leading-normal truncate w-full">
                                             <h5 class="mb-2 text-xl font-bold tracking-tight text-gray-900 ">{{ $event->name }}</h5>
                                             <h1 class="mb-3 font-normal text-sm text-gray-700 ">{{ $event->address }}</h1>

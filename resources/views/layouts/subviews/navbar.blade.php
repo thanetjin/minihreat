@@ -66,7 +66,8 @@
                     <li>
                         <a href="{{ route('user.show', ['user' => $user ]) }}" class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100">
                             {{ Auth::user()->name }}
-                        </a>                        
+                        </a>               
+                                 
                     </li>
                     <form action="{{ route('logout' )}}" method="POST">
                         @csrf

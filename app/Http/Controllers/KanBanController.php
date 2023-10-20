@@ -78,29 +78,26 @@ public function store(Request $request,Event $event)
     //     $user = Auth::user();        
     //     return view('tools.edit', ['user' => $user,'tool' => $tool]);
     // }
-    public function change(Task $task)
+    public function change($id,Task $task)
     {
         
         $user = Auth::user();
         return view('kanbans.change',[            
             'user' => $user,                        
-            'task' => $task,        
+            'task' => $task,
+            'event' => Event::find($id)        
         ]);
     }
-    public function handleChange(Request $request,$id)
+    public function handleChange(Event $event,Request $request,$id)
     {
-        $user = Auth::user();
-        $request->validate([
-            'name' => 'required',
-            'role' => 'required',
-        ]);        
+        $user = Auth::user();        
         $task = Task::find($id);
-        $task->name = $request->name;
-        $task->type = $request->role;
+        $task->name = $user->name;
+        $task->type = $user->role;
         $checkbox_data = $request->input("duty");
         $task->checklist = implode(',',$checkbox_data);
         $task->save();
-        return redirect()->route('user.index',['user' => $user])->with('success','คุณได้ทำการแก้ไขฟอร์มเป็นที่เรียบร้อยแล้วครับ!');
+        return redirect()->route('kanbans.index',['event'=>$event,'user' => $user])->with('success','คุณได้ทำการแก้ไขฟอร์มเป็นที่เรียบร้อยแล้วครับ!');
     }
 
     public function update(Task $task)

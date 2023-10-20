@@ -118,9 +118,11 @@ class UserController extends Controller
         ]);   
     }
     public function enterEvent(Event $event)
-    {   
+    {   $user = Auth::user();
         $event->users()->attach(Auth::user()->id);
-        return redirect()->route('user.index');
+        // return redirect()->route('kanbans.index')->with("success", "คุณได้ทำการเข้าร่วมแล้ว!");
+        return redirect()->route('kanbans.index',['user' => $user,            
+        'event' => $event])->with("success", "คุณได้ทำการเข้าร่วมแล้ว!");
     }
 
     // เกิดขึ้นเมื่อ user กดปุ้มสร้าง event
@@ -132,52 +134,17 @@ class UserController extends Controller
         $event->member = $request->member;
         $event->serial_number = $request->serial_number;
         $event->date = $request->date;    
-        if ($request->hasFile('image')) {
+        if ($request->hasFile('image_path')) {
             // บันทึกไฟล์รูปภาพลงใน folder ชื่อ 'artist_images' ที่ storage/app/public
-            $path = $request->file('image')->store('image', 'public');
+            $path = $request->file('image_path')->store('event_images', 'public');
             $event->image = $path;
         }
         $event->save();
 
-        // $table->id();
-        // $table->string('name');
-        // $table->string('type');
-        // $table->string('role');
-
-        // $task = new Task();
-        // $task->name = 'การตรวจสอบความปลอดภัยของไฟฟ้า';
-        // $task->type = 'todo';
-        // $task->role = 'engineer';
-        // $task->event_id = $event->id;
-        // $task->save();
-
-        // $task = new Task();
-        // $task->name = 'การตรวจสอบความปลอดภัยของเครื่องยนตร์';
-        // $task->type = 'todo';
-        // $task->role = 'engineer';
-        // $task->event_id = $event->id;
-        // $task->save();
-
-        // $task = new Task();
-        // $task->name = 'การตรวจสอบความปลอดภัยของไฟ';
-        // $task->type = 'todo';
-        // $task->role = 'firefighter';
-        // $task->event_id = $event->id;
-        // $task->save();
-        
-        // //
-        
-        // $task = new Task();
-        // $task->name = 'การตรวจสอบความปลอดภัยของน้ำ';
-        // $task->type = 'todo';
-        // $task->role = 'scientist';
-        // $task->event_id = $event->id;
-        // $task->save();
 
 
 
-
-        return redirect()->route('user.index');
+        return redirect()->route('user.index')->with("success", "คุณได้ทำการสร้างห้องสำหรับตรวจสอบโรงงานแล้ว!");
     }
     public function userLogout(Request $request): RedirectResponse
     {
@@ -210,7 +177,7 @@ class UserController extends Controller
             'password' => Hash::make($request->new_password)
         ]);
 
-        return back()->with("status", "Password changed successfully!");
+        return back()->with("status", "คุณได้ทำการเปลี่ยนรหัสผ่านเป็นที่เรียบร้อยแล้ว!");
 }
         public function change_available(Request $request,User $member)
         {

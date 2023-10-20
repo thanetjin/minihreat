@@ -69,7 +69,7 @@ class AdminController extends Controller
     public function accept(Event $event){
         $event->is_allow = 'ACCEPT';
         $event->save();
-        return redirect()->route('admin.index');
+        return redirect()->route('admin.index')->with('success','คุณได้ทำการยืนยันคำร้องเรียบร้อย!');
     }
     //สร้าง staff คนใหม่ขึ้นมา
     public function createStaff(Request $request){
@@ -105,7 +105,7 @@ class AdminController extends Controller
         $user->password = Hash::make($request->password);
         $user->role = 'staff';
         $user->save();        
-        return redirect()->route('admin.index')->with('success','คุณได้ทำการสมัครสมาชิกเรียบร้อยแล้ว');        
+        return redirect()->route('admin.index')->with('success','คุณได้ทำการเพิ่มหัวหน้าทีมเรียบร้อยแล้ว');        
     }
     public function handleAssetButton(Request $request){
         $user = new User();
@@ -114,7 +114,7 @@ class AdminController extends Controller
         $user->password = Hash::make($request->password);
         $user->role = 'asset';
         $user->save();        
-        return redirect()->route('admin.index');
+        return redirect()->route('admin.index')->with('success','คุณได้ทำการเพิ่มเจ้าหน้าที่ส่วนกลางเรียบร้อยแล้ว');
     }
     
 }

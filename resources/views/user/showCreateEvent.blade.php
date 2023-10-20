@@ -10,10 +10,10 @@
         <div class="container mx-auto">
             
             <div class="p-4 shadow rounded-lg bg-white">
-                @if($user->image)
-                <img class="rounded-full w-[97px] h-[95px] bg-gray-800 mx-auto my-10" src="" alt="user photo">
+                @if($event->image)
+                <img class="w-40 h-40 object-cover rounded-lg" src="{{ asset('storage/' . $event->image) }}">
             @else
-                <img class="rounded-full w-[97px] h-[95px] bg-gray-800 mx-auto my-10" src="https://cdn-icons-png.flaticon.com/512/3135/3135715.png" alt="">
+                <img class="h-auto max-w-lg rounded-lg" src="images/card-header.png" alt="default image">
             @endif
                 <div class="flex justify-center mb-5">
                     <p class="font-semibold text-2xl text-center">{{$user->name}}</p>
@@ -26,6 +26,7 @@
                         </svg>
                     </a>
                 </div>
+                <h1>User id : {{ $user->id }}</h1>
             </div>
         </div>
 

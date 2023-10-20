@@ -104,6 +104,8 @@ class AdminController extends Controller
         $user->email = $request->email;
         $user->password = Hash::make($request->password);
         $user->role = 'staff';
+        $user->email = $request->email;
+        $user->duty = $request->duty;        
         $user->save();        
         return redirect()->route('admin.index')->with('success','คุณได้ทำการเพิ่มหัวหน้าทีมเรียบร้อยแล้ว');        
     }

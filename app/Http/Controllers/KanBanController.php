@@ -96,6 +96,9 @@ public function store(Request $request,Event $event)
         $task->type = $user->role;
         $checkbox_data = $request->input("duty");
         $task->checklist = implode(',',$checkbox_data);
+        if ($request->has('desc')) {            
+            $task->desc = $request->desc;
+        }
         $task->save();
         return redirect()->route('kanbans.index',['event'=>$event,'user' => $user])->with('success','คุณได้ทำการแก้ไขฟอร์มเป็นที่เรียบร้อยแล้วครับ!');
     }

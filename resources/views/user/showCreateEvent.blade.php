@@ -10,11 +10,11 @@
         <div class="container mx-auto">
             
             <div class="p-4 shadow rounded-lg bg-white">
-                @if($event->image)
-                <img class="w-40 h-40 object-cover rounded-lg" src="{{ asset('storage/' . $event->image) }}">
-            @else
-                <img class="h-auto max-w-lg rounded-lg" src="images/card-header.png" alt="default image">
-            @endif
+                @if($user->image)
+        <img class="rounded-full w-[97px] h-[95px] bg-gray-800 mx-auto my-10" src="" alt="user photo">
+    @else
+        <img class="rounded-full w-[97px] h-[95px] bg-gray-800 mx-auto my-10" src="https://cdn-icons-png.flaticon.com/512/3135/3135715.png" alt="">
+    @endif
                 <div class="flex justify-center mb-5">
                     <p class="font-semibold text-2xl text-center">{{$user->name}}</p>
                     <a href="{{ route('user.edit',['user' => $user ]) }}">
@@ -61,7 +61,11 @@
         @foreach ($events as $event)
         @if ($user->id == $event->user_id)
         <div class="flex flex-col mt-4 items-center bg-white border border-gray-200 rounded-lg shadow md:flex-row">
-            <img class = "h-auto max-w-lg rounded-lg" src="{{ URL('images/card-header.png') }}">
+            @if($event->image)
+                <img class="w-40 h-40 object-cover rounded-lg" src="{{ asset('storage/' . $event->image) }}">
+            @else
+                <img class="h-auto max-w-lg rounded-lg" src="images/card-header.png" alt="default image">
+            @endif
         
                 <div class="flex flex-col justify-between p-4 leading-normal truncate w-full">
                     <h5 class="mb-2 text-xl font-bold tracking-tight text-gray-900 ">{{ $event->name }}</h5>

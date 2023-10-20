@@ -61,9 +61,9 @@
                             <button>Edit</button> --}}
                             <td
                         class="px-6 py-4 text-sm leading-5 text-gray-500 whitespace-no-wrap border-b border-gray-200">
-                        <h1>Event id is :  {{ $event->id}}</h1>                    
+                                         
                         {{-- <a href="{{ route('kanbans.change', ['task' => $task->id])}}">EDIT</a>                     --}}
-                        <a href="{{ route('kanbans.change', ['event' => $event->id,'task' => $task->id])}}">EDIT</a>                    
+                        <a href="{{ route('kanbans.change', ['event' => $event->id,'task' => $task->id])}}">แก้ไขแบบฟอร์ม</a>                    
                     </td>
                     </td>
                     

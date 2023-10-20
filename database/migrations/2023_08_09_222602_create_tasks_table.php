@@ -13,7 +13,7 @@ return new class extends Migration
             $table->id();
             $table->string('name');  //ชื่อแบบฟอร์ม
             $table->string('type')->nullable(); //            // trying to addฃ
-            $table->string('desc')->nullable(); // คำอธิบายเอาไว้เวลา admin ต้องการแก้ไข
+            $table->longText('desc')->nullable(); // คำอธิบายเอาไว้เวลา admin ต้องการแก้ไข
             $table->longText('checklist')->nullable();//เช็คลิสว่าต้องทำอะไรบ้างแต่ละอย่าง
             $table->string('role')->default('firefighter');            
 

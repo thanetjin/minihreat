@@ -58,6 +58,7 @@ class DatabaseSeeder extends Seeder
         $user->password = Hash::make('password');
         $user->role = "user";
         $user->address = fake()->paragraph();
+        $user->duty = "chemicalEngineer";
         $user->save();
 
         $user = new User();
@@ -67,6 +68,7 @@ class DatabaseSeeder extends Seeder
         $user->password = Hash::make('password');
         $user->role = "user";
         $user->address = fake()->paragraph();
+        $user->duty = "fireman";
         $user->save();
 
         $user = new User();
@@ -75,6 +77,7 @@ class DatabaseSeeder extends Seeder
         $user->email_verified_at = now();
         $user->password = Hash::make('password');
         $user->role = "user";
+        $user->duty = "chemicalEngineer";
         $user->address = fake()->paragraph();
         $user->save();
 
@@ -84,6 +87,7 @@ class DatabaseSeeder extends Seeder
         $user->email_verified_at = now();
         $user->password = Hash::make('password');
         $user->role = "user";
+        $user->duty = "eletricalEngineer";
         $user->address = fake()->paragraph();
         $user->save();
 

@@ -19,7 +19,7 @@ return new class extends Migration
             $table->string('serial_number')->nullable();
             $table->string('date')->nullable();
             $table->foreignIdFor(User::class); //เพื่อหา event_owner check จาก id
-            $table->string('address')->nullable();
+            $table->longText('address')->nullable();
             // $table->string('event_certificate')->nullable();
             $table->boolean('status')->default(false);
             $table->integer('member');

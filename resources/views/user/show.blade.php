@@ -26,13 +26,13 @@
         <div class="mt-5 container mx-auto">
             <span class="flex rounded-md justify-center mb-10" role="group">
                 <a href="{{ route('user.show', ['user' => $user]) }}" class="px-4 py-2 text-xl font-semibold border border-gray-900 rounded-l-lg bg-gray-900 text-white focus:z-10 focus:ring-2 focus:ring-gray-500 focus:bg-gray-900 focus:text-white">
-                    กิจกรรมที่เข้าร่วม
+                    โรงงานที่เข้าร่วมตรวจสอบ
                 </a>
-                @if (Auth::user()->role === "asset")
+                @if (Auth::user()->role === "staff")
 
                 {{-- <h1>{{ $event->id }}</h1> --}}
                 <a href="{{ route('user.showCreateEvent', ['user' => $user]) }}" class="px-4 py-2 text-xl font-semibold text-gray-900 bg-transparent border border-gray-900 rounded-r-md hover:bg-gray-900 hover:text-white focus:z-10 focus:ring-2 focus:ring-gray-500 focus:bg-gray-900 focus:text-white">
-                    กิจกรรมที่สร้าง
+                    โรงงานที่สร้างเพื่อตรวจสอบ
                 </a>
                 @endif
                 
@@ -77,7 +77,7 @@
                             <p class="text-red-400">ถูกปฏิเสธโดยเจ้าหน้าที่</p>
                             @endif
                             @if($event->status)
-                            <p class="text-red-400">กิจกรรมจบแล้ว</p>
+                            <p class="text-red-400">การตรวจโรงงานจบแล้ว</p>
                             @endif
                             @if (($event->is_allow == "ACCEPT" && $event->status == false) || ($event->is_allow == 'REJECT' ))
                             <a href="{{ route('user.show_detail_event', ['event' => $event]) }}" class="flex py-1 px-5 mb-2 mt-2  text-sm font-semibold text-black focus:outline-none bg-white rounded-lg border border-gray-900 hover:bg-gray-100 hover:text-blue-700 focus:ring-4 focus:ring-gray-200">

@@ -65,7 +65,7 @@ class LoanController extends Controller
 
 
         return to_route('loans.index')
-            ->with('status', 'Book borrowed successfully');
+            ->with('status', 'คุณได้การยืมอุปกรณ์เป็นที่เรียบร้อยแล้ว');
     }
 
 

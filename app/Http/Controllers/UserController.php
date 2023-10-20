@@ -6,6 +6,8 @@ use Illuminate\Support\Facades\Hash;
 use App\Models\Event;
 use App\Models\User;
 use App\Models\Task;
+use App\Models\Tool;
+use App\Models\Loan;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Http\RedirectResponse;
@@ -18,10 +20,13 @@ class UserController extends Controller
     public function index()
     {
         
+        // return view('tools.index', ['user' => $user,'tools' => Tool::paginate(10),'loans' => Loan::paginate(10)]);
         $user = Auth::user();
         return view('user.index',[
             'user' => $user,            
-            'events' => Event::get()
+            'events' => Event::get(),
+            'tools' => Tool::get(),
+            'loans' => Loan::get(),
         ]);
     }
 
@@ -57,6 +62,7 @@ class UserController extends Controller
     //  โชว์พวกเกียติบัตรของ user
     public function show(User $user)
     {
+        $user = Auth::user();
         return view('user.show',[
             'user' => $user,
             'events' => Event::get()
@@ -96,8 +102,7 @@ class UserController extends Controller
     public function showCreateEvent(Event $event){
         $user = Auth::user();
         return view('user.showCreateEvent',[
-            'user' => $user,
-            
+            'user' => $user,            
             'events' => Event::get()
         ]);
     }

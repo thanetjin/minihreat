@@ -41,7 +41,7 @@ class ToolController extends Controller
         $tool->description = $request->desc;
         $tool->copies = $request->copies;
         $tool->save();
-        return redirect()->route('tools.index')->with('success','เครื่องมือได้เปลี่ยนแปลงเรียบร้อนแล้ว');
+        return redirect()->route('tools.index')->with('success','คุณได้แก้ไขเครื่องมือเรียบร้อย');
     }
     public function show() {
 

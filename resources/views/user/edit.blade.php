@@ -27,7 +27,7 @@
                     <h1 class="text-lg">{{ session('success') }}</h1>
                     </div> --}}
                     <div class="p-4 mb-4 text-sm text-green-800 rounded-lg bg-green-50 dark:bg-gray-800 dark:text-green-400" role="alert">
-                    <span class="font-medium">Success alert!</span> {{ session('success') }}
+                    <span class="font-medium">คุณทำรายการเสร็จสิ้น!</span> {{ session('success') }}
                     </div>
             @elseif (session('error'))
             <div class="p-4 mb-4 text-sm text-red-800 rounded-lg bg-red-50 dark:bg-gray-800 dark:text-red-400" role="alert">
@@ -35,7 +35,7 @@
                 </div>
             @endif
 
-                <h5 class="text-xl font-medium text-gray-900 dark:text-white">แก้ใขข้อมูลส่วนตัว</h5>
+                <h5 class="text-xl font-medium text-gray-900 dark:text-white">แก้ไขรหัสผ่าน</h5>
                 <div>
                     <label for="passwor" class="block mb-2 text-sm font-medium text-gray-900">old-password</label>
                     <input type="password" name="old_password" id="email" class="form-control @error('old_password') is-invalid @enderror bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5" placeholder="Old-Password" required>

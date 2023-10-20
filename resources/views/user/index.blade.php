@@ -10,9 +10,33 @@
 @php
     $counter_allow_sending = 0;
     $counter_allow_accept = 0;
-    $counter_allow_success = 0;
+    $counter_allow_success = 0;    
+@endphp
+@php
+    $counter_tool = 0;
+    $counter_borrow = 0;
     
 @endphp
+{{-- @foreach ($tools as $tool)
+
+        @if ($event->is_allow === 'SENDING')
+            @php
+                $counter_allow_sending++
+            @endphp            
+        @endif
+        @if ($event->status)
+            @php
+                $counter_allow_success++
+            @endphp            
+        @endif
+        
+        @if ($event->is_allow === 'ACCEPT')
+            @php
+                $counter_allow_accept++;
+            @endphp            
+        @endif        
+        @endforeach --}}
+
 @if ($message = Session::get('success'))
 <div
                     class="bg-green-100 border border-green-400 text-green-700 px-4 py-3 rounded relative w-7/12  text-center mx-auto m-5"
@@ -21,6 +45,25 @@
                     {{ $message}}
                 </div>
 @endif
+@if (Auth::user()->role === "asset")
+    
+
+<ul class="flex flex-col md:grid grid-cols-2 gap-5 text-redis-neutral-800 max-w-2xl mx-auto p-10 mt-10">
+    <li
+        class="w-full text-sm font-semibold text-slate-900 p-6 bg-white border border-slate-900/10 bg-clip-padding shadow-md shadow-slate-900/5 rounded-lg flex flex-col justify-center">
+        <span class="mb-1 text-[#2ed4c0] font-display text-5xl">{{$tools->count()}}</span>
+        {{-- ['ACCEPT','REJECT','SENDING'] --}}        
+        จำนวนอุปกรณ์
+    </li>
+    <li
+        class="w-full text-sm font-semibold text-slate-900 p-6 bg-white border border-slate-900/10 bg-clip-padding shadow-md shadow-slate-900/5 rounded-lg flex flex-col justify-center">
+        <span class="mb-1 text-[#2ed4c0] font-display text-5xl">{{$loans->count()}}</span>
+        จำนวนยืม
+    </li>
+
+</ul>
+@endif
+@if (Auth::user()->role === "user" || Auth::user()->role === "staff")
 
 @foreach ($events as $event)
 
@@ -117,7 +160,7 @@
                             <p class="text-red-400">ถูกปฏิเสธโดยเจ้าหน้าที่</p>
                             @endif
                             @if($event->status)
-                            <p class="text-red-400">กิจกรรมจบแล้ว</p>
+                            <p class="text-red-400">การตรวจโรงงานสำเร็จแล้ว</p>
                             @endif  
                             @if (($event->is_allow == "ACCEPT" && $event->status == false) || ($event->is_allow == 'REJECT' ))
                             <a href="{{ route('user.show_detail_event', ['event' => $event]) }}" class="flex py-1 px-5 mb-2 mt-2  text-sm font-semibold text-black focus:outline-none bg-white rounded-lg border border-gray-900 hover:bg-gray-100 hover:text-blue-700 focus:ring-4 focus:ring-gray-200">
@@ -134,6 +177,8 @@
     $counter = 1;
 @endphp
         @endforeach
+        @endif
         
     </div>
+    
 @endsection

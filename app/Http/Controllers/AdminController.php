@@ -62,7 +62,7 @@ class AdminController extends Controller
         $event->rejection_reason = $request->get('reason');
         $event->save();
         
-        return redirect()->route('admin.index');
+        return redirect()->route('admin.index')->with('success','คุณได้ทำการยืนยันการปฏิเสธคำร้องเรียบร้อย!');
     }
 
     // เปลี่ยนสถานะว่าให้ถูกยอมรับ event นั้นๆ

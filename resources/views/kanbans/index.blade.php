@@ -1,14 +1,14 @@
 @extends('layouts.main')
 
 @section('content')
+
 @php use Carbon\Carbon; @endphp
 
-    <div class="relative grid mb-10 bg-cover bg-center" id="background">
-        <!-- <img src="{{ URL('images/background-user.jpg') }}" 
-        class="bg-center h-[30%] w-full"/> -->        
-    </div>
+<h2 class="font-semibold text-xl text-gray-800 leading-tight text-center">
+    {{ __('โรงงานที่ตรวจสอบ : ') }} "{{$event->name}}"
+</h2>
     <div>
-    <a class="text-white bg-green-500 hover:bg-green-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm w-full sm:w-auto px-5 py-2.5 text-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800" href="{{ route('kanbans.create', ['event' => $event]) }}">สร้างฟอร์ม</a>
+    <a class="inline-flex p-4 text-xl font-semibold leading-5 text-green-800 bg-green-100 rounded-full hover:bg-green-900 hover:text-white focus:outline-none focus:ring-4 focus:ring-red-300  py-2.5 text-center mr-2 mb-2 dark:bg-red-600 dark:hover:bg-red-700 dark:focus:ring-red-900" href="{{ route('kanbans.create', ['event' => $event]) }}">สร้างฟอร์ม</a>
 </div>
 @if ($message = Session::get('success'))
 <div
@@ -44,7 +44,7 @@
                         {{$task->id}}
                     </th>
                     
-                    <td class="px-6 py-4">
+                    <td class="px-6 py-4 text-red-500">
                         {{$task->desc}}
                     </td>
                     
@@ -380,7 +380,36 @@
                 </tr>
             </thead>
             <tbody>                
+                
+                <tr class="bg-white border-b">
+                    <th scope="row" class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap">
+                        {{$owner->name}}
+                    </th>
+                    
+                    <td class="px-6 py-4">
+                        {{$owner->email}}
+                    </td>
+                    <td class="px-6 py-4">
+                        {{$owner->role}}
+                    </td>
+                    <td class="px-6 py-4">
+                        @if($owner->is_available == false)                       
+                        <span
+                            class="inline-flex px-2 text-xs font-semibold leading-5 text-green-800 bg-green-100 rounded-full">
+                            ว่าง
+                            </span>                        
+                        @endif
+                        @if($owner->is_available == true)                       
+                        <span
+                            class="inline-flex px-2 text-xs font-semibold leading-5 text-red-800 bg-red-100 rounded-full">
+                               ไม่ว่าง
+                            </span>
+                        @endif
+                    </td>                    
+                </tr>
+
                 @foreach($event->users as $member)
+                
                 
                 <tr class="bg-white border-b">
                     <th scope="row" class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap">
@@ -406,18 +435,7 @@
                                ไม่ว่าง
                             </span>
                         @endif
-                    </td>
-                    {{-- <a href="{{ route('loans.terminate', ['loan' => $loan->id]) }}">คืนเครื่องมือ</a> --}}
-                    {{-- <td class="px-6 py-4">
-                        @if ($member->is_available)         
-                        <form action="{{ route('kanbans.editAvailable', ['event' => $event,'member' => $member]) }}" method="POST">                            
-                            @csrf
-                            <div class="flex justify-center items-center text-center">
-                          <button type="submit"  class="text-white bg-red-500 hover:bg-red-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm w-full sm:w-auto px-5 py-2.5 text-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800">Finish</button>      
-                        </div>
-                        </form>
-                        @endif                        
-                    </td> --}}
+                    </td>                    
                 </tr>
                 @endforeach
             </tbody>
@@ -429,7 +447,7 @@
     <form action="{{ route('kanbans.changeStatus', ['event' => $event]) }}" method="POST">                            
         @csrf
         <div class="flex justify-center items-center text-center m-4">
-      <button type="submit"  class="text-white bg-green-500 hover:bg-green-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm w-full sm:w-auto px-5 py-2.5 text-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800">Finish</button>      
+      <button type="submit"  class="inline-flex p-4 text-xl font-semibold leading-5 text-white bg-black rounded-full hover:bg-slate-800 hover:text-white focus:outline-none focus:ring-4 focus:ring-red-300  py-2.5 text-center mr-2 mb-2 dark:bg-red-600 dark:hover:bg-red-700 dark:focus:ring-red-900">ตรวจโรงงานสำเร็จ</button>      
     </div>
     </form>
 @endsection

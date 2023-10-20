@@ -72,10 +72,12 @@
                                     class="px-6 py-4 text-sm leading-5 text-gray-500 whitespace-no-wrap border-b border-gray-200">
                                     {{Carbon::parse($loan->return_date)->format('l jS F, Y')}}
                                 </td>
+                                @if($user->role === "asset")                                
                                 <td
                                     class="px-6 py-4 text-sm leading-5 text-gray-500 whitespace-no-wrap border-b border-gray-200">
                                     <a href="{{ route('loans.terminate', ['loan' => $loan->id]) }}">คืนเครื่องมือ</a>
                                 </td>
+                                @endif
                             </tr>
                         @endforeach
                         </tbody>

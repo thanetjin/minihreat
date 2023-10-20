@@ -12,7 +12,9 @@
     @endif
     
     @if (Auth::user()->role === "asset")
-    <a class="flex m-6 text-3xl font-semibold text-gray-900 text-center justify-center items-center" href="{{ route('tools.show') }}">รายชื่อผู้ยืมทั้งหมด</a>                    
+    <div class="text-center justify-center items-center">
+    <a class="inline-flex p-4 text-xl font-semibold leading-5 text-white bg-black rounded-full hover:bg-slate-800 hover:text-white focus:outline-none focus:ring-4 focus:ring-red-300  py-2.5 text-center mr-2 mb-2 dark:bg-red-600 dark:hover:bg-red-700 dark:focus:ring-red-900" href="{{ route('tools.show') }}">ดูรายชื่อผู้ยืมทั้งหมด</a>                    
+</div>
     @endif
     
     @if ($message = Session::get('success'))
@@ -108,7 +110,7 @@
                     @endif
                 </td>
                 @auth
-                @if (Auth::user()->role === "user")                                    
+                @if (Auth::user()->role === "user" || Auth::user()->role === "staff")                                    
                     <td
                         class="px-6 py-4 text-sm leading-5 text-gray-500 whitespace-no-wrap border-b border-gray-200">
                     @if($tool->canBeBorrowed())
@@ -122,9 +124,7 @@
                     <td
                         class="px-6 py-4 text-sm leading-5 text-gray-500 whitespace-no-wrap border-b border-gray-200">                    
                         <a href="{{ route('tools.edit', ['tool' => $tool->id]) }}">จัดการอุปกรณ์</a>                    
-                    </td>
-                    
-
+                    </td>                    
                     @endif
                 @endif
             </tr>

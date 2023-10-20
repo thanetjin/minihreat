@@ -12,13 +12,16 @@ use Illuminate\Support\Facades\Auth;
 
 class KanBanController extends Controller
 {
-    public function index(Event $event)
-    
+    public function index(Event $event)    
     {
+
+        $owner = $event->user_id;        
         $user = Auth::user();
         return view('kanbans.index',[            
             'user' => $user,            
-            'event' => $event                    
+            'event' => $event,
+            'owner' => User::find($owner)               
+            
         ]);
     }
     public function create(Event $event)
@@ -36,21 +39,35 @@ class KanBanController extends Controller
     }
 public function store(Request $request,Event $event)
     {
-        $user = Auth::user();
-        $request->validate([
-            'name' => 'required',
-            'role' => 'required',
-        ]);
+        // $user = Auth::user();
+        // $request->validate([
+        //     'name' => 'required',
+        //     'role' => 'required',            
+        // ]);
+        // $task = new Task();
+        // $task->name = $request->name;
+        // $task->type = $request->role;        
+        // $checkbox_data = $request->input("duty");
+        // $task->checklist = implode(',',$checkbox_data);
+        // $task->event_id = $event->id;
+        // $task->save();
+        // return redirect()->route('kanbans.index',['user' => $user,            
+        // 'event' => $event])->with('success','คุณได้ทำการสร้างฟอร์มเรียบร้อยแล้ว!');
+        // error_log('Some message here.');
+
+        $user = Auth::user();        
         $task = new Task();
-        $task->name = $request->name;
-        $task->type = $request->role;        
-        $checkbox_data = $request->input("duty");
-        $task->checklist = implode(',',$checkbox_data);
+        $task->name = $user->name;
+        $task->type = $user->role;        
+        // $checkbox_data = $request->input("duty");
+        // $task->checklist = implode(',',$checkbox_data);
         $task->event_id = $event->id;
         $task->save();
         return redirect()->route('kanbans.index',['user' => $user,            
         'event' => $event])->with('success','คุณได้ทำการสร้างฟอร์มเรียบร้อยแล้ว!');
         error_log('Some message here.');
+
+
         
     }
     // public function edit(Event $event,Task $task)

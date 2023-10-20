@@ -35,13 +35,13 @@
     </div>
     
     @if ($message = Session::get('success'))
-        <div
-                        class="bg-green-100 border border-green-400 text-green-700 px-4 py-3 rounded relative w-7/12  text-center mx-auto m-5"
-                        role="alert">
-                        <span class="block sm:inline">{{ session()->get('status') }}</span>
-                        {{ $message}}
-                    </div>
-    @endif
+<div
+                    class="bg-green-100 border border-green-400 text-green-700 px-4 py-3 rounded relative w-7/12  text-center mx-auto m-5"
+                    role="alert">
+                    <span class="block sm:inline">{{ session()->get('status') }}</span>
+                    {{ $message}}
+                </div>
+@endif
     <div class="container mx-auto mt-5">
         <span class="flex justify-center">
             <div class="p-4 text-center text-2xl mx-auto">

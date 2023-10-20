@@ -142,7 +142,7 @@
                                             @enderror
                         </div>                                              
                         <x-primary-button type="submit">
-                            ยืนยันแบบฟอร์ม
+                            ยืนยันการแก้ไขฟอร์ม
                         </x-primary-button>
 
                     </form>

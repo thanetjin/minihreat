@@ -4,7 +4,7 @@
 
     
         <h2 class="font-semibold text-xl text-gray-800 leading-tight text-center">
-            {{ __('อุปกรณ์ที่ต้องการยืมคือ ') }} "{{$event->name}}"
+            {{ __('แบบฟอร์มตรวจสอบโรงงาน : ') }} "{{$event->name}}"
         </h2>
         
 
@@ -131,7 +131,7 @@
                             @enderror
                         </div>              
                         <x-primary-button type="submit">
-                            ยืนยันแบบฟอร์ม
+                            ยืนยันการสร้างฟอร์ม
                         </x-primary-button>
 
                     </form>

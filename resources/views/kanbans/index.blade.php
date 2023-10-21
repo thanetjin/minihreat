@@ -393,7 +393,14 @@
                         {{$owner->email}}
                     </td>
                     <td class="px-6 py-4">
-                        {{$owner->duty}}
+                        @if ($owner->duty === "fireman")
+                        นักอัคคีภัย
+                        @elseif ($owner->duty === "chemicalEngineer")
+                        วิศวกรเคมี                        
+                        @elseif ($owner->duty === "eletricalEngineer")
+                        วิศวกรไฟฟ้า
+                        @endif
+                        {{-- {{$member->duty}} --}}
                     </td>
                     <td class="px-6 py-4">
                         @if($owner->is_available == false)                       

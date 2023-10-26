@@ -127,8 +127,16 @@ class UserController extends Controller
 
     // เกิดขึ้นเมื่อ user กดปุ้มสร้าง event
     public function storeEvent(Request $request, User $user){
+
+
+        $request->validate([
+            'date' => 'required|date|after:now',
+        ],[
+            'date.after' => 'กรุณากรอกวันและเวลาที่ไม่ใช่อดีต',            
+        ]);
         
-        $event = new Event();
+        
+        $event = new Event();        
         $event->name = $request->name;
         $event->address = $request->address;        
         $event->user_id = $user->id;

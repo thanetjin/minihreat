@@ -43,7 +43,7 @@
                 <div class="mt-5">
                     <label class="block">
                         <span class="text-gray-700">กำหนดการปฏิบัติงาน</span>
-                        <input type="date" name="date" class="block w-full mt-1 rounded-md text-gray-900 bg-gray-50 border border-gray-300 focus:ring-blue-500 focus:border-blue-500"
+                        <input type="datetime-local"  name="date" class="block w-full mt-1 rounded-md text-gray-900 bg-gray-50 border border-gray-300 focus:ring-blue-500 focus:border-blue-500"
                                placeholder="" required value="{{old('date')}}"/>
                     </label>
                     @error('date')

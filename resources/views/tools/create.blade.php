@@ -44,8 +44,9 @@
                             <div class="text-sm text-red-600">{{ $message }}</div>
                             @enderror
                         </div>
+                        
                         <button class="inline-flex p-4 text-xl font-semibold leading-5 text-white bg-black rounded-full hover:bg-slate-800 hover:text-white focus:outline-none focus:ring-4 focus:ring-red-300  py-2.5 text-center mr-2 mb-2 dark:bg-red-600 dark:hover:bg-red-700 dark:focus:ring-red-900" type="submit">
-                            เพิ่มจำนวนอุปกรณ์
+                            เพิ่มอุปกรณ์
                         </button>                        
                     </form>
                 </div>

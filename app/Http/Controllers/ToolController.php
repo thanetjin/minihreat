@@ -31,6 +31,24 @@ class ToolController extends Controller
         $allUser = User::get();        
         return view('tools.edit', ['user' => $user,'tool' => $tool,'allUser' => $allUser]);
     }
+    public function create(): View {
+        $user = Auth::user();
+        return view('tools.create', ['user' => $user]);
+    }
+    public function store(Request $request){
+        $user = Auth::user();
+        $request->validate([
+            'name' => 'required',
+            'desc' => 'required',
+            'copies' => 'required',
+        ]);                
+        $tool = new Tool();
+        $tool->name = $request->name;
+        $tool->description = $request->desc;
+        $tool->copies = $request->copies;
+        $tool->save();
+        return redirect()->route('tools.index')->with('success','คุณได้ทำการเพิ่มเครื่องมือเรียบร้อยแล้ว');
+    }
     public function update(Request $request,$id){
         $request->validate([
             'name' => 'required',

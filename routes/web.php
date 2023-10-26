@@ -163,6 +163,8 @@ Route::post('/user/store/{user}',[
 
 
 Route::get('/tool', [ToolController::class, 'index'])->name('tools.index');
+Route::get('/tool/create', [ToolController::class, 'create'])->name('tools.create');
+Route::post('/tool/create', [ToolController::class, 'store'])->name('tools.store');
 Route::get('/loans', [LoanController::class, 'index'])->name('loans.index');
 Route::get('/loans/{tool}', [LoanController::class, 'create'])->name('loans.create');
 

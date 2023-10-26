@@ -94,8 +94,12 @@ public function store(Request $request,Event $event)
         $task = Task::find($id);
         $task->name = $user->name;
         $task->type = $user->role;
+        $request->validate([
+            'duty' => 'required|min:1', // ตรวจสอบว่าต้องเป็นอาร์เรย์และมีอย่างน้อย 1 รายการ
+        ]);
         $checkbox_data = $request->input("duty");
-        $task->checklist = implode(',',$checkbox_data);
+        $task->checklist = implode(',',$checkbox_data);        
+        
         if ($request->has('desc')) {            
             $task->desc = $request->desc;
         }
@@ -136,7 +140,7 @@ public function store(Request $request,Event $event)
         {
             $event->status = true;
             $event->save();
-            return redirect()->route('user.index');
+            return redirect()->route('user.index')->with('success','คุณได้ทำการยืนยันแบบฟอร์มสำหรับการตรวจงานเสร็จสิ้นแล้ว!');
         }
         public function terminate(User $user): RedirectResponse {
             $user->terminate();

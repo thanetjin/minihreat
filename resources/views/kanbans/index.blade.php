@@ -29,11 +29,11 @@
                         ID
                     </th>
                     <th scope="col" class="px-6 py-3">
-                        Desc
+                        คำอธิบาย
                     </th>
                     
                     <th scope="col" class="px-6 py-3">
-                        Update_time
+                        เวลาในการอัพเดทฟอร์มล่าสุด
                     </th>
                     
                 </tr>
@@ -369,13 +369,13 @@
             <thead class="text-xs text-gray-700 uppercase bg-gray-50">
                 <tr>
                     <th scope="col" class="px-6 py-3">
-                        Name
+                        ชื่อผู้ใช้งาน
                     </th>
                     <th scope="col" class="px-6 py-3">
-                        Email
+                        อีเมล
                     </th>
                     <th scope="col" class="px-6 py-3">
-                        Role
+                        หน้าที่
                     </th>
                     <th scope="col" class="px-6 py-3">
                         สถานะในการทำงาน

@@ -127,6 +127,7 @@ class UserController extends Controller
 
     // เกิดขึ้นเมื่อ user กดปุ้มสร้าง event
     public function storeEvent(Request $request, User $user){
+        
         $event = new Event();
         $event->name = $request->name;
         $event->address = $request->address;        

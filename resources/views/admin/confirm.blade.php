@@ -10,9 +10,9 @@
 
             <p class="text-gray-500 mb-2">หัวข้อ</p>
             <p class="border border-gray-300 rounded-lg bg-gray-200 w-full p-2 mb-2">{{ $event->name }}</p>
-            <p class="text-gray-500 mb-2">เนื้อหา</p>
+            <p class="text-gray-500 mb-2">ที่อยู่</p>
             <p class="border border-gray-300 rounded-lg bg-gray-200 shadow break-words p-2 mb-2">{{ $event->address }}</p>
-            <p class="text-gray-500 mt-5 mb-2">ชื่อ หรือ ผู้รับผิดชอบ โปรเจค</p>
+            <p class="text-gray-500 mt-5 mb-2">ชื่อผู้ใช้งานหัวหน้าทีม</p>
             <p class="border border-gray-300 rounded-lg bg-gray-200 shadow p-2 mb-2">{{ $owner }}</p>
             <p class="text-gray-500 mt-5 mb-2">จำนวนคนในโปรเจค</p>
             <p class="border border-gray-300 rounded-lg bg-gray-200 shadow p-2 mb-2">{{ $event->member }} คน</p>

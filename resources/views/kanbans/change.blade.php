@@ -12,6 +12,12 @@
                         @csrf 
                         @method("PUT")
                         <div class="mb-6">
+                            @if ($errors->has('duty'))
+                            <div class="bg-red-100 border border-red-400 text-red-700 px-4 py-3 rounded relative" role="alert">
+                                <strong class="font-bold">ไม่สามารถบันทึกข้อมูลได้!</strong>
+                                <span class="block sm:inline">กรุณากรอกแบบฟอร์มอย่างน้อย 1 รายการ</span>
+                            </div>
+@endif
                             
                                 <span class="text-gray-700">ตำแหน่งหน้าที่ของคุณ</span>                                
                                 <input type="text" name="role" class="block w-full mt-1 rounded-md disabled:bg-slate-50 disabled:text-slate-500 disabled:border-slate-200 disabled:shadow-none " disabled

@@ -18,12 +18,12 @@
                         @csrf
                     <!-- Username -->
                     
-                        <x-text-input id="name" class="p-2 mt-8" placeholder="username" type="text" name="name" :value="old('name')" required autofocus autocomplete="name" />
+                        <x-text-input id="name" class="p-2 mt-8" placeholder="ชื่อผู้ใช้งาน" type="text" name="name" :value="old('name')" required autofocus autocomplete="name" />
                         <x-input-error :messages="$errors->get('name')" class="mt-2" />
                     
             
                         {{-- email --}}
-                        <x-text-input id="email" class="p-2" type="email" name="email" placeholder="email" :value="old('email')" required autofocus autocomplete="username" />
+                        <x-text-input id="email" class="p-2" type="email" name="email" placeholder="อีเมล" :value="old('email')" required autofocus autocomplete="username" />
                         <x-input-error :messages="$errors->get('email')" class="mt-2" />
             
                         {{-- password --}}
@@ -31,13 +31,13 @@
                                         type="password"
                                         name="password"
                                         required autocomplete="current-password" 
-                                        placeholder="password"
+                                        placeholder="รหัสผ่าน"
                                         />
             
                         <!-- Confirm Password -->
                     
                         
-                        <x-text-input id="password_confirmation" class="p-2" placeholder="confirm password"
+                        <x-text-input id="password_confirmation" class="p-2" placeholder="ยืนยันรหัสผ่าน"
                                         type="password"
                                         name="password_confirmation" required autocomplete="new-password" />
             

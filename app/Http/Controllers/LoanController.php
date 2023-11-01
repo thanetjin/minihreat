@@ -25,10 +25,19 @@ class LoanController extends Controller
         return view('loans.index', ['user' => $user,'loans' => Auth::user()->loans->where('is_returned', false)->all()]);
         
     }
+    // $request->validate([
+    // //     'date' => 'required|date|after:now',
+    // //     'member' => 'min:1'
+    // // ],[
+    // //     'date.after' => 'กรุณากรอกเวลาที่ไม่ใช่อดีต',            
+    // //     'member.min' => 'กรุณากรอกจำนวนมากกว่า1คน',            
+    // // ]);
     public function store(Tool $tool, Request $request): RedirectResponse {
         $validator = ValidatorFacade::make($request->all(), [
             'number_borrowed' => 'required|int',
-            'return_date'     => 'required',
+            'return_date'     => 'required|date|after:now',
+        ],[
+            'return_date.after' => 'กรุณากรอกเวลาที่ไม่ใช่อดีต',            
         ]);
 
         $validator->after(function (Validator $validator) use ($tool) {

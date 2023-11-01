@@ -112,7 +112,22 @@
 @endif
 @if($user->is_available == true)
 <a href="{{ route('user.change_available',['user' => $user])}}"  class="inline-flex px-2 text-xs font-semibold leading-5 text-red-800 bg-red-100 rounded-full hover:bg-red-900 hover:text-white focus:outline-none focus:ring-4 focus:ring-red-300  py-2.5 text-center mr-2 mb-2 dark:bg-red-600 dark:hover:bg-red-700 dark:focus:ring-red-900">สถานะตอนนี้ไม่ว่าง</a>
+{{-- @if ($owner->duty === "fireman")
+                        นักอัคคีภัย
+                        @elseif ($owner->duty === "chemicalEngineer")
+                        วิศวกรเคมี                        
+                        @elseif ($owner->duty === "eletricalEngineer")
+                        วิศวกรไฟฟ้า
+                        @endif --}}
 @endif
+@if ($user->duty === "fireman")
+<h1 class="inline-flex px-2 text-xs font-semibold leading-5 text-orange-800 bg-red-100 rounded-full hover:bg-orange-900 hover:text-white focus:outline-none focus:ring-4 focus:ring-red-300  py-2.5 text-center mr-2 mb-2 dark:bg-red-600 dark:hover:bg-red-700 dark:focus:ring-red-900">นักอัคคีภัย</h1>
+                        @elseif ($user->duty === "chemicalEngineer")
+                        <h1 class="inline-flex px-2 text-xs font-semibold leading-5 text-orange-800 bg-red-100 rounded-full hover:bg-orange-900 hover:text-white focus:outline-none focus:ring-4 focus:ring-red-300  py-2.5 text-center mr-2 mb-2 dark:bg-red-600 dark:hover:bg-red-700 dark:focus:ring-red-900">วิศวกรเคมี</h1>
+                        @elseif ($user->duty === "eletricalEngineer")
+                        <h1 class="inline-flex px-2 text-xs font-semibold leading-5 text-orange-800 bg-red-100 rounded-full hover:bg-orange-900 hover:text-white focus:outline-none focus:ring-4 focus:ring-red-300  py-2.5 text-center mr-2 mb-2 dark:bg-red-600 dark:hover:bg-red-700 dark:focus:ring-red-900">วิศวกรไฟฟ้า</h1>
+                        @endif
+
 </div>
 
 

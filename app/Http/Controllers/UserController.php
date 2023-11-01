@@ -131,8 +131,10 @@ class UserController extends Controller
 
         $request->validate([
             'date' => 'required|date|after:now',
+            'member' => 'min:1'
         ],[
-            'date.after' => 'กรุณากรอกวันและเวลาที่ไม่ใช่อดีต',            
+            'date.after' => 'กรุณากรอกเวลาที่ไม่ใช่อดีต',            
+            'member.min' => 'กรุณากรอกจำนวนมากกว่า1คน',            
         ]);
         
         

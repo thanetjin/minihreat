@@ -11,10 +11,12 @@
 
     <div class="mx-auto justify-center flex items-center">
         
-            
+        {{-- <h1  class="text-red-500">event user count :{{ $event->users->count()+1 }}</h1> --}}
+            {{-- <h1  class="text-red-500">event user count :{{ $event->users->count() }}</h1> --}}
+            {{-- <h2 class="text-red-500">event member : {{ $event->member }}</h2> --}}
             <div class="flex flex-col items-center bg-white border border-gray-200 rounded-lg shadow md:flex-row w-1/2">
                 <div class="flex flex-col justify-between p-4 w-full">
-                    <h5 class="mb-2 text-xl font-bold tracking-tight text-gray-900">หัวเรื่อง : {{ $event->name }}</h5>
+                    <h5 class="mb-2 text-xl font-bold tracking-tight text-gray-900"> {{ $event->name }}</h5>
                     
                     <p class="mb-3 font-normal text-sm text-gray-700">{{ $event->address }}</p>
                     
@@ -33,13 +35,13 @@
                             
                     
                     
-                        @if ($event->users->count() == $event->member-1)                        
+                        {{-- @if ($event->users->count()+1 >= $event->member-1)                        
                         <div class="flex justify-end">                            
                             <p class="flex py-1 px-5 mr-3 mb-2 mt-2 text-sm font-semibold text-black focus:outline-none bg-white rounded-lg border border-gray-900 hover:bg-gray-100 hover:text-blue-700 focus:z-10 focus:ring-4 focus:ring-gray-200 cursor-not-allowed">     
                                 คนในกิจกรรมเต็มแล้ว
                             </p>
                         </div>
-                        @endif
+                        @endif --}}
                     @else
 
                     <div class="flex justify-end">
@@ -74,8 +76,10 @@
                                     @break
                                 @endif
                             @endforeach
-
+{{-- <h1>{{ $event->users->count()+1 }}</h1>
+<h1>{{ $event->member }}</h1> --}}
                             @if($check === false)
+                            @if ($event->users->count()+1 < $event->member)                        
                             
                             <a href="{{ route('user.enterEvent', ['event' => $event]) }}" class="flex py-1 px-5 mr-3 mb-2 mt-2 text-sm font-semibold text-black focus:outline-none bg-white rounded-lg border border-gray-900 hover:bg-gray-100 focus:ring-4 focus:ring-gray-200 bg-yellow-300 hover:bg-yellow-500 focus:ring-4 focus:ring-yellow-300 font-semibold">
                                 เข้าร่วม
@@ -83,6 +87,13 @@
                                     <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M1 5h12m0 0L9 1m4 4L9 9"/>
                                 </svg>
                             </a>
+                            @else
+                            <div class="flex justify-end">                            
+                                <p class="flex py-1 px-5 mr-3 mb-2 mt-2 text-sm font-semibold text-black focus:outline-none bg-white rounded-lg border border-gray-900 hover:bg-gray-100 hover:text-blue-700 focus:z-10 focus:ring-4 focus:ring-gray-200 cursor-not-allowed">     
+                                    คนในกิจกรรมเต็มแล้ว
+                                </p>
+                            </div>
+                            @endif
                             @endif
 
                         @endif

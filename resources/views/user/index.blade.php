@@ -72,20 +72,21 @@
                 $counter_allow_sending++
             @endphp            
         @endif
-        @if ($event->status)
+        @if ($event->is_allow === 'REJECT')
             @php
                 $counter_allow_success++
             @endphp            
         @endif
-        
-        @if ($event->is_allow === 'ACCEPT')
+        {{-- $table->enum('is_allow', ['ACCEPT','REJECT','SENDING'])->default('SENDING');  --}}
+
+        {{-- @if ($event->is_allow === 'ACCEPT')
             @php
                 $counter_allow_accept++;
             @endphp            
-        @endif        
+        @endif         --}}
         @endforeach
 
-<ul class="flex flex-col md:grid grid-cols-3 gap-5 text-redis-neutral-800 max-w-2xl mx-auto p-10 mt-10">
+<ul class="flex flex-col md:grid grid-cols-2 gap-5 text-redis-neutral-800 max-w-2xl mx-auto p-10 mt-10">
     <li
         class="w-full text-sm font-semibold text-slate-900 p-6 bg-white border border-slate-900/10 bg-clip-padding shadow-md shadow-slate-900/5 rounded-lg flex flex-col justify-center">
         <span class="mb-1 text-[#2ed4c0] font-display text-5xl">{{$counter_allow_sending}}</span>
@@ -94,16 +95,12 @@
 
         กำลังรอการอนุมัติ
     </li>
-    <li
-        class="w-full text-sm font-semibold text-slate-900 p-6 bg-white border border-slate-900/10 bg-clip-padding shadow-md shadow-slate-900/5 rounded-lg flex flex-col justify-center">
-        <span class="mb-1 text-[#2ed4c0] font-display text-5xl">{{$counter_allow_accept}}</span>
-        กำลังดำเนินการ
-    </li>
+    
     
     <li
         class="w-full text-sm font-semibold text-slate-900 p-6 bg-white border border-slate-900/10 bg-clip-padding shadow-md shadow-slate-900/5 rounded-lg flex flex-col justify-center">
         <span class="mb-1 text-[#2ed4c0] font-display text-5xl">{{$counter_allow_success}}</span>
-        สำเร็จลุล่วง
+        ถูกปฏิเสธ
     </li>
 </ul>
 

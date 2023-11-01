@@ -91,82 +91,170 @@ class DatabaseSeeder extends Seeder
         $user->address = fake()->paragraph();
         $user->save();
 
-        $event = new Event();
-        $event->name = 'งานรับน้อง';
-        $event->user_id = 2;
-        $event->member = 10;
-        $event->address = 'อะไรก็ได้เอามาเถอะ';
-        $event->status = false;
-        $event->rejection_reason = '';
+        $user = new User();
+        $user->name = "user6";
+        $user->email = "user6@gmail.com";
+        $user->email_verified_at = now();
+        $user->password = Hash::make('password');
+        $user->role = "user";
+        $user->duty = "eletricalEngineer";
+        $user->address = fake()->paragraph();
+        $user->save();
         
-        $event->image = "event_images/esXIgyQffVeb3hk3GpHlAjsBXHxuUh2B70ZcHz4r.jpg";
+        $user = new User();
+        $user->name = "user7";
+        $user->email = "user7@gmail.com";
+        $user->email_verified_at = now();
+        $user->password = Hash::make('password');
+        $user->role = "user";
+        $user->duty = "eletricalEngineer";
+        $user->address = fake()->paragraph();
+        $user->save();
+
+        $user = new User();
+        $user->name = "user8";
+        $user->email = "user8@gmail.com";
+        $user->email_verified_at = now();
+        $user->password = Hash::make('password');
+        $user->role = "user";
+        $user->duty = "eletricalEngineer";
+        $user->address = fake()->paragraph();
+        $user->save();
+
+        $user = new User();
+        $user->name = "user9";
+        $user->email = "user9@gmail.com";
+        $user->email_verified_at = now();
+        $user->password = Hash::make('password');
+        $user->role = "user";
+        $user->duty = "eletricalEngineer";
+        $user->address = fake()->paragraph();
+        $user->save();
+
+        $user = new User();
+        $user->name = "user10";
+        $user->email = "user10@gmail.com";
+        $user->email_verified_at = now();
+        $user->password = Hash::make('password');
+        $user->role = "user";
+        $user->duty = "eletricalEngineer";
+        $user->address = fake()->paragraph();
+        $user->save();
+
+        
+
+        $user = new User();
+        $user->name = "user11";
+        $user->email = "user11@gmail.com";
+        $user->email_verified_at = now();
+        $user->password = Hash::make('password');
+        $user->role = "user";
+        $user->duty = "eletricalEngineer";
+        $user->address = fake()->paragraph();
+        $user->save();
+
+        $user = new User();
+        $user->name = "user12";
+        $user->email = "user12@gmail.com";
+        $user->email_verified_at = now();
+        $user->password = Hash::make('password');
+        $user->role = "user";
+        $user->duty = "eletricalEngineer";
+        $user->address = fake()->paragraph();
+        $user->save();
+
+        $user = new User();
+        $user->name = "user13";
+        $user->email = "user13@gmail.com";
+        $user->email_verified_at = now();
+        $user->password = Hash::make('password');
+        $user->role = "user";
+        $user->duty = "eletricalEngineer";
+        $user->address = fake()->paragraph();
+        $user->save();
+
+        $user = new User();
+        $user->name = "user13";
+        $user->email = "user14@gmail.com";
+        $user->email_verified_at = now();
+        $user->password = Hash::make('password');
+        $user->role = "user";
+        $user->duty = "eletricalEngineer";
+        $user->address = fake()->paragraph();
+        $user->save();
+
+        $event = new Event();
+        $event->name = 'บริษัท ฟีนิกซ์เมทัล จำกัด';
+        $event->serial_number = '50100044625645';
+        $event->user_id = 3;
+        $event->member = 8;
+        $event->address = '21-29 ถ.นาคราช แขวงคลองมหานาคเขตป้อมปราบ จ.กรุงเทพฯ 10100';
+        $event->status = false;
+        $event->rejection_reason = '';        
+        $event->image = "event_images/m1.jpg";
         
         $event->save();
         
         $event = new Event();
-        $event->name = 'กิจกรรมเพื่อส่งเสริมสุขภาพ';
+        $event->name = 'บริษัท พัฒนพลาสติก';
+        $event->serial_number = '50100044625645';
         $event->user_id = 3;
-        $event->member = 10;
-        $event->address = 'อิอิ';
+        $event->member = 8;
+        $event->address = '1573-5 ถ.สุขมุวิท ซ.สาลีนิมิต เขตวัฒนา จ.กรุงเทพฯ 10110';
         $event->status = false;
         $event->rejection_reason = '-';        
-        $event->image = "event_images/esXIgyQffVeb3hk3GpHlAjsBXHxuUh2B70ZcHz4r.jpg";
+        $event->image = "event_images/m2.jpg";
         $event->save();
 
 
         $event = new Event();
         $event->name = 'การเปิดนิทรรศการศิลปะ';
-        $event->user_id = 4;
-        $event->member = 10;
-        $event->address = 'นิทรรศการการศิลปะ เพื่อ การสร้างสรรค์';
+        $event->serial_number = '50100044625645';
+        $event->user_id = 3;
+        $event->member = 8;
+        $event->address = '1379 ถ.จนัทน์แขวงทุ่งวัดดอน เขตสาธร จ.กรุงเทพฯ 10120';
         $event->status = false;
-        $event->image = "event_images/esXIgyQffVeb3hk3GpHlAjsBXHxuUh2B70ZcHz4r.jpg";        
+        $event->image = "event_images/m3.jpg";
         $event->rejection_reason = '-';        
         $event->save();
-
+// 339 หมู่18 ถ.สุขสวสั ด์ิต.บางพ่ึงอ.พระประแดงจ.สมทุ รปราการ 10130
         $event = new Event();
         $event->name = 'อาสาสมัครในชุมชน';
-        $event->user_id = 5;
-        $event->member = 10;
-        $event->address = 'มาลองคิด คณิตศาสตร์ แสนสนุกกัน สนใจมาเข้าร่วมกันไหม';
-        $event->status = false;
-        
-        $event->rejection_reason = '-';
-        $event->image = "event_images/esXIgyQffVeb3hk3GpHlAjsBXHxuUh2B70ZcHz4r.jpg";
-        $event->save();
-
-        $event = new Event();
-        $event->name = 'โครงการเรียนรู้ออนไลน์';
+        $event->serial_number = '50100044625645';
+        $event->address = '339 หมู่18 ถ.สุขสวัสด์ิ ต.บางพ่ึง อ.พระประแดง จ.สมทุรปราการ 10130';
+        $event->image = "event_images/m4.jpg";
         $event->user_id = 3;
-        $event->member = 10;
-        $event->address = 'อังกฤษฟังพูดอ่านเขียน เรียน ก็ง่ายสนใจมาเข้าร่วมกันไหม';
+        $event->member = 8;        
         $event->status = false;
         
         $event->rejection_reason = '-';
         $event->image = "event_images/esXIgyQffVeb3hk3GpHlAjsBXHxuUh2B70ZcHz4r.jpg";
         $event->save();
-
         // มีใครบ้าง
         $event = Event::find(1);
-        $event->users()->attach(3);
+        
         
         
         $event = Event::find(2); 
         $event->users()->attach(4);
         $event->users()->attach(5);
 
-        $event->users()->attach(5);
-        $event->users()->attach(5);
-        $event->users()->attach(5);
-        $event->users()->attach(5);
-        $event->users()->attach(5);
-        $event->users()->attach(5);
-        $event->users()->attach(5);
+        $event = Event::find(3); 
+        $event->users()->attach(4);
         $event->users()->attach(5);
 
-        $event = Event::find(3);
-        $event->users()->attach(2);
+        $event = Event::find(4);         
+        $event->users()->attach(5);
+        $event->users()->attach(6);
+        $event->users()->attach(7);
+        $event->users()->attach(8);
+        $event->users()->attach(9);
+        $event->users()->attach(10);
+        $event->users()->attach(11);
+        
 
+
+                
         // $task = new Task();
         // $task->name = 'ทำตารางกิจกรรม';
         // $task->type = 'done';

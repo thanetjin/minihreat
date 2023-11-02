@@ -2,7 +2,9 @@
 
 @section('content')
 
-        
+@php
+    $dutys = json_decode($task->checklist)
+@endphp
     
     <div class="py-12">
         <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
@@ -17,7 +19,7 @@
                                 <strong class="font-bold">ไม่สามารถบันทึกข้อมูลได้!</strong>
                                 <span class="block sm:inline">กรุณากรอกแบบฟอร์มอย่างน้อย 1 รายการ</span>
                             </div>
-@endif
+                            @endif
                             
                                 <span class="text-gray-700">ตำแหน่งหน้าที่ของคุณ</span>                                
                                 <input type="text" name="role" class="block w-full mt-1 rounded-md disabled:bg-slate-50 disabled:text-slate-500 disabled:border-slate-200 disabled:shadow-none " disabled
@@ -50,58 +52,43 @@
                         <h1 class="text-3xl">อัคคีภัย</h1>
                         <br />                        
                         <div class="mb-6">
-                        @if ($user->duty === "fireman")
-                            <input                                  
-                            type="checkbox" name="duty[]" value="มีอุปกรณ์แจ้งเหตุเพลิงไหม้ครอบคลุมทั่วอาคารโรงงาน" {{ in_array('มีอุปกรณ์แจ้งเหตุเพลิงไหม้ครอบคลุมทั่วอาคารโรงงาน', explode(',',$task->checklist)) ? 'checked' : ''}} id="">   
-                            <label for="">มีอุปกรณ์แจ้งเหตุเพลิงไหม้ครอบคลุมทั่วอาคารโรงงาน</label>
-                            @else
-                            <input                                  
-                             type="checkbox" disabled name="duty[]" value="มีอุปกรณ์แจ้งเหตุเพลิงไหม้ครอบคลุมทั่วอาคารโรงงาน" {{ in_array('มีอุปกรณ์แจ้งเหตุเพลิงไหม้ครอบคลุมทั่วอาคารโรงงาน', explode(',',$task->checklist)) ? 'checked' : ''}} id="">
-                             <label  class="text-slate-500" for="">มีอุปกรณ์แจ้งเหตุเพลิงไหม้ครอบคลุมทั่วอาคารโรงงาน</label>
-                            @endif                                                        
+                        {{-- @if ($user->duty === "fireman") --}}
+                        
+                            <input type="checkbox" name="duty[]" value="มีอุปกรณ์แจ้งเหตุเพลิงไหม้ครอบคลุมทั่วอาคารโรงงาน" {{ in_array('มีอุปกรณ์แจ้งเหตุเพลิงไหม้ครอบคลุมทั่วอาคารโรงงาน', explode(',',$task->checklist)) ? 'checked' : ''}} id="">   
+                            <label for="">มีอุปกรณ์แจ้งเหตุเพลิงไหม้ครอบคลุมทั่วอาคารโรงงาน</label>                            
+                            {{-- @endif                                                            --}}
                             @error('duty[]')
                             <div class="text-sm text-red-600">{{ $message }}</div>
                             @enderror
                         </div>
                         <div class="mb-6">
-                            @if ($user->duty === "fireman")
+                            {{-- @if ($user->duty === "fireman") --}}
                             <input                                  
                             type="checkbox" name="duty[]" value="มีน้ำสำรองสำหรับดับเพลิงในปริมาณที่เพียงพอที่จะส่งจ่ายน้ำให้กับอุปกรณ์ได้อย่างต่อเนื่องเป็นเวลาไม่น้อยกว่า 30 นาที" {{ in_array('มีน้ำสำรองสำหรับดับเพลิงในปริมาณที่เพียงพอที่จะส่งจ่ายน้ำให้กับอุปกรณ์ได้อย่างต่อเนื่องเป็นเวลาไม่น้อยกว่า 30 นาที', explode(',',$task->checklist)) ? 'checked' : ''}} id="">   
-                            <label for="">มีน้ำสำรองสำหรับดับเพลิงในปริมาณที่เพียงพอที่จะส่งจ่ายน้ำให้กับอุปกรณ์ได้อย่างต่อเนื่องเป็นเวลาไม่น้อยกว่า 30 นาที</label>
-                            @else
-                            <input                                  
-                             type="checkbox" disabled name="duty[]" value="มีน้ำสำรองสำหรับดับเพลิงในปริมาณที่เพียงพอที่จะส่งจ่ายน้ำให้กับอุปกรณ์ได้อย่างต่อเนื่องเป็นเวลาไม่น้อยกว่า 30 นาที" {{ in_array('มีน้ำสำรองสำหรับดับเพลิงในปริมาณที่เพียงพอที่จะส่งจ่ายน้ำให้กับอุปกรณ์ได้อย่างต่อเนื่องเป็นเวลาไม่น้อยกว่า 30 นาที', explode(',',$task->checklist)) ? 'checked' : ''}} id="">
-                             <label  class="text-slate-500" for="">มีน้ำสำรองสำหรับดับเพลิงในปริมาณที่เพียงพอที่จะส่งจ่ายน้ำให้กับอุปกรณ์ได้อย่างต่อเนื่องเป็นเวลาไม่น้อยกว่า 30 นาที</label>
-                            @endif                                                        
+                            <label for="">มีน้ำสำรองสำหรับดับเพลิงในปริมาณที่เพียงพอที่จะส่งจ่ายน้ำให้กับอุปกรณ์ได้อย่างต่อเนื่องเป็นเวลาไม่น้อยกว่า 30 นาที</label>                            
+                            {{-- @endif                                                         --}}
                             @error('duty[]')
                             <div class="text-sm text-red-600">{{ $message }}</div>
                             @enderror                            
                         </div>
                         <div class="mb-6">
-                        @if ($user->duty === "fireman")
+                        {{-- @if ($user->duty === "fireman") --}}
                             <input                                  
-                            type="checkbox" name="duty[]" value="มีระบบน้ำดับเพลิงและระบบดับเพลิงอัตโนมัติ และมีสภาพพร้อมใช้งาน 30 นาที" {{ in_array('มีระบบน้ำดับเพลิงและระบบดับเพลิงอัตโนมัติ และมีสภาพพร้อมใช้งาน 30 นาที', explode(',',$task->checklist)) ? 'checked' : ''}} id="">   
+                            type="checkbox" name="duty[]" value="มีระบบน้ำดับเพลิงและระบบดับเพลิงอัตโนมัติ และมีสภาพพร้อมใช้งาน 30 นาที" {{ in_array('มีระบบน้ำดับเพลิงและระบบดับเพลิงอัตโนมัติ และมีสภาพพร้อมใช้งาน 30 นาที',explode(',',$task->checklist)) ? 'checked' : ''}} id="">   
                             <label for="">มีระบบน้ำดับเพลิงและระบบดับเพลิงอัตโนมัติ และมีสภาพพร้อมใช้งาน 30 นาที</label>
-                            @else
-                            <input                                  
-                             type="checkbox" disabled name="duty[]" value="มีระบบน้ำดับเพลิงและระบบดับเพลิงอัตโนมัติ และมีสภาพพร้อมใช้งาน 30 นาที" {{ in_array('มีระบบน้ำดับเพลิงและระบบดับเพลิงอัตโนมัติ และมีสภาพพร้อมใช้งาน 30 นาที', explode(',',$task->checklist)) ? 'checked' : ''}} id="">
-                             <label  class="text-slate-500" for="">มีระบบน้ำดับเพลิงและระบบดับเพลิงอัตโนมัติ และมีสภาพพร้อมใช้งาน 30 นาที</label>
-                            @endif                                                        
+                         
+                            {{-- @endif                                                         --}}
                             @error('duty[]')
                             <div class="text-sm text-red-600">{{ $message }}</div>
                             @enderror
                         </div>                        
                         <div class="mb-6">
-                        @if ($user->duty === "fireman")
+                        {{-- @if ($user->duty === "fireman") --}}
                             <div class="mb-6"></div>
                             <input                                  
                             type="checkbox" name="duty[]" value="มีเส้นทางหนีไฟ" {{ in_array('มีเส้นทางหนีไฟ', explode(',',$task->checklist)) ? 'checked' : ''}} id="">   
                             <label for="">มีเส้นทางหนีไฟ</label>
-                            @else
-                            <input                                  
-                             type="checkbox" disabled name="duty[]" value="มีเส้นทางหนีไฟ" {{ in_array('มีเส้นทางหนีไฟ', explode(',',$task->checklist)) ? 'checked' : ''}} id="">
-                             <label  class="text-slate-500" for="">มีเส้นทางหนีไฟ</label>
-                            @endif                                                        
+                            {{-- @endif                                                         --}}
                             @error('duty[]')
                             <div class="text-sm text-red-600">{{ $message }}</div>
                             @enderror
@@ -109,57 +96,41 @@
                         <h1 class="text-3xl">ไฟฟ้า</h1>
                         <br />
                         <div class="mb-6">
-                        @if ($user->duty === "eletricalEngineer")                        
+                        {{-- @if ($user->duty === "eletricalEngineer")                         --}}
                             <input                                  
                             type="checkbox" name="duty[]" value="มีรายงานการตรวจสอบความปลอดภัยระบบไฟฟ้าประจำปี" {{ in_array('มีรายงานการตรวจสอบความปลอดภัยระบบไฟฟ้าประจำปี', explode(',',$task->checklist)) ? 'checked' : ''}} id="">   
-                            <label for="">มีรายงานการตรวจสอบความปลอดภัยระบบไฟฟ้าประจำปี</label>
-                            @else
-                            <input                                  
-                             type="checkbox" disabled name="duty[]" value="มีรายงานการตรวจสอบความปลอดภัยระบบไฟฟ้าประจำปี" {{ in_array('มีรายงานการตรวจสอบความปลอดภัยระบบไฟฟ้าประจำปี', explode(',',$task->checklist)) ? 'checked' : ''}} id="">
-                             <label  class="text-slate-500" for="">มีรายงานการตรวจสอบความปลอดภัยระบบไฟฟ้าประจำปี</label>
-                            @endif                                                        
+                            <label for="">มีรายงานการตรวจสอบความปลอดภัยระบบไฟฟ้าประจำปี</label>                            
+                            {{-- @endif                                                         --}}
                             @error('duty[]')
                             <div class="text-sm text-red-600">{{ $message }}</div>
                             @enderror
                         </div>                        
                         <div class="mb-6">
-                        @if ($user->duty === "eletricalEngineer")                        
+                        {{-- @if ($user->duty === "eletricalEngineer")                         --}}
                             <input                                  
-                            type="checkbox" name="duty[]" value="มีแบบแปลนที่แสดงการติดตั้งระบบไฟฟ้าในโรงงานที่มีวิศวกรไฟฟ้ารับรอง" {{ in_array('มีแบบแปลนที่แสดงการติดตั้งระบบไฟฟ้าในโรงงานที่มีวิศวกรไฟฟ้ารับรอง', explode(',',$task->checklist)) ? 'checked' : ''}} id="">   
-                            <label for="">มีมีแบบแปลนที่แสดงการติดตั้งระบบไฟฟ้าในโรงงานที่มีวิศวกรไฟฟ้ารับรอง</label>
-                            @else
-                            <input                                  
-                             type="checkbox" disabled name="duty[]" value="มีแบบแปลนที่แสดงการติดตั้งระบบไฟฟ้าในโรงงานที่มีวิศวกรไฟฟ้ารับรอง" {{ in_array('มีแบบแปลนที่แสดงการติดตั้งระบบไฟฟ้าในโรงงานที่มีวิศวกรไฟฟ้ารับรอง', explode(',',$task->checklist)) ? 'checked' : ''}} id="">
-                             <label  class="text-slate-500" for="">มีแบบแปลนที่แสดงการติดตั้งระบบไฟฟ้าในโรงงานที่มีวิศวกรไฟฟ้ารับรอง</label>
-                            @endif                                                        
+                            type="checkbox" name="duty[]" value="มีแบบแปลนที่แสดงการติดตั้งระบบไฟฟ้าในโรงงานที่มีวิศวกรไฟฟ้ารับรอง" {{ in_array('มีแบบแปลนที่แสดงการติดตั้งระบบไฟฟ้าในโรงงานที่มีวิศวกรไฟฟ้ารับรอง', explode(',',$task->checklist)) ? 'checked' : ''}} id="">      
+                            <label for="">มีมีแบบแปลนที่แสดงการติดตั้งระบบไฟฟ้าในโรงงานที่มีวิศวกรไฟฟ้ารับรอง</label>                                                    
+                            {{-- @endif                                                         --}}
                             @error('duty[]')
                             <div class="text-sm text-red-600">{{ $message }}</div>
                             @enderror
                         </div>                        
                         <div class="mb-6">
-                        @if ($user->duty === "eletricalEngineer")                        
+                        {{-- @if ($user->duty === "eletricalEngineer")                         --}}
                             <input                                  
                             type="checkbox" name="duty[]" value="มีการต่อสายดิน สภาพไม่ชำรุด" {{ in_array('มีการต่อสายดิน สภาพไม่ชำรุด', explode(',',$task->checklist)) ? 'checked' : ''}} id="">   
-                            <label for="">มีการต่อสายดิน สภาพไม่ชำรุด</label>
-                            @else
-                            <input                                  
-                             type="checkbox" disabled name="duty[]" value="มีการต่อสายดิน สภาพไม่ชำรุด" {{ in_array('มีการต่อสายดิน สภาพไม่ชำรุด', explode(',',$task->checklist)) ? 'checked' : ''}} id="">
-                             <label  class="text-slate-500" for="">มีการต่อสายดิน สภาพไม่ชำรุด</label>
-                            @endif                                                        
+                            <label for="">มีการต่อสายดิน สภาพไม่ชำรุด</label>                            
+                            {{-- @endif                                                         --}}
                             @error('duty[]')
                             <div class="text-sm text-red-600">{{ $message }}</div>
                             @enderror
                         </div>                    
                         <div class="mb-6">
-                        @if ($user->duty === "eletricalEngineer")                        
+                        {{-- @if ($user->duty === "eletricalEngineer")                         --}}
                             <input                                  
                             type="checkbox" name="duty[]" value="อุปกรณ์หมอแปลงอยู่ในสภาพโล่ง โดยรอบ" {{ in_array('อุปกรณ์หมอแปลงอยู่ในสภาพโล่ง โดยรอบ', explode(',',$task->checklist)) ? 'checked' : ''}} id="">   
-                            <label for="">อุปกรณ์หมอแปลงอยู่ในสภาพโล่ง โดยรอบ</label>
-                            @else
-                            <input                                  
-                             type="checkbox" disabled name="duty[]" value="อุปกรณ์หมอแปลงอยู่ในสภาพโล่ง โดยรอบ" {{ in_array('อุปกรณ์หมอแปลงอยู่ในสภาพโล่ง โดยรอบ', explode(',',$task->checklist)) ? 'checked' : ''}} id="">
-                             <label  class="text-slate-500" for="">อุปกรณ์หมอแปลงอยู่ในสภาพโล่ง โดยรอบ</label>
-                            @endif                                                        
+                            <label for="">อุปกรณ์หมอแปลงอยู่ในสภาพโล่ง โดยรอบ</label>                        
+                            {{-- @endif                                                         --}}
                             @error('duty[]')
                             <div class="text-sm text-red-600">{{ $message }}</div>
                             @enderror
@@ -168,62 +139,51 @@
                             <h1 class="text-3xl">เคมี</h1>                            
                             <div class="mb-6">
                         </div> 
-                            @if ($user->duty === "chemicalEngineer")
+                        
+                            
+                        
+                            {{-- @if ($user->duty === "chemicalEngineer") --}}
+                            
                             <input                                  
                             type="checkbox" name="duty[]" value="มีอุปกรณ์ความปลอดภัยที่เหมาะสมเพียงพอในบริเวณการเก็บสายเคมี" {{ in_array('มีอุปกรณ์ความปลอดภัยที่เหมาะสมเพียงพอในบริเวณการเก็บสายเคมี', explode(',',$task->checklist)) ? 'checked' : ''}} id="">   
-                            <label for="">มีอุปกรณ์ความปลอดภัยที่เหมาะสมเพียงพอในบริเวณการเก็บสายเคมี</label>
-                            @else
-                            <input                                  
-                             type="checkbox" disabled name="duty[]" value="มีอุปกรณ์ความปลอดภัยที่เหมาะสมเพียงพอในบริเวณการเก็บสายเคมี" {{ in_array('มีอุปกรณ์ความปลอดภัยที่เหมาะสมเพียงพอในบริเวณการเก็บสายเคมี', explode(',',$task->checklist)) ? 'checked' : ''}} id="">
-                             <label  class="text-slate-500" for="">มีอุปกรณ์ความปลอดภัยที่เหมาะสมเพียงพอในบริเวณการเก็บสายเคมี</label>
-                            @endif                                                        
+                            <label for="">มีอุปกรณ์ความปลอดภัยที่เหมาะสมเพียงพอในบริเวณการเก็บสายเคมี</label>                            
+                            {{-- @endif                                                         --}}
                             @error('duty[]')
                             <div class="text-sm text-red-600">{{ $message }}</div>
                             @enderror
                             </div>
                             <div class="mb-6">
-                                @if ($user->duty === "chemicalEngineer")
+                                {{-- @if ($user->duty === "chemicalEngineer") --}}
                                 <input                                  
                                 type="checkbox" name="duty[]" value="มีป้ายแสดงตำแหน่งการติดตั้งอุปกรณ์ความปลอดภัย" {{ in_array('มีป้ายแสดงตำแหน่งการติดตั้งอุปกรณ์ความปลอดภัย', explode(',',$task->checklist)) ? 'checked' : ''}} id="">   
                                 <label for="">มีป้ายแสดงตำแหน่งการติดตั้งอุปกรณ์ความปลอดภัย</label>
-                                @else
-                                <input                                  
-                                 type="checkbox" disabled name="duty[]" value="มีป้ายแสดงตำแหน่งการติดตั้งอุปกรณ์ความปลอดภัย" {{ in_array('มีป้ายแสดงตำแหน่งการติดตั้งอุปกรณ์ความปลอดภัย', explode(',',$task->checklist)) ? 'checked' : ''}} id="">
-                                 <label  class="text-slate-500" for="">มีป้ายแสดงตำแหน่งการติดตั้งอุปกรณ์ความปลอดภัย</label>
-                                @endif                                                        
+                                {{-- @endif                                                         --}}
                                 @error('duty[]')
                                 <div class="text-sm text-red-600">{{ $message }}</div>
                                 @enderror
                                 </div>
                                 <div class="mb-6">
-                                    @if ($user->duty === "chemicalEngineer")
+                                    {{-- @if ($user->duty === "chemicalEngineer") --}}
                                     <input                                  
                                     type="checkbox" name="duty[]" value="มีขั้นตอนการปฏิบัติงานอย่างปลอดภัยทุกกิจกรรมที่เกี่ยวข้องกับสารเคมีอันตราย" {{ in_array('มีขั้นตอนการปฏิบัติงานอย่างปลอดภัยทุกกิจกรรมที่เกี่ยวข้องกับสารเคมีอันตราย', explode(',',$task->checklist)) ? 'checked' : ''}} id="">   
-                                    <label for="">มีขั้นตอนการปฏิบัติงานอย่างปลอดภัยทุกกิจกรรมที่เกี่ยวข้องกับสารเคมีอันตราย</label>
-                                    @else
-                                    <input                                  
-                                     type="checkbox" disabled name="duty[]" value="มีขั้นตอนการปฏิบัติงานอย่างปลอดภัยทุกกิจกรรมที่เกี่ยวข้องกับสารเคมีอันตราย" {{ in_array('มีขั้นตอนการปฏิบัติงานอย่างปลอดภัยทุกกิจกรรมที่เกี่ยวข้องกับสารเคมีอันตราย', explode(',',$task->checklist)) ? 'checked' : ''}} id="">
-                                     <label  class="text-slate-500" for="">มีขั้นตอนการปฏิบัติงานอย่างปลอดภัยทุกกิจกรรมที่เกี่ยวข้องกับสารเคมีอันตราย</label>
-                                    @endif                                                        
+                                    <label for="">มีขั้นตอนการปฏิบัติงานอย่างปลอดภัยทุกกิจกรรมที่เกี่ยวข้องกับสารเคมีอันตราย</label>                                    
+                                    {{-- @endif                                                         --}}
                                     @error('duty[]')
                                     <div class="text-sm text-red-600">{{ $message }}</div>
                                     @enderror
                                     </div>
 
                                 <div class="mb-6">
-                                    @if ($user->duty === "chemicalEngineer")
+                                    {{-- @if ($user->duty === "chemicalEngineer") --}}
                                     <input                                  
                                     type="checkbox" name="duty[]" value="มีที่อาบน้ำ และล้างตาฉุกเฉินใกล้กับบริเวณปฏิบัติงานที่เกี่ยวข้องกับสารเคมีและต้องอยู่ในสภาพที่ดี" {{ in_array('มีที่อาบน้ำ และล้างตาฉุกเฉินใกล้กับบริเวณปฏิบัติงานที่เกี่ยวข้องกับสารเคมีและต้องอยู่ในสภาพที่ดี', explode(',',$task->checklist)) ? 'checked' : ''}} id="">   
-                                    <label for="">มีที่อาบน้ำ และล้างตาฉุกเฉินใกล้กับบริเวณปฏิบัติงานที่เกี่ยวข้องกับสารเคมีและต้องอยู่ในสภาพที่ดี</label>
-                                    @else
-                                    <input                                  
-                                     type="checkbox" disabled name="duty[]" value="มีที่อาบน้ำ และล้างตาฉุกเฉินใกล้กับบริเวณปฏิบัติงานที่เกี่ยวข้องกับสารเคมีและต้องอยู่ในสภาพที่ดี" {{ in_array('มีที่อาบน้ำ และล้างตาฉุกเฉินใกล้กับบริเวณปฏิบัติงานที่เกี่ยวข้องกับสารเคมีและต้องอยู่ในสภาพที่ดี', explode(',',$task->checklist)) ? 'checked' : ''}} id="">
-                                     <label  class="text-slate-500" for="">มีที่อาบน้ำ และล้างตาฉุกเฉินใกล้กับบริเวณปฏิบัติงานที่เกี่ยวข้องกับสารเคมีและต้องอยู่ในสภาพที่ดี</label>
-                                    @endif                                                        
+                                    <label for="">มีที่อาบน้ำ และล้างตาฉุกเฉินใกล้กับบริเวณปฏิบัติงานที่เกี่ยวข้องกับสารเคมีและต้องอยู่ในสภาพที่ดี</label>                                    
+                                    {{-- @endif                                                         --}}
                                     @error('duty[]')
                                     <div class="text-sm text-red-600">{{ $message }}</div>
                                     @enderror
                                     </div>
+                                    
                                     <div class="items-center justify-start text-center mt-4">
                                       
                                         @if (Auth::user()->role === "staff")

@@ -57,10 +57,11 @@ public function store(Request $request,Event $event)
 
         $user = Auth::user();        
         $task = new Task();
-        $task->name = $user->name;
-        $task->type = $user->role;        
+        // $task->name = $user->name;
+        // $task->type = $user->role;        
         // $checkbox_data = $request->input("duty");
         // $task->checklist = implode(',',$checkbox_data);
+        // $task->event_id = $event->id;
         $task->event_id = $event->id;
         $task->save();
         return redirect()->route('kanbans.index',['user' => $user,            
@@ -92,11 +93,8 @@ public function store(Request $request,Event $event)
     {
         $user = Auth::user();        
         $task = Task::find($id);
-        $task->name = $user->name;
-        $task->type = $user->role;
-        $request->validate([
-            'duty' => 'required|min:1', // ตรวจสอบว่าต้องเป็นอาร์เรย์และมีอย่างน้อย 1 รายการ
-        ]);
+        // $task->name = $user->name;
+        // $task->type = $user->role;        
         $checkbox_data = $request->input("duty");
         $task->checklist = implode(',',$checkbox_data);        
         

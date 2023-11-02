@@ -55,15 +55,30 @@ public function store(Request $request,Event $event)
         // 'event' => $event])->with('success','คุณได้ทำการสร้างฟอร์มเรียบร้อยแล้ว!');
         // error_log('Some message here.');
 
+
+        // {{-- @if ($user->duty === "eletricalEngineer","fireman","chemicalEngineer"
         $user = Auth::user();        
         $task = new Task();
+        $task->event_id = $event->id;
+        $task->role = "eletricalEngineer";        
+        $task->save();
+
+        $task = new Task();
+        $task->event_id = $event->id;
+        $task->role = "fireman";
+        $task->save();
+
+        $task = new Task();
+        $task->event_id = $event->id;
+        $task->role = "chemicalEngineer";
+        $task->save();
+    
         // $task->name = $user->name;
         // $task->type = $user->role;        
         // $checkbox_data = $request->input("duty");
         // $task->checklist = implode(',',$checkbox_data);
         // $task->event_id = $event->id;
-        $task->event_id = $event->id;
-        $task->save();
+        
         return redirect()->route('kanbans.index',['user' => $user,            
         'event' => $event])->with('success','คุณได้ทำการสร้างฟอร์มเรียบร้อยแล้ว!');
         error_log('Some message here.');

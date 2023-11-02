@@ -49,6 +49,9 @@
                             <div class="text-sm text-red-600">{{ $message }}</div>
                             @enderror
                         </div>
+                        @if ($task->role === "fireman")
+                            
+                        
                         <h1 class="text-3xl">อัคคีภัย</h1>
                         <br />                        
                         <div class="mb-6">
@@ -92,11 +95,13 @@
                             @error('duty[]')
                             <div class="text-sm text-red-600">{{ $message }}</div>
                             @enderror
-                        </div>                        
+                        </div>
+                        @endif       
+                        @if ($task->role === "eletricalEngineer")                 
                         <h1 class="text-3xl">ไฟฟ้า</h1>
                         <br />
                         <div class="mb-6">
-                        {{-- @if ($user->duty === "eletricalEngineer")                         --}}
+                        {{-- @if ($user->duty === "eletricalEngineer","fireman","chemicalEngineer")                 --}}
                             <input                                  
                             type="checkbox" name="duty[]" value="มีรายงานการตรวจสอบความปลอดภัยระบบไฟฟ้าประจำปี" {{ in_array('มีรายงานการตรวจสอบความปลอดภัยระบบไฟฟ้าประจำปี', explode(',',$task->checklist)) ? 'checked' : ''}} id="">   
                             <label for="">มีรายงานการตรวจสอบความปลอดภัยระบบไฟฟ้าประจำปี</label>                            
@@ -135,6 +140,8 @@
                             <div class="text-sm text-red-600">{{ $message }}</div>
                             @enderror
                         </div>
+                        @endif
+                        @if ($task->role === "chemicalEngineer")                 
                             <div class="mt-2 mb-6">
                             <h1 class="text-3xl">เคมี</h1>                            
                             <div class="mb-6">
@@ -183,6 +190,7 @@
                                     <div class="text-sm text-red-600">{{ $message }}</div>
                                     @enderror
                                     </div>
+                                    @endif
                                     
                                     <div class="items-center justify-start text-center mt-4">
                                       

@@ -29,9 +29,12 @@
                         ID
                     </th>
                     <th scope="col" class="px-6 py-3">
+                        ตำแหน่ง
+                    </th>    
+                    <th scope="col" class="px-6 py-3">
                         คำอธิบาย
                     </th>
-                    
+                                                        
                     <th scope="col" class="px-6 py-3">
                         เวลาในการอัพเดทฟอร์มล่าสุด
                     </th>
@@ -45,6 +48,17 @@
                     <th scope="row" class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap">
                         {{$task->id}}
                     </th>
+                    <td class="px-6 py-4">
+                        @if ($task->role === "fireman")
+                        นักอัคคีภัย
+                        @elseif ($task->role === "chemicalEngineer")
+                        วิศวกรเคมี                        
+                        @elseif ($task->role === "eletricalEngineer")
+                        วิศวกรไฟฟ้า
+                        @endif
+                        {{-- {{$task->role}} --}}
+                        {{-- {{$member->duty}} --}}
+                    </td>
                     
                     <td class="px-6 py-4 text-red-500">
                         {{$task->desc}}
@@ -60,10 +74,16 @@
                             <h1>{{$task->id}}</h1>
                             <button>Edit</button> --}}
                             <td
-                        class="px-6 py-4 text-sm leading-5 text-gray-500 whitespace-no-wrap border-b border-gray-200">
-                                         
-                        {{-- <a href="{{ route('kanbans.change', ['task' => $task->id])}}">EDIT</a>                     --}}
+                        class="px-6 py-4 text-sm leading-5 text-gray-500 whitespace-no-wrap border-b border-gray-200">                                                                
+                        @if ($user->role === "user")                                                
+                        @if ($user->duty === $task->role)                        
                         <a href="{{ route('kanbans.change', ['event' => $event->id,'task' => $task->id])}}">แก้ไขแบบฟอร์ม</a>                    
+                        @endif
+                        @endif
+
+                        @if ($user->role === "staff")
+                        <a href="{{ route('kanbans.change', ['event' => $event->id,'task' => $task->id])}}">แก้ไขแบบฟอร์ม</a>                    
+                        @endif
                     </td>
                     </td>
                     

@@ -119,7 +119,15 @@ public function store(Request $request,Event $event)
         $task->save();
         return redirect()->route('kanbans.index',['event'=>$event,'user' => $user])->with('success','คุณได้ทำการแก้ไขฟอร์มเป็นที่เรียบร้อยแล้วครับ!');
     }
-
+    public function storeLeaderDesc(Event $event,Request $request)
+        {            
+            $user = Auth::user();   
+            // $event => Event::find($id);
+            // $task = Task::find($id);
+            $event->desc_lead = $request->desc_lead;
+            $event->save();
+            return redirect()->route('kanbans.index',['event'=>$event,'user' => $user])->with('success','คุณได้ทำการเพิ่มคำอธิบายเป็นที่เรียบร้อยแล้วครับ!');
+        }
     public function update(Task $task)
     {
 

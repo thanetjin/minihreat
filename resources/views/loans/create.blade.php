@@ -17,9 +17,10 @@
                         <div class="mb-6">
                             <label class="block">
                                 <span class="text-gray-700">จำนวนที่ต้องการยืม</span>
-                                <input type="number" name="number_borrowed" class="block w-full mt-1 rounded-md"
+                                <input type="number" name="number_borrowed" class="block w-full mt-1 rounded-md" min="1"
                                        placeholder="กรุณากรอกจำนวนที่ต้องการยืม?"
                                        value="{{old('number_borrowed')}}"/>
+                                       
                             </label>
                             @error('number_borrowed')
                             <div class="text-sm text-red-600">{{ $message }}</div>

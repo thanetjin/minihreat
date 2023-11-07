@@ -131,10 +131,12 @@ class UserController extends Controller
 
         $request->validate([
             'date' => 'required|date|after:now',
-            'member' => 'min:1'
+            'member' => 'min:1|max:10'            
         ],[
             'date.after' => 'กรุณากรอกเวลาที่ไม่ใช่อดีต',            
             'member.min' => 'กรุณากรอกจำนวนมากกว่า1คน',            
+            'member.max' => 'กรุณากรอกจำนวนน้อยกว่า10คน',            
+
         ]);
         
         
@@ -151,10 +153,6 @@ class UserController extends Controller
             $event->image = $path;
         }
         $event->save();
-
-
-
-
         return redirect()->route('user.index')->with("success", "คุณได้ทำการสร้างห้องสำหรับตรวจสอบโรงงานแล้ว!");
     }
     public function userLogout(Request $request): RedirectResponse

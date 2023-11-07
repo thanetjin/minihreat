@@ -194,13 +194,14 @@
                                     
                                     <div class="items-center justify-start text-center mt-4">
                                       
-                                        @if (Auth::user()->role === "staff")
-                                        <div class="mt-5 mb-6">                                            
+                                        {{-- @if (Auth::user()->role === "staff") --}}
+                                        <div class="mt-5 mb-6">     
+                                                                                   
                                             <textarea   id="description" name="desc" rows="10" 
                                                 class="block p-2.5 w-full text-sm text-gray-900 bg-gray-50 rounded-lg border border-gray-300 focus:ring-blue-500 focus:border-blue-500" 
-                                                    placeholder="กรุณาใส่คำอธิบาย" value{{$task->desc}}></textarea>
+                                                    placeholder="กรุณาใส่คำอธิบาย" > {{$task->desc}} </textarea>
                                         </div>
-                                        @endif
+                                        {{-- @endif --}}
                                     <button class="inline-flex p-4 text-xl font-semibold leading-5 text-white bg-black rounded-full hover:bg-slate-800 hover:text-white focus:outline-none focus:ring-4 focus:ring-red-300  py-2.5 text-center mr-2 mb-2 dark:bg-red-600 dark:hover:bg-red-700 dark:focus:ring-red-900">
                                         ยืนยันการแก้ไขฟอร์ม
                                     </button>

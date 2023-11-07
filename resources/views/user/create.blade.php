@@ -8,42 +8,42 @@
                 class="absolute h-screen w-full rounded-[50px] -left-14 ">
         </div>
         <div class="col-span-2 p-4">
-            <form action="{{ route('user.storeEvent', ['user' => $user]) }}" method="POST" enctype="multipart/form-data">
+            <form action="{{ route('user.storeEvent', ['user' => $user]) }}" method="POST" enctype="multipart/form-data"> 
                 
 
                 @csrf
                 <div class="mt-5">
                     <label for="topic" class="block mb-2 text-sm font-medium text-gray-900">รหัสโรงงาน</label>
-                    <input type="text" name="serial_number" id="topic" name="topic" 
+                    <input type="text" name="serial_number" id="topic" 
                         class="block p-2.5 w-full text-sm text-gray-900 bg-gray-50 rounded-lg border border-gray-300 focus:ring-blue-500 focus:border-blue-500"
-                        placeholder="กรุณากรอกรหัสโรงงาน"
+                        placeholder="กรุณากรอกรหัสโรงงาน"  value="{{ old('serial_number') }}"
                     required>
                 </div>
                 <div class="mt-5">
                     <label for="topic" class="block mb-2 text-sm font-medium text-gray-900">ชื่อโรงงาน</label>
-                    <input type="text" name="name" id="topic" name="topic" 
+                    <input type="text" name="name" id="topic"
                         class="block p-2.5 w-full text-sm text-gray-900 bg-gray-50 rounded-lg border border-gray-300 focus:ring-blue-500 focus:border-blue-500"
-                        placeholder="กรุณากรอกชื่อโรงงาน"
+                        placeholder="กรุณากรอกชื่อโรงงาน" value="{{ old('name') }}"
                     required>
                 </div>
                 <div class="mt-5">
                     <label for="description" class="block mb-2 text-sm font-medium text-gray-900">ที่อยู่โรงงาน</label>
-                    <textarea name="address"  id="description" name="description" rows="10" 
+                    <textarea name="address"  id="description"  rows="10" 
                         class="block p-2.5 w-full text-sm text-gray-900 bg-gray-50 rounded-lg border border-gray-300 focus:ring-blue-500 focus:border-blue-500" 
-                            placeholder="กรุณาใส่ที่อยู่ของโรงงาน" required></textarea>
+                            placeholder="กรุณาใส่ที่อยู่ของโรงงาน"  required>{{ old('address') }}</textarea>
                 </div>
                 <div class="mt-5">
                     <label for="member" class="block mb-2 text-sm font-medium text-gray-900">จำนวนคนที่ต้องการ</label>
-                    <input type="number" id="member" name="member" min="1"
+                    <input type="number" id="member" name="member" min="1" max="10"
                         placeholder="กรุณาใส่จำนวนคนที่ต้องการ"
                         class="block p-2.5 w-full text-sm text-gray-900 bg-gray-50 rounded-lg border border-gray-300 focus:ring-blue-500 focus:border-blue-500"
-                        value="8"
+                        value="8" 
                     required>
                 </div>
                 <div class="mt-5">
                     <label class="block">
                         <span class="text-gray-700">กำหนดการปฏิบัติงาน</span>
-                        <input type="datetime-local"  name="date" class="block w-full mt-1 rounded-md text-gray-900 bg-gray-50 border border-gray-300 focus:ring-blue-500 focus:border-blue-500"
+                        <input type="datetime-local"  name="date" class="block w-full mt-1 rounded-md text-gray-900 bg-gray-50 border border-gray-300 focus:ring-blue-500 focus:border-blue-500 " value="{{ old('topic') }}"
                                placeholder="" required value="{{old('date')}}"/>
                     </label>
                     @error('date')

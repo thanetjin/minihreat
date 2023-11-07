@@ -55,14 +55,14 @@
                         วิศวกรเคมี                        
                         @elseif ($task->role === "eletricalEngineer")
                         วิศวกรไฟฟ้า
-                        @endif
-                        {{-- {{$task->role}} --}}
-                        {{-- {{$member->duty}} --}}
+                        @endif                        
                     </td>
                     
                     <td class="px-6 py-4 text-red-500">
                         {{$task->desc}}
                     </td>
+
+                    
                     
                     <td class="px-6 py-4">
                         {{Carbon::parse($task->updated_at)->format('g:i a l jS F, Y')}}
@@ -93,6 +93,21 @@
                 @endforeach
             </tbody>
         </table>
+        <form action="{{ route('kanbans.storeLeaderDesc', ['event' => $event]) }}" method="POST">                            
+            @csrf
+
+            <div class="mt-5">
+                <label for="description" class="block mb-2 text-sm font-medium text-gray-900">คำอธิบายเพิ่มเติมจากหัวหน้าทีม</label>
+                <textarea name="desc_lead"  id="description"  rows="10" 
+                    class="block p-2.5 w-full text-sm text-gray-900 bg-gray-50 rounded-lg border border-gray-300 focus:ring-blue-500 focus:border-blue-500" 
+                        placeholder="กรุณาใส่ข้อมูลเพิ่มเติม"  required>{{ $event->desc_lead }}</textarea>
+            </div>
+            <div class="flex justify-center items-center text-center m-4">
+          <button type="submit"  class="inline-flex p-4 text-xl font-semibold leading-5 text-white bg-black rounded-full hover:bg-slate-800 hover:text-white focus:outline-none focus:ring-4 focus:ring-red-300  py-2.5 text-center mr-2 mb-2 dark:bg-red-600 dark:hover:bg-red-700 dark:focus:ring-red-900">เพิ่มคำอธิบาย</button>      
+        </div>
+        </form>
+
+        
     </div>
 </div>
 

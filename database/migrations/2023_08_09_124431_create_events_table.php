@@ -15,7 +15,8 @@ return new class extends Migration
     {
         Schema::create('events', function (Blueprint $table) {
             $table->id();
-            $table->string('name');            
+            $table->string('name');
+            $table->string('desc_lead')->nullable();                     
             $table->string('serial_number')->nullable();
             $table->string('date')->nullable();
             $table->foreignIdFor(User::class); //เพื่อหา event_owner check จาก id

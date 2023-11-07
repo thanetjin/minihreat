@@ -148,8 +148,12 @@ Route::put('/user/show/event_detail/{event}/kanbans/taskeditor/{task}', [
     KanBanController::class, 'handleChange'
 ])->name('kanbans.handleChange');
 Route::post('/user/show/event_detail/{event}/kanbans/changeStatus', [
-    KanBanController::class, 'changeStatus'
+    KanBanController::class, 'changeStatus' 
 ])->name('kanbans.changeStatus');
+// storeLeaderDesc
+Route::post('/user/show/event_detail/{event}/kanbans/storeLeaderDesc', [
+    KanBanController::class, 'storeLeaderDesc' 
+])->name('kanbans.storeLeaderDesc');
 
 Route::get('/user/show/event_detail/{event}/kanbans/terminate', [
     KanBanController::class, 'terminate'

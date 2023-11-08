@@ -122,6 +122,7 @@ public function store(Request $request,Event $event)
     public function storeLeaderDesc(Event $event,Request $request)
         {            
             $user = Auth::user();   
+            
             // $event => Event::find($id);
             // $task = Task::find($id);
             $event->desc_lead = $request->desc_lead;

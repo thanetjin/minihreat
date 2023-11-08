@@ -198,7 +198,7 @@
                                         <div class="mt-5 mb-6">     
                                                                                    
                                             <textarea   id="description" name="desc" rows="10" 
-                                                class="block p-2.5 w-full text-sm text-gray-900 bg-gray-50 rounded-lg border border-gray-300 focus:ring-blue-500 focus:border-blue-500" 
+                                                class="text-xl block p-2.5 w-full text-sm text-gray-900 bg-gray-50 rounded-lg border border-gray-300 focus:ring-blue-500 focus:border-blue-500" 
                                                     placeholder="กรุณาใส่คำอธิบาย" > {{$task->desc}} </textarea>
                                         </div>
                                         {{-- @endif --}}

@@ -97,15 +97,24 @@
             @csrf
 
             <div class="mt-5">
-                <label for="description" class="block mb-2 text-sm font-medium text-gray-900">คำอธิบายเพิ่มเติมจากหัวหน้าทีม</label>
+                <label for="description" class="block mb-2 text-xl font-medium text-gray-900">คำอธิบายเพิ่มเติมจากหัวหน้าทีม</label>
+                
+                @if (Auth::user()->role === "staff")
                 <textarea name="desc_lead"  id="description"  rows="10" 
-                    class="block p-2.5 w-full text-sm text-gray-900 bg-gray-50 rounded-lg border border-gray-300 focus:ring-blue-500 focus:border-blue-500" 
+                    class="text-xl block p-2.5 w-full  text-red-500 bg-gray-50 rounded-lg border border-gray-300 focus:ring-blue-500 focus:border-blue-500" 
                         placeholder="กรุณาใส่ข้อมูลเพิ่มเติม"  required>{{ $event->desc_lead }}</textarea>
+                        <div class="flex justify-center items-center text-center m-4">
+                            <button type="submit"  class="inline-flex p-4 text-xl font-semibold leading-5 text-white bg-black rounded-full hover:bg-slate-800 hover:text-white focus:outline-none focus:ring-4 focus:ring-red-300  py-2.5 text-center mr-2 mb-2 dark:bg-red-600 dark:hover:bg-red-700 dark:focus:ring-red-900">เพิ่มคำอธิบาย</button>      
+                          </div>
+                          </form>
+                @endif
+                @if (Auth::user()->role === "user")
+                <div class="  bg-white dark:bg-slate-900 rounded-lg px-6 py-8 ring-1 ring-slate-900/5 shadow-xl">                    
+                    <h3 class="text-red-500 dark:text-white  text-base font-medium tracking-tight">{{ $event->desc_lead }}</h3>                    
+                  </div>
+                @endif                
             </div>
-            <div class="flex justify-center items-center text-center m-4">
-          <button type="submit"  class="inline-flex p-4 text-xl font-semibold leading-5 text-white bg-black rounded-full hover:bg-slate-800 hover:text-white focus:outline-none focus:ring-4 focus:ring-red-300  py-2.5 text-center mr-2 mb-2 dark:bg-red-600 dark:hover:bg-red-700 dark:focus:ring-red-900">เพิ่มคำอธิบาย</button>      
-        </div>
-        </form>
+            
 
         
     </div>
